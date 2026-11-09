@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
+  <rect width="64" height="64" rx="10" fill="#141413"/>
+  <rect x="4" y="4" width="56" height="56" rx="7" stroke="#C5A47E" stroke-width="1.2" stroke-opacity="0.5"/>
+  <path d="M16 14V50M48 14V50" stroke="#C5A47E" stroke-width="1" stroke-opacity="0.28"/>
+  <path d="M14 20H50M14 44H50" stroke="#C5A47E" stroke-width="1" stroke-opacity="0.28"/>
+  <path d="M32 14L17 50H23.5L27 41H37L40.5 50H47L32 14ZM29.2 35.5L32 28L34.8 35.5H29.2Z" fill="#FAF9F6"/>
+  <path d="M21 35.5H43" stroke="#C5A47E" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="32" cy="21" r="1.8" fill="#C5A47E"/>
+  <text x="80" y="31" fill="#141413" font-family="Outfit, Plus Jakarta Sans, sans-serif" font-size="22" font-weight="700" letter-spacing="1.5">ASLANCAN</text>
+  <text x="80" y="49" fill="#8C7A6B" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="600" letter-spacing="3.5">DENİZLİ TEKSTİL</text>
+</svg>
