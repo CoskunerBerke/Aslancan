@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Plus, Check, CreditCard, Building2, Truck, Trash2 } from 'lucide-react';
+import {
+  ShoppingBag,
+  Plus,
+  Check,
+  CreditCard,
+  Building2,
+  Truck,
+  Trash2,
+  ZoomIn,
+  X,
+} from 'lucide-react';
 import { CATEGORY_TABS, productGroups, ProductGroupItem } from '../data/productsData';
 
 export interface CartItem {
@@ -28,8 +38,11 @@ const Services: React.FC<ServicesProps> = ({
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedVariantIdx, setSelectedVariantIdx] = useState<Record<string, number>>({});
   const [selectedQty, setSelectedQty] = useState<Record<string, number>>({});
-  const [selectedOrderType, setSelectedOrderType] = useState<Record<string, 'Toptan' | 'Perakende'>>({});
+  const [selectedOrderType, setSelectedOrderType] = useState<
+    Record<string, 'Toptan' | 'Perakende'>
+  >({});
   const [addedFeedback, setAddedFeedback] = useState<string | null>(null);
+  const [previewProduct, setPreviewProduct] = useState<ProductGroupItem | null>(null);
 
   // Checkout state
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'transfer'>('card');
@@ -118,15 +131,18 @@ const Services: React.FC<ServicesProps> = ({
   };
 
   return (
-    <section id="urunler" className="py-20 bg-[#F6F4F0] border-t border-zinc-200">
+    <section id="urunler" className="py-24 bg-[#F6F3EC] border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Category Filter */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#9A7B56] mb-3">
-              ÜRÜN GRUPLARIMIZ & ONLINE SİPARİŞ KATALOĞU
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 tracking-tight">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="w-8 h-[1.5px] bg-[#9A743E]" />
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+                KOLEKSİYON & ONLINE SİPARİŞ KATALOĞU
+              </p>
+            </div>
+            <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight leading-tight">
               Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular
             </h2>
           </div>
@@ -140,10 +156,10 @@ const Services: React.FC<ServicesProps> = ({
                   key={tab.key}
                   type="button"
                   onClick={() => setActiveCategory(tab.key)}
-                  className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg border transition-colors whitespace-nowrap ${
+                  className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-lg border transition-all whitespace-nowrap ${
                     isActive
-                      ? 'bg-zinc-900 text-white border-zinc-900'
-                      : 'bg-white text-zinc-700 border-zinc-300 hover:border-zinc-900'
+                      ? 'bg-zinc-950 text-[#E5C99B] border-[#C5A47E] shadow-md'
+                      : 'bg-white text-zinc-700 border-zinc-300 hover:border-[#C5A47E] hover:text-zinc-950'
                   }`}
                 >
                   {tab.label}
@@ -153,84 +169,114 @@ const Services: React.FC<ServicesProps> = ({
           </div>
         </div>
 
-        {/* 01 - 06 3-Column Architectural Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        {/* 01 - 06 3-Column Luxury Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredGroups.map((product) => {
             const vIdx = selectedVariantIdx[product.id] ?? 0;
             const currentVariant = product.variants[vIdx] || product.variants[0];
             const currentOrderType = selectedOrderType[product.id] ?? 'Toptan';
-            const defaultQty = currentOrderType === 'Toptan' ? currentVariant.wholesaleMin : 2;
+            const defaultQty =
+              currentOrderType === 'Toptan' ? currentVariant.wholesaleMin : 2;
             const currentQty = selectedQty[product.id] ?? defaultQty;
             const isAdded = addedFeedback === product.id;
 
             return (
               <div
                 key={product.num}
-                className="bg-white rounded-lg border border-zinc-200 overflow-hidden flex flex-col justify-between"
+                className="group bg-white rounded-xl border border-zinc-200/90 hover:border-[#C5A47E] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_65px_-15px_rgba(154,116,62,0.24)]"
               >
                 <div>
-                  {/* Real Product Photo (16:10) */}
-                  <div className="aspect-[16/10] w-full overflow-hidden bg-zinc-100 border-b border-zinc-200">
+                  {/* Real Product Photo (16:10) with Luxury Zoom Trigger */}
+                  <div
+                    onClick={() => setPreviewProduct(product)}
+                    className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border-b border-zinc-200 cursor-pointer"
+                  >
                     <img
                       src={product.image}
                       alt={product.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/65 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                      <span className="font-mono text-xs font-bold tracking-widest uppercase text-[#E5C99B]">
+                        {product.num} • {product.categoryName}
+                      </span>
+                      <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-zinc-950/75 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15">
+                        <ZoomIn className="w-3.5 h-3.5 text-[#D4AF7A]" />
+                        <span>Büyüt</span>
+                      </span>
+                    </div>
                   </div>
 
                   <div className="p-6 pb-4">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono font-bold text-[#9A7B56]">
-                        {product.num} / {product.categoryName.toLocaleUpperCase('tr-TR')}
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-[#9A743E]">
+                        DENİZLİ ÜRETİM & STOK
                       </span>
-                      <span className="text-xs font-mono text-zinc-500">
-                        Ref. Birim: ~{currentVariant.samplePrice} TL / {currentVariant.unitLabel}
+                      <span className="text-xs font-mono font-bold text-zinc-900 bg-[#FAF8F5] px-2.5 py-1 rounded border border-zinc-200">
+                        ~{currentVariant.samplePrice} TL / {currentVariant.unitLabel}
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-zinc-900 mb-2.5 leading-snug">
+                    <h3 className="font-luxury text-xl font-bold text-zinc-900 mb-2.5 leading-snug">
                       {product.title}
                     </h3>
-                    <p className="text-zinc-600 text-sm leading-relaxed mb-4">{product.desc}</p>
+                    <p className="text-zinc-600 text-sm leading-relaxed mb-4">
+                      {product.desc}
+                    </p>
 
-                    <div className="py-2.5 border-y border-zinc-100 text-xs font-medium text-zinc-500 mb-4">
+                    <div className="py-2.5 border-y border-zinc-100 text-xs font-semibold text-zinc-600 mb-4">
                       {product.detail}
                     </div>
 
-                    {/* Variant / Ebat Selection */}
-                    <div className="space-y-3">
+                    {/* Interactive Luxury Ebat / Variant Selector */}
+                    <div className="space-y-3.5">
                       <div>
-                        <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 mb-1">
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1.5">
                           Ebat / Beden / Grup Seçimi
                         </label>
-                        <select
-                          value={vIdx}
-                          onChange={(e) => {
-                            const nextIdx = Number(e.target.value);
-                            setSelectedVariantIdx((prev) => ({ ...prev, [product.id]: nextIdx }));
-                            const nextVar = product.variants[nextIdx];
-                            if (nextVar) {
-                              setSelectedQty((prev) => ({
-                                ...prev,
-                                [product.id]:
-                                  currentOrderType === 'Toptan' ? nextVar.wholesaleMin : 2,
-                              }));
-                            }
-                          }}
-                          className="w-full px-3 py-2 rounded-lg border border-zinc-300 bg-zinc-50 text-zinc-900 text-xs sm:text-sm font-medium focus:outline-none focus:border-zinc-900"
-                        >
-                          {product.variants.map((v, idx) => (
-                            <option key={v.label} value={idx}>
-                              {v.label} (~{v.samplePrice} TL/{v.unitLabel})
-                            </option>
-                          ))}
-                        </select>
+                        <div className="space-y-1.5">
+                          {product.variants.map((v, idx) => {
+                            const active = vIdx === idx;
+                            return (
+                              <button
+                                key={v.label}
+                                type="button"
+                                onClick={() => {
+                                  setSelectedVariantIdx((prev) => ({
+                                    ...prev,
+                                    [product.id]: idx,
+                                  }));
+                                  setSelectedQty((prev) => ({
+                                    ...prev,
+                                    [product.id]:
+                                      currentOrderType === 'Toptan' ? v.wholesaleMin : 2,
+                                  }));
+                                }}
+                                className={`w-full px-3 py-2 rounded-lg border text-left text-xs flex items-center justify-between transition-all ${
+                                  active
+                                    ? 'bg-zinc-950 text-white border-zinc-950 font-semibold shadow-sm'
+                                    : 'bg-[#FAF8F5] text-zinc-700 border-zinc-200 hover:border-[#C5A47E]'
+                                }`}
+                              >
+                                <span className="truncate pr-2">{v.label}</span>
+                                <span
+                                  className={`font-mono shrink-0 ${
+                                    active ? 'text-[#E5C99B]' : 'text-zinc-500'
+                                  }`}
+                                >
+                                  ~{v.samplePrice} TL/{v.unitLabel}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
                       </div>
 
                       {/* Order Type (Toptan / Perakende) & Quantity */}
-                      <div className="grid grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-2 gap-2.5 pt-1">
                         <div>
-                          <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 mb-1">
+                          <label className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
                             Alım Tipi
                           </label>
                           <div className="grid grid-cols-2 rounded-lg border border-zinc-300 overflow-hidden text-xs font-semibold">
@@ -248,7 +294,7 @@ const Services: React.FC<ServicesProps> = ({
                               }}
                               className={`py-2 transition-colors ${
                                 currentOrderType === 'Toptan'
-                                  ? 'bg-zinc-900 text-white'
+                                  ? 'bg-zinc-950 text-[#E5C99B]'
                                   : 'bg-white text-zinc-600 hover:bg-zinc-100'
                               }`}
                             >
@@ -268,7 +314,7 @@ const Services: React.FC<ServicesProps> = ({
                               }}
                               className={`py-2 transition-colors ${
                                 currentOrderType === 'Perakende'
-                                  ? 'bg-zinc-900 text-white'
+                                  ? 'bg-zinc-950 text-[#E5C99B]'
                                   : 'bg-white text-zinc-600 hover:bg-zinc-100'
                               }`}
                             >
@@ -278,7 +324,7 @@ const Services: React.FC<ServicesProps> = ({
                         </div>
 
                         <div>
-                          <label className="block text-[11px] font-semibold uppercase tracking-wider text-zinc-500 mb-1">
+                          <label className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-1">
                             Miktar ({currentVariant.unitLabel})
                           </label>
                           <input
@@ -291,7 +337,7 @@ const Services: React.FC<ServicesProps> = ({
                                 [product.id]: Math.max(1, Number(e.target.value)),
                               }))
                             }
-                            className="w-full px-3 py-1.5 rounded-lg border border-zinc-300 bg-white text-zinc-900 text-sm font-semibold focus:outline-none focus:border-zinc-900"
+                            className="w-full px-3 py-1.5 rounded-lg border border-zinc-300 bg-white text-zinc-900 text-sm font-bold focus:outline-none focus:border-zinc-900"
                           />
                         </div>
                       </div>
@@ -304,10 +350,10 @@ const Services: React.FC<ServicesProps> = ({
                   <button
                     type="button"
                     onClick={() => handleAdd(product)}
-                    className={`flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-xs sm:text-sm font-semibold transition-colors ${
+                    className={`luxury-shimmer flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-xs sm:text-sm font-bold transition-all ${
                       isAdded
                         ? 'bg-emerald-700 text-white'
-                        : 'bg-zinc-900 hover:bg-zinc-800 text-white'
+                        : 'bg-gold-metallic text-zinc-950 shadow-[0_8px_20px_rgba(212,175,122,0.25)]'
                     }`}
                   >
                     {isAdded ? (
@@ -329,7 +375,7 @@ const Services: React.FC<ServicesProps> = ({
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3.5 py-2.5 rounded-lg border border-zinc-300 hover:border-zinc-900 text-zinc-800 text-xs font-semibold transition-colors whitespace-nowrap"
+                    className="px-4 py-3 rounded-lg bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-semibold transition-colors whitespace-nowrap"
                   >
                     Fiyat Sor
                   </a>
@@ -342,14 +388,14 @@ const Services: React.FC<ServicesProps> = ({
         {/* Integrated E-Commerce Checkout & Payment Architecture Section (#siparis) */}
         <div
           id="siparis"
-          className="mt-16 bg-white rounded-lg border border-zinc-200 p-6 sm:p-10"
+          className="mt-20 bg-white rounded-xl border border-[#C5A47E]/40 shadow-[0_25px_70px_-20px_rgba(0,0,0,0.12)] p-6 sm:p-10"
         >
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-zinc-200">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#9A7B56] mb-2">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E] mb-2">
                 ONLINE SİPARİŞ & GÜVENLİ ÖDEME ALTYAPISI
               </p>
-              <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight">
+              <h3 className="font-luxury text-2xl sm:text-4xl font-bold text-zinc-900 tracking-tight">
                 Sipariş Sepeti ve Ödeme Yöntemi Seçimi
               </h3>
               <p className="text-sm text-zinc-600 mt-1">
@@ -358,7 +404,7 @@ const Services: React.FC<ServicesProps> = ({
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-600 bg-zinc-50 px-4 py-3 rounded-lg border border-zinc-200">
+            <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#E5C99B] bg-zinc-950 px-4 py-3 rounded-lg border border-[#C5A47E]/30">
               <span>256-Bit SSL</span>
               <span>•</span>
               <span>iyzico / PayTR Hazır</span>
@@ -373,7 +419,7 @@ const Services: React.FC<ServicesProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="text-base font-bold text-zinc-900 flex items-center gap-2">
-                    <ShoppingBag className="w-4 h-4 text-[#9A7B56]" />
+                    <ShoppingBag className="w-4 h-4 text-[#9A743E]" />
                     <span>Seçilen Ürünler ({cart.length})</span>
                   </h4>
                   {cart.length > 0 && (
@@ -405,7 +451,7 @@ const Services: React.FC<ServicesProps> = ({
                         className="p-4 bg-white flex items-center justify-between gap-4"
                       >
                         <div>
-                          <span className="text-xs font-mono font-semibold text-[#9A7B56]">
+                          <span className="text-xs font-mono font-bold text-[#9A743E]">
                             {item.orderType} Sipariş
                           </span>
                           <h5 className="text-sm font-bold text-zinc-900">{item.productTitle}</h5>
@@ -467,7 +513,7 @@ const Services: React.FC<ServicesProps> = ({
               <form onSubmit={handleCompleteOrder} className="space-y-5">
                 {/* Payment Method Selector */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-2">
                     1. Ödeme Yöntemi Seçiniz
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -476,11 +522,11 @@ const Services: React.FC<ServicesProps> = ({
                       onClick={() => setPaymentMethod('card')}
                       className={`p-3.5 rounded-lg border text-left flex items-center gap-3 transition-colors ${
                         paymentMethod === 'card'
-                          ? 'border-zinc-900 bg-zinc-900 text-white'
+                          ? 'border-zinc-950 bg-zinc-950 text-white'
                           : 'border-zinc-300 bg-white text-zinc-800 hover:border-zinc-900'
                       }`}
                     >
-                      <CreditCard className="w-5 h-5 shrink-0 text-[#C5A47E]" />
+                      <CreditCard className="w-5 h-5 shrink-0 text-[#D4AF7A]" />
                       <div>
                         <span className="block text-xs font-bold">Kredi / Banka Kartı</span>
                         <span
@@ -498,11 +544,11 @@ const Services: React.FC<ServicesProps> = ({
                       onClick={() => setPaymentMethod('transfer')}
                       className={`p-3.5 rounded-lg border text-left flex items-center gap-3 transition-colors ${
                         paymentMethod === 'transfer'
-                          ? 'border-zinc-900 bg-zinc-900 text-white'
+                          ? 'border-zinc-950 bg-zinc-950 text-white'
                           : 'border-zinc-300 bg-white text-zinc-800 hover:border-zinc-900'
                       }`}
                     >
-                      <Building2 className="w-5 h-5 shrink-0 text-[#C5A47E]" />
+                      <Building2 className="w-5 h-5 shrink-0 text-[#D4AF7A]" />
                       <div>
                         <span className="block text-xs font-bold">Havale / EFT & Toptan</span>
                         <span
@@ -519,7 +565,7 @@ const Services: React.FC<ServicesProps> = ({
 
                 {/* Shipping Selector */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-2">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-2">
                     2. Gönderim & Teslimat Tercihi
                   </label>
                   <div className="grid grid-cols-2 gap-3">
@@ -528,11 +574,11 @@ const Services: React.FC<ServicesProps> = ({
                       onClick={() => setShippingMethod('ambar')}
                       className={`py-2.5 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
                         shippingMethod === 'ambar'
-                          ? 'border-zinc-900 bg-zinc-100 text-zinc-900'
+                          ? 'border-zinc-900 bg-[#FAF8F5] text-zinc-900'
                           : 'border-zinc-300 bg-white text-zinc-600'
                       }`}
                     >
-                      <Truck className="w-4 h-4 text-[#9A7B56]" />
+                      <Truck className="w-4 h-4 text-[#9A743E]" />
                       <span>Ambar ile Gönderim</span>
                     </button>
                     <button
@@ -540,11 +586,11 @@ const Services: React.FC<ServicesProps> = ({
                       onClick={() => setShippingMethod('kargo')}
                       className={`py-2.5 px-3 rounded-lg border text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
                         shippingMethod === 'kargo'
-                          ? 'border-zinc-900 bg-zinc-100 text-zinc-900'
+                          ? 'border-zinc-900 bg-[#FAF8F5] text-zinc-900'
                           : 'border-zinc-300 bg-white text-zinc-600'
                       }`}
                     >
-                      <Truck className="w-4 h-4 text-[#9A7B56]" />
+                      <Truck className="w-4 h-4 text-[#9A743E]" />
                       <span>Kargo (Perakende)</span>
                     </button>
                   </div>
@@ -553,7 +599,7 @@ const Services: React.FC<ServicesProps> = ({
                 {/* Customer Info */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1">
                       Ad Soyad / Firma Adı
                     </label>
                     <input
@@ -566,7 +612,7 @@ const Services: React.FC<ServicesProps> = ({
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1">
                       Telefon Numaranız
                     </label>
                     <input
@@ -581,7 +627,7 @@ const Services: React.FC<ServicesProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1">
                     Teslimat İli / İlçe (Ambar veya Kargo Noktası)
                   </label>
                   <input
@@ -596,7 +642,7 @@ const Services: React.FC<ServicesProps> = ({
 
                 {/* Conditional Payment Input Box (Card vs Bank Transfer) */}
                 {paymentMethod === 'card' ? (
-                  <div className="p-4 rounded-lg bg-zinc-50 border border-zinc-200 space-y-3">
+                  <div className="p-4 rounded-lg bg-[#FAF8F5] border border-zinc-200 space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold uppercase tracking-wider text-zinc-800">
                         Kredi / Banka Kartı Bilgileri (Demo Modu)
@@ -647,7 +693,7 @@ const Services: React.FC<ServicesProps> = ({
                     </div>
                   </div>
                 ) : (
-                  <div className="p-4 rounded-lg bg-zinc-50 border border-zinc-200 text-xs text-zinc-700 space-y-1.5">
+                  <div className="p-4 rounded-lg bg-[#FAF8F5] border border-zinc-200 text-xs text-zinc-700 space-y-1.5">
                     <p className="font-bold text-zinc-900">
                       Aslancan Tekstil — Kurumsal Havale / EFT & Ambar Süreci
                     </p>
@@ -667,10 +713,10 @@ const Services: React.FC<ServicesProps> = ({
                 <button
                   type="submit"
                   disabled={cart.length === 0}
-                  className={`w-full py-3.5 px-6 rounded-lg font-semibold text-sm transition-colors ${
+                  className={`luxury-shimmer w-full py-4 px-6 rounded-lg font-bold text-sm transition-all ${
                     cart.length === 0
                       ? 'bg-zinc-300 text-zinc-500 cursor-not-allowed'
-                      : 'bg-[#9A7B56] hover:bg-[#866946] text-white'
+                      : 'bg-gold-metallic text-zinc-950 shadow-[0_12px_30px_rgba(212,175,122,0.28)]'
                   }`}
                 >
                   {paymentMethod === 'card'
@@ -682,6 +728,54 @@ const Services: React.FC<ServicesProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Product Lightbox Modal */}
+      {previewProduct && (
+        <div
+          onClick={() => setPreviewProduct(null)}
+          className="fixed inset-0 z-50 bg-zinc-950/85 backdrop-blur-md flex items-center justify-center p-4"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-zinc-950 border border-[#C5A47E]/40 rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl"
+          >
+            <div className="relative aspect-[16/10] w-full bg-black">
+              <img
+                src={previewProduct.image}
+                alt={previewProduct.title}
+                className="w-full h-full object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => setPreviewProduct(null)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
+                aria-label="Kapat"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-xs font-mono text-[#D4AF7A] uppercase">
+                  {previewProduct.num} • {previewProduct.categoryName}
+                </span>
+                <h4 className="font-luxury text-2xl font-bold mt-1">{previewProduct.title}</h4>
+                <p className="text-xs text-zinc-300 mt-1">{previewProduct.detail}</p>
+              </div>
+              <a
+                href={`https://wa.me/905358235885?text=${encodeURIComponent(
+                  `Merhaba Yusuf Bey, ${previewProduct.title} grubunuz hakkında bilgi almak istiyorum.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-xs whitespace-nowrap"
+              >
+                WhatsApp Fiyat Al
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

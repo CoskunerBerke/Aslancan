@@ -30,23 +30,23 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-zinc-950/95 backdrop-blur-md border-b border-white/10 py-3.5'
-          : 'bg-zinc-950/85 backdrop-blur-sm border-b border-white/10 py-4'
+          ? 'bg-zinc-950/95 backdrop-blur-xl border-b border-[#C5A47E]/25 py-3.5 shadow-[0_10px_30px_rgba(0,0,0,0.45)]'
+          : 'bg-zinc-950/80 backdrop-blur-md border-b border-white/10 py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-6">
           {/* Left: Real Logo & Brand Name (shrink-0 & whitespace-nowrap) */}
-          <a href="#" className="flex items-center gap-3 shrink-0">
-            <AslancanLogo className="w-10 h-10 shrink-0" />
+          <a href="#" className="flex items-center gap-3.5 shrink-0 group">
+            <AslancanLogo className="w-11 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105" />
             <div className="whitespace-nowrap">
-              <span className="block text-white font-bold text-base tracking-tight leading-none">
-                ASLANCAN TEKSTİL
+              <span className="block font-brand text-white font-bold text-lg tracking-[0.14em] leading-none">
+                ASLANCAN
               </span>
-              <span className="block text-[#C5A47E] text-[11px] font-medium tracking-[0.2em] uppercase mt-1">
-                DENİZLİ • OTEL & EV TEKSTİLİ
+              <span className="block text-gold-metallic text-[10px] font-semibold tracking-[0.28em] uppercase mt-1">
+                DENİZLİ TEKSTİL MAISON
               </span>
             </div>
           </a>
@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-zinc-300 hover:text-white transition-colors whitespace-nowrap"
+                className="text-sm font-medium text-zinc-200 hover:text-[#E5C99B] transition-colors whitespace-nowrap tracking-wide"
               >
                 {link.name}
               </a>
@@ -68,16 +68,16 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
               href="tel:+905358235885"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-white hover:bg-white/10 text-sm font-semibold transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-white hover:bg-white/10 text-sm font-semibold transition-colors whitespace-nowrap shrink-0 border border-white/10"
             >
-              <Phone className="w-4 h-4 text-[#C5A47E] shrink-0" />
+              <Phone className="w-4 h-4 text-[#D4AF7A] shrink-0" />
               <span>0535 823 58 85</span>
             </a>
 
             <button
               type="button"
               onClick={onOpenCheckout}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#9A7B56] hover:bg-[#866946] text-white text-sm font-semibold transition-colors whitespace-nowrap shrink-0"
+              className="luxury-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all whitespace-nowrap shrink-0 shadow-[0_8px_24px_rgba(212,175,122,0.28)]"
             >
               <ShoppingBag className="w-4 h-4 shrink-0" />
               <span>{cartCount > 0 ? `Sepet (${cartCount})` : 'Teklif Al'}</span>
@@ -89,7 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
             <button
               type="button"
               onClick={onOpenCheckout}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#9A7B56] text-white text-xs font-semibold whitespace-nowrap shrink-0"
+              className="luxury-shimmer inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gold-metallic text-zinc-950 text-xs font-bold whitespace-nowrap shrink-0"
             >
               <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
               <span>{cartCount > 0 ? `Sepet (${cartCount})` : 'Sipariş'}</span>
@@ -113,7 +113,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-2 text-sm font-medium text-zinc-200 hover:text-white"
+                className="block py-2 text-sm font-medium text-zinc-200 hover:text-[#E5C99B]"
               >
                 {link.name}
               </a>
@@ -123,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
                 href="tel:+905358235885"
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold"
               >
-                <Phone className="w-4 h-4 text-[#C5A47E]" />
+                <Phone className="w-4 h-4 text-[#D4AF7A]" />
                 <span>0535 823 58 85</span>
               </a>
               <button
@@ -132,7 +132,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
                   setMobileMenuOpen(false);
                   onOpenCheckout();
                 }}
-                className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-white text-zinc-950 text-sm font-semibold"
+                className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>Online Sipariş & Teklif Sepeti ({cartCount})</span>

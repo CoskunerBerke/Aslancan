@@ -20,41 +20,44 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="iletisim" className="py-20 bg-[#F6F4F0] border-t border-zinc-200">
+    <section id="iletisim" className="py-24 bg-[#F6F3EC] border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-12">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#9A7B56] mb-3">
-            İLETİŞİM, TOPTAN TEKLİF & AMBAR SEVKİYATI
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 tracking-tight">
+        <div className="max-w-2xl mb-14">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="w-8 h-[1.5px] bg-[#9A743E]" />
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+              İLETİŞİM, TOPTAN TEKLİF & AMBAR SEVKİYATI
+            </p>
+          </div>
+          <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight">
             Yusuf Aslancan ile Doğrudan İletişime Geçin
           </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           {/* Left: Clean Architectural Contact Details */}
-          <div className="bg-white rounded-lg p-7 sm:p-8 border border-zinc-200 flex flex-col justify-between">
+          <div className="bg-white rounded-xl p-7 sm:p-9 border border-[#C5A47E]/35 shadow-sm flex flex-col justify-between">
             <div className="divide-y divide-zinc-200">
               <div className="pb-5">
-                <span className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
                   YETKİLİ & TELEFON / WHATSAPP
                 </span>
-                <p className="text-sm font-semibold text-[#9A7B56] mt-1">Yusuf Aslancan</p>
+                <p className="text-sm font-bold text-[#9A743E] mt-1">Yusuf Aslancan</p>
                 <a
                   href="tel:+905358235885"
-                  className="text-2xl font-bold text-zinc-900 hover:text-zinc-700 transition-colors mt-0.5 block"
+                  className="font-luxury text-3xl font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1 block"
                 >
                   0535 823 58 85
                 </a>
               </div>
 
               <div className="py-5">
-                <span className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
                   E-POSTA & KURUMSAL İLETİŞİM
                 </span>
                 <a
                   href="mailto:yaslancan027@gmail.com"
-                  className="text-base font-semibold text-zinc-900 hover:text-[#9A7B56] transition-colors mt-1 block"
+                  className="text-base font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1 block"
                 >
                   yaslancan027@gmail.com
                 </a>
@@ -64,10 +67,10 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div className="pt-5">
-                <span className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
                   ÇALIŞMA SAATLERİ & SATIŞ MODELİ
                 </span>
-                <p className="text-base font-semibold text-zinc-900 mt-1">
+                <p className="text-base font-bold text-zinc-900 mt-1">
                   Pazartesi – Cumartesi: 08:30 – 18:00
                 </p>
                 <span className="text-sm text-zinc-600 block mt-0.5">
@@ -81,13 +84,13 @@ const ContactSection: React.FC = () => {
                 href="https://wa.me/905358235885?text=Merhaba%20Yusuf%20Bey,%20fiyat%20listesi%20ve%20ambar%20gönderimi%20hakkında%20bilgi%20almak%20istiyorum."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white text-sm font-semibold transition-colors"
+                className="luxury-shimmer inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all"
               >
                 WhatsApp ile Hızlı Fiyat Al
               </a>
               <a
                 href="mailto:yaslancan027@gmail.com"
-                className="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-zinc-300 hover:border-zinc-900 text-zinc-800 text-sm font-semibold transition-colors"
+                className="inline-flex items-center justify-center px-5 py-3.5 rounded-lg bg-zinc-950 hover:bg-zinc-800 text-white text-sm font-semibold transition-colors"
               >
                 E-Posta Gönder
               </a>
@@ -95,8 +98,8 @@ const ContactSection: React.FC = () => {
           </div>
 
           {/* Right: Clean 3-Field Form */}
-          <div className="bg-white rounded-lg p-7 sm:p-8 border border-zinc-200">
-            <h3 className="text-lg font-bold text-zinc-900 mb-1">
+          <div className="bg-white rounded-xl p-7 sm:p-9 border border-[#C5A47E]/35 shadow-sm">
+            <h3 className="font-luxury text-2xl font-bold text-zinc-900 mb-1">
               Toptan & Perakende Fiyat Teklifi Formu
             </h3>
             <p className="text-sm text-zinc-600 mb-6">
@@ -105,7 +108,7 @@ const ContactSection: React.FC = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
                   Adınız Soyadınız / İşletme Adı
                 </label>
                 <input
@@ -119,7 +122,7 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
                   İlgilendiğiniz Kategori & Ebatlar
                 </label>
                 <input
@@ -133,7 +136,7 @@ const ContactSection: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
                   Sipariş Adedi / Kilo ve Gönderilecek İl
                 </label>
                 <textarea
@@ -148,7 +151,7 @@ const ContactSection: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full py-3.5 px-6 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-sm transition-colors"
+                className="luxury-shimmer w-full py-4 px-6 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-sm transition-all shadow-md"
               >
                 WhatsApp ile Teklif İste
               </button>
@@ -157,7 +160,7 @@ const ContactSection: React.FC = () => {
         </div>
 
         {/* Embedded Google Map (Denizli) */}
-        <div className="rounded-lg overflow-hidden border border-zinc-200 bg-white h-[360px]">
+        <div className="rounded-xl overflow-hidden border border-[#C5A47E]/35 bg-white h-[360px] shadow-sm">
           <iframe
             title="Aslancan Tekstil Denizli Konumu"
             src="https://maps.google.com/maps?q=Denizli+Merkezefendi&t=&z=13&ie=UTF8&iwloc=&output=embed"
