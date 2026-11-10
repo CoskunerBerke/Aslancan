@@ -1,35 +1,96 @@
 import React, { useEffect, useRef } from 'react';
 import { Phone, MessageSquare, Truck, Sparkles } from 'lucide-react';
-import { Language } from '../data/productsData';
+import { Language, LocalizedText } from '../data/productsData';
 
 interface HeroProps {
   lang: Language;
   onGoToContact: () => void;
 }
 
-const MARQUEE_ITEMS_TR = [
-  'TÜRKİYE GENELİ 81 İLDE TESLİMAT & AMBAR GÖNDERİMİ',
-  'OTEL HAVLUSU (50x90 • 70x140 • 90x150)',
-  'ÇİZGİLİ SATEN OTEL NEVRESİM TAKIMLARI',
-  'AYAK İZLİ YUNAN BORDÜRLÜ BANYO PASPASI',
-  'SIVI GEÇİRMEZ YATAK KORUYUCU ALEZ',
-  'HER BEDEN BÜYÜK BORNOZ & ÇOCUK BORNOZU',
-  'İHRACAT FAZLASI KİLOLUK STOK HAVLULAR',
-];
+const MARQUEE_BY_LANG: Record<Language, string[]> = {
+  tr: [
+    'TÜRKİYE GENELİ 81 İLDE TESLİMAT & AMBAR GÖNDERİMİ',
+    'OTEL HAVLUSU (50x90 • 70x140 • 90x150)',
+    'ÇİZGİLİ SATEN OTEL NEVRESİM TAKIMLARI',
+    'AYAK İZLİ YUNAN BORDÜRLÜ BANYO PASPASI',
+    'SIVI GEÇİRMEZ YATAK KORUYUCU ALEZ',
+    'HER BEDEN BÜYÜK BORNOZ & ÇOCUK BORNOZU',
+    'İHRACAT FAZLASI KİLOLUK STOK HAVLULAR',
+  ],
+  en: [
+    'NATIONWIDE DELIVERY TO ALL 81 PROVINCES & EXPORT SHIPPING',
+    'HOTEL TOWELS (50x90 • 70x140 • 90x150)',
+    'STRIPED SATEEN HOTEL BEDDING SETS',
+    'GREEK-BORDER FOOTPRINT HOTEL BATH MATS',
+    'WATERPROOF MATTRESS PROTECTORS',
+    'ADULT (S-XXL) & KIDS BATHROBE COLLECTION',
+    'EXPORT-SURPLUS STOCK TOWELS BY WEIGHT (KG)',
+  ],
+  de: [
+    'LIEFERUNG IN ALLE 81 PROVINZEN & EXPORTVERSAND',
+    'HOTELHANDTÜCHER (50x90 • 70x140 • 90x150)',
+    'STREIFENSATIN-HOTELBETTWÄSCHE-SETS',
+    'HOTEL-BADEMATTEN MIT MÄANDER-BORDÜRE',
+    'WASSERDICHTE MATRATZENSCHONER',
+    'ERWACHSENEN- (S-XXL) & KINDERBADEMÄNTEL',
+    'EXPORTÜBERSCHUSS-LAGERHANDTÜCHER NACH GEWICHT (KG)',
+  ],
+  bg: [
+    'ДОСТАВКА ДО ВСИЧКИ 81 ОБЛАСТИ И ИЗНОСЕН ТРАНСПОРТ',
+    'ХОТЕЛСКИ КЪРПИ (50x90 • 70x140 • 90x150)',
+    'РАИРАНИ САТЕНЕНИ ХОТЕЛСКИ СПАЛНИ КОМПЛЕКТИ',
+    'ХОТЕЛСКИ ПОСТЕЛКИ ЗА БАНЯ С ГРЪЦКИ БОРДЮР',
+    'НЕПРОМОКАЕМИ ПРОТЕКТОРИ ЗА МАТРАЦИ',
+    'ХАЛАТИ ЗА ВЪЗРАСТНИ (S-XXL) И ДЕТСКИ ХАЛАТИ',
+    'СТОКОВИ КЪРПИ ОТ ИЗНОСЕН РЕЗЕРВ НА КИЛОГРАМ',
+  ],
+};
 
-const MARQUEE_ITEMS_EN = [
-  'NATIONWIDE DELIVERY TO ALL 81 PROVINCES & EXPORT SHIPPING',
-  'HOTEL TOWELS (50x90 • 70x140 • 90x150)',
-  'STRIPED SATEEN HOTEL BEDDING SETS',
-  'GREEK-BORDER FOOTPRINT HOTEL BATH MATS',
-  'WATERPROOF MATTRESS PROTECTORS',
-  'ADULT (S-XXL) & KIDS BATHROBE COLLECTION',
-  'EXPORT-SURPLUS STOCK TOWELS BY WEIGHT (KG)',
-];
+const HERO_BADGE: LocalizedText = {
+  tr: 'ASLANCAN TEKSTİL • DENİZLİ OTEL & EV TEKSTİLİ',
+  en: 'ASLANCAN TEXTILE • DENIZLI HOTEL & HOME TEXTILES',
+  de: 'ASLANCAN TEXTIL • DENIZLI HOTEL- & HEIMTEXTILIEN',
+  bg: 'АСЛАНДЖАН ТЕКСТИЛ • ДЕНИЗЛИ ХОТЕЛСКИ И ДОМАШЕН ТЕКСТИЛ',
+};
+
+const HERO_EXPLORE_BTN: LocalizedText = {
+  tr: 'Ürünleri İncele',
+  en: 'Explore Products',
+  de: 'Produkte ansehen',
+  bg: 'Разгледайте продуктите',
+};
+
+const HERO_CONTACT_BTN: LocalizedText = {
+  tr: 'Bize Ulaşın',
+  en: 'Contact Us',
+  de: 'Kontakt',
+  bg: 'Свържете се с нас',
+};
+
+const TRUST_1: LocalizedText = {
+  tr: '81 İlde Teslimat & Ambar Gönderimi',
+  en: 'Delivery Across All 81 Provinces',
+  de: 'Lieferung in alle 81 Provinzen',
+  bg: 'Доставка във всички 81 области',
+};
+
+const TRUST_2: LocalizedText = {
+  tr: 'Toptan Satış & Sayıya Göre Perakende Desteği',
+  en: 'Wholesale & Quantity-Based Retail Support',
+  de: 'Großhandel & Einzelhandel nach Menge',
+  bg: 'Търговия на едро и дребно според количеството',
+};
+
+const TRUST_3: LocalizedText = {
+  tr: 'Çalışma Saatleri: 08:30 – 18:00',
+  en: 'Working Hours: 08:30 – 18:00',
+  de: 'Öffnungszeiten: 08:30 – 18:00',
+  bg: 'Работно време: 08:30 – 18:00',
+};
 
 const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const marqueeList = lang === 'tr' ? MARQUEE_ITEMS_TR : MARQUEE_ITEMS_EN;
+  const marqueeList = MARQUEE_BY_LANG[lang];
 
   useEffect(() => {
     const vid = videoRef.current;
@@ -66,39 +127,71 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
           <div className="flex items-center gap-3 mb-6">
             <span className="w-10 h-[2px] bg-gradient-to-r from-[#D4AF7A] to-[#FFF6E5]" />
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.26em] text-gold-metallic">
-              {lang === 'tr'
-                ? 'ASLANCAN TEKSTİL • DENİZLİ OTEL & EV TEKSTİLİ'
-                : 'ASLANCAN TEXTILE • DENIZLI HOTEL & HOME TEXTILES'}
+              {HERO_BADGE[lang]}
             </span>
           </div>
 
-          {lang === 'tr' ? (
+          {lang === 'tr' && (
             <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[66px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
               Saf Denizli Pamuğundan{' '}
               <span className="italic font-normal text-gold-metallic">Otel & Ev Tekstili</span>{' '}
               Zarafeti.
             </h1>
-          ) : (
+          )}
+          {lang === 'en' && (
             <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[66px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
               Pure Denizli Cotton{' '}
               <span className="italic font-normal text-gold-metallic">Hotel & Home Textile</span>{' '}
               Excellence.
             </h1>
           )}
+          {lang === 'de' && (
+            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
+              Edle{' '}
+              <span className="italic font-normal text-gold-metallic">Hotel- & Heimtextilien</span>{' '}
+              aus Reiner Denizli-Baumwolle.
+            </h1>
+          )}
+          {lang === 'bg' && (
+            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-sm">
+              Изящен{' '}
+              <span className="italic font-normal text-gold-metallic">
+                хотелски и домашен текстил
+              </span>{' '}
+              от чист памук от Денизли.
+            </h1>
+          )}
 
-          {lang === 'tr' ? (
+          {lang === 'tr' && (
             <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
               Denizli merkezli <strong className="text-white font-semibold">Aslancan Tekstil</strong> olarak;
               50x90, 70x140 ve 90x150 otel havluları, çizgili saten nevresim takımları, banyo paspası,
               sıvı geçirmez alez, yetişkin ve çocuk bornozları ile ihracat fazlası kiloluk havlularda
               81 ilde teslimat ve doğrudan tedarik sağlıyoruz.
             </p>
-          ) : (
+          )}
+          {lang === 'en' && (
             <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
               Based in Denizli, <strong className="text-white font-semibold">Aslancan Textile</strong> supplies
               50x90, 70x140, and 90x150 hotel towels, striped sateen duvet cover sets, bath mats,
               waterproof mattress protectors, adult & kids bathrobes, and export-surplus per-kilo towels
-              with nationwide delivery across all 81 provinces.
+              with delivery across all 81 provinces.
+            </p>
+          )}
+          {lang === 'de' && (
+            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+              Mit Sitz in Denizli liefert <strong className="text-white font-semibold">Aslancan Textil</strong>{' '}
+              50x90, 70x140 und 90x150 Hotelhandtücher, Streifensatin-Bettwäsche, Badematten,
+              wasserdichte Matratzenschoner, Erwachsenen- und Kinderbademäntel sowie
+              Exportüberschuss-Handtücher pro Kilogramm direkt ab Werk.
+            </p>
+          )}
+          {lang === 'bg' && (
+            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+              Базирана в Денизли, <strong className="text-white font-semibold">Асланджан Текстил</strong>{' '}
+              доставя хотелски кърпи (50x90, 70x140, 90x150), раирани сатенени спални комплекти,
+              постелки за баня, непромокаеми протектори, халати за възрастни и деца и стокови кърпи
+              на килограм на едро и дребно.
             </p>
           )}
 
@@ -109,7 +202,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
               className="luxury-shimmer inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-[0_14px_35px_rgba(212,175,122,0.32)] hover:scale-[1.02] whitespace-nowrap shrink-0"
             >
               <Sparkles className="w-4 h-4 shrink-0" />
-              <span>{lang === 'tr' ? 'Ürünleri İncele' : 'Explore Products'}</span>
+              <span>{HERO_EXPLORE_BTN[lang]}</span>
             </a>
 
             <button
@@ -118,7 +211,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
               className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-white hover:bg-zinc-100 text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-lg hover:scale-[1.02] whitespace-nowrap shrink-0"
             >
               <MessageSquare className="w-4 h-4 text-[#9A743E] shrink-0" />
-              <span>{lang === 'tr' ? 'Bize Ulaşın' : 'Contact Us'}</span>
+              <span>{HERO_CONTACT_BTN[lang]}</span>
             </button>
 
             <a
@@ -134,22 +227,12 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
           <div className="border-t border-white/15 pt-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-xs sm:text-sm text-zinc-200">
             <span className="inline-flex items-center gap-2 font-semibold text-white whitespace-nowrap shrink-0">
               <Truck className="w-4 h-4 text-[#D4AF7A] shrink-0" />
-              <span>
-                {lang === 'tr'
-                  ? '81 İlde Teslimat & Ambar Gönderimi'
-                  : 'Delivery to All 81 Provinces'}
-              </span>
+              <span>{TRUST_1[lang]}</span>
             </span>
             <span className="hidden md:inline text-[#D4AF7A] shrink-0">✦</span>
-            <span className="whitespace-nowrap shrink-0">
-              {lang === 'tr'
-                ? 'Toptan Satış & Sayıya Göre Perakende Desteği'
-                : 'Wholesale Supply & Quantity-Based Retail Support'}
-            </span>
+            <span className="whitespace-nowrap shrink-0">{TRUST_2[lang]}</span>
             <span className="hidden md:inline text-[#D4AF7A] shrink-0">✦</span>
-            <span className="whitespace-nowrap shrink-0">
-              {lang === 'tr' ? 'Çalışma Saatleri: 08:30 – 18:00' : 'Working Hours: 08:30 – 18:00'}
-            </span>
+            <span className="whitespace-nowrap shrink-0">{TRUST_3[lang]}</span>
           </div>
         </div>
       </div>

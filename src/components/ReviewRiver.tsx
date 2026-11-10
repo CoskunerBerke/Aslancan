@@ -1,11 +1,32 @@
 import React from 'react';
 import { Star, MessageCircle } from 'lucide-react';
 import { reviewsList } from '../data/reviewsData';
-import { Language } from '../data/productsData';
+import { Language, LocalizedText } from '../data/productsData';
 
 interface ReviewRiverProps {
   lang: Language;
 }
+
+const REVIEWS_BADGE: LocalizedText = {
+  tr: 'MÜŞTERİ & İŞLETME YORUMLARI',
+  en: 'CLIENT & PARTNER REVIEWS',
+  de: 'KUNDEN- & GESCHÄFTSBEWERTUNGEN',
+  bg: 'ОТЗИВИ ОТ КЛИЕНТИ И ПАРТНЬОРИ',
+};
+
+const REVIEWS_TITLE: LocalizedText = {
+  tr: 'Türkiye Genelinden Otel, Yurt ve Mağaza Yorumları',
+  en: 'Reviews from Hotels, Dormitories, and Stores Nationwide',
+  de: 'Bewertungen von Hotels, Wohnheimen und Geschäften',
+  bg: 'Отзиви от хотели, общежития и магазини',
+};
+
+const REVIEWS_CTA: LocalizedText = {
+  tr: 'Bize Ulaşın • 0535 037 90 74',
+  en: 'Contact Us • 0535 037 90 74',
+  de: 'Kontakt • 0535 037 90 74',
+  bg: 'Контакти • 0535 037 90 74',
+};
 
 const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
   const repeatedReviews = [...reviewsList, ...reviewsList];
@@ -21,13 +42,11 @@ const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-[1.5px] bg-[#D4AF7A]" />
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-metallic">
-                {lang === 'tr' ? 'MÜŞTERİ & İŞLETME YORUMLARI' : 'CLIENT & PARTNER REVIEWS'}
+                {REVIEWS_BADGE[lang]}
               </p>
             </div>
             <h2 className="font-luxury text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              {lang === 'tr'
-                ? 'Türkiye Genelinden Otel, Yurt ve Mağaza Yorumları'
-                : 'Reviews from Hotels, Dormitories, and Stores Nationwide'}
+              {REVIEWS_TITLE[lang]}
             </h2>
           </div>
           <a
@@ -35,9 +54,7 @@ const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
             className="luxury-shimmer inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all self-start sm:self-auto whitespace-nowrap"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>
-              {lang === 'tr' ? 'Bize Ulaşın • 0535 037 90 74' : 'Contact Us • 0535 037 90 74'}
-            </span>
+            <span>{REVIEWS_CTA[lang]}</span>
           </a>
         </div>
       </div>
@@ -47,7 +64,7 @@ const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
           {repeatedReviews.map((review, index) => (
             <div
               key={`${review.id}-${index}`}
-              className="w-[340px] sm:w-[420px] shrink-0 rounded-xl bg-zinc-900/90 border border-[#C5A47E]/25 hover:border-[#D4AF7A] p-7 flex flex-col justify-between transition-colors"
+              className="w-[340px] sm:w-[420px] shrink-0 rounded-xl bg-zinc-900/90 border border-[#C5A47E]/25 p-7 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -56,19 +73,17 @@ const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
                       <Star key={i} className="w-4 h-4 fill-[#D4AF7A]" />
                     ))}
                   </div>
-                  <span className="text-xs text-zinc-400">
-                    {lang === 'tr' ? review.role : review.roleEn}
-                  </span>
+                  <span className="text-xs text-zinc-400">{review.role[lang]}</span>
                 </div>
                 <p className="text-zinc-100 text-sm leading-relaxed mb-6 italic">
-                  "{lang === 'tr' ? review.content : review.contentEn}"
+                  "{review.content[lang]}"
                 </p>
               </div>
 
               <div className="flex items-center justify-between pt-4 border-t border-white/10">
                 <span className="font-bold text-sm text-white">{review.author}</span>
                 <span className="text-xs text-[#E5C99B] font-medium">
-                  {lang === 'tr' ? review.productGroup : review.productGroupEn}
+                  {review.productGroup[lang]}
                 </span>
               </div>
             </div>

@@ -1,11 +1,25 @@
 import React from 'react';
 import { Phone, MessageCircle, MessageSquare } from 'lucide-react';
-import { Language } from '../data/productsData';
+import { Language, LocalizedText } from '../data/productsData';
 
 interface MobileQuickBarProps {
   lang: Language;
   onGoToContact: () => void;
 }
+
+const CALL_TEXT: LocalizedText = {
+  tr: 'Hemen Ara',
+  en: 'Call Now',
+  de: 'Anrufen',
+  bg: 'Обади се',
+};
+
+const CONTACT_TEXT: LocalizedText = {
+  tr: 'Bize Ulaşın',
+  en: 'Contact Us',
+  de: 'Kontakt',
+  bg: 'Контакти',
+};
 
 const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ lang, onGoToContact }) => {
   return (
@@ -16,7 +30,7 @@ const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ lang, onGoToContact }) 
           className="flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-white text-zinc-950 font-semibold text-xs whitespace-nowrap"
         >
           <Phone className="w-3.5 h-3.5 shrink-0" />
-          <span>{lang === 'tr' ? 'Hemen Ara' : 'Call Now'}</span>
+          <span>{CALL_TEXT[lang]}</span>
         </a>
         <a
           href="https://wa.me/905350379074?text=Merhaba%20Aslancan%20Tekstil,%20fiyat%20ve%20ürün%20bilgisi%20almak%20istiyorum."
@@ -33,7 +47,7 @@ const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ lang, onGoToContact }) 
           className="flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[#9A7B56] text-white font-semibold text-xs whitespace-nowrap"
         >
           <MessageSquare className="w-3.5 h-3.5 shrink-0" />
-          <span>{lang === 'tr' ? 'Bize Ulaşın' : 'Contact Us'}</span>
+          <span>{CONTACT_TEXT[lang]}</span>
         </button>
       </div>
     </div>

@@ -14,12 +14,69 @@ import {
   stokExpandedCards,
   ProductGroupItem,
   Language,
+  LocalizedText,
 } from '../data/productsData';
 
 interface ServicesProps {
   lang: Language;
   onSelectProductForContact: (productSummary: string) => void;
 }
+
+const CATALOG_TAG: LocalizedText = {
+  tr: 'ÜRÜN GRUPLARI & TOPTAN / PERAKENDE KATALOĞU',
+  en: 'PRODUCT GROUPS & WHOLESALE / RETAIL CATALOG',
+  de: 'PRODUKTGRUPPEN & GROSS- / EINZELHANDELSKATALOG',
+  bg: 'ПРОДУКТОВИ ГРУПИ И КАТАЛОГ НА ЕДРО И ДРЕБНО',
+};
+
+const CATALOG_TITLE: LocalizedText = {
+  tr: 'Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular',
+  en: 'Hotel Textiles, Home Textiles, Bathrobes & Per-Kilo Stock Towels',
+  de: 'Hoteltextilien, Heimtextilien, Bademäntel & Lagerhandtücher pro Kg',
+  bg: 'Хотелски текстил, домашен текстил, халати и стокови кърпи на кг',
+};
+
+const CARD_BADGE: LocalizedText = {
+  tr: 'DENİZLİ ÜRETİM & 81 İLDE TESLİMAT',
+  en: 'DENIZLI PRODUCTION & 81-PROVINCE DELIVERY',
+  de: 'HERSTELLUNG IN DENIZLI & LIEFERUNG IN 81 PROVINZEN',
+  bg: 'ПРОИЗВОДСТВО ДЕНИЗЛИ И ДОСТАВКА В 81 ОБЛАСТИ',
+};
+
+const OPTIONS_HEADER: LocalizedText = {
+  tr: 'ÜRÜN SEÇENEKLERİ & EBAT / BEDEN LİSTESİ:',
+  en: 'PRODUCT OPTIONS & DIMENSIONS / SIZES:',
+  de: 'PRODUKTOPTIONEN & GRÖSSEN / MASSE:',
+  bg: 'ВАРИАНТИ НА ПРОДУКТА И РАЗМЕРИ:',
+};
+
+const CARD_CTA: LocalizedText = {
+  tr: 'Bize Ulaşın & Bu Ürünü İsteyin',
+  en: 'Contact Us & Request This Product',
+  de: 'Kontakt & Produkt anfragen',
+  bg: 'Свържете се с нас и поръчайте',
+};
+
+const ZOOM_SINGLE: LocalizedText = {
+  tr: 'Büyüt',
+  en: 'Zoom',
+  de: 'Vergrößern',
+  bg: 'Увеличи',
+};
+
+const ZOOM_MULTI: LocalizedText = {
+  tr: '3 Görseli İncele',
+  en: 'View 3 Photos',
+  de: '3 Fotos ansehen',
+  bg: 'Виж 3 снимки',
+};
+
+const MODAL_CTA: LocalizedText = {
+  tr: 'Bize Ulaşın & Fiyat Alın',
+  en: 'Contact Us & Get Quote',
+  de: 'Kontakt & Preisangebot',
+  bg: 'Поискайте ценова оферта',
+};
 
 const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
@@ -38,10 +95,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
   const handleRequestProduct = (product: ProductGroupItem, subIndex?: number) => {
     const idx = subIndex ?? selectedSubIdx[product.id] ?? 0;
     const chosenSub = product.subItems[idx] || product.subItems[0];
-    const summary =
-      lang === 'tr'
-        ? `${product.title} — ${chosenSub.label}`
-        : `${product.titleEn} — ${chosenSub.labelEn}`;
+    const summary = `${product.title[lang]} — ${chosenSub.label[lang]}`;
     onSelectProductForContact(summary);
   };
 
@@ -58,17 +112,13 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-[1.5px] bg-[#9A743E]" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
-              {lang === 'tr'
-                ? 'ÜRÜN GRUPLARI & TOPTAN / PERAKENDE KATALOĞU'
-                : 'PRODUCT GROUPS & WHOLESALE / RETAIL CATALOG'}
+              {CATALOG_TAG[lang]}
             </p>
           </div>
 
           <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
             <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
-              {lang === 'tr'
-                ? 'Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular'
-                : 'Hotel Textiles, Home Textiles, Bathrobes & Per-Kilo Stock Towels'}
+              {CATALOG_TITLE[lang]}
             </h2>
 
             {/* All 5 Category Filter Buttons Strictly Side-by-Side (Yan Yana) on a Single Line */}
@@ -86,7 +136,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                         : 'bg-white text-zinc-700 border-zinc-300 hover:border-[#C5A47E] hover:text-zinc-950'
                     }`}
                   >
-                    {lang === 'tr' ? tab.label : tab.labelEn}
+                    {tab.label[lang]}
                   </button>
                 );
               })}
@@ -112,7 +162,6 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                   {/* Real Product Photo (16:10) with Multi-Image Support for Stock Towels */}
                   <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border-b border-zinc-200">
                     {product.id === 'stok-kiloluk-havlular' && gallery.length === 3 ? (
-                      /* 3-Photo Side-by-Side Collage for Main Stock Towels Card */
                       <div className="w-full h-full grid grid-cols-3 gap-1 bg-zinc-950">
                         {gallery.map((imgUrl, gIdx) => (
                           <div
@@ -122,7 +171,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                           >
                             <img
                               src={imgUrl}
-                              alt={`${product.title} - ${gIdx + 1}`}
+                              alt={`${product.title[lang]} - ${gIdx + 1}`}
                               className="w-full h-full object-cover object-center group-hover/tile:scale-110 transition-transform duration-700"
                             />
                             <div className="absolute top-2 left-2 bg-zinc-950/80 text-[#E5C99B] text-[10px] font-bold px-1.5 py-0.5 rounded border border-white/15">
@@ -138,7 +187,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                       >
                         <img
                           src={currentImgSrc}
-                          alt={lang === 'tr' ? product.title : product.titleEn}
+                          alt={product.title[lang]}
                           className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                         />
                       </div>
@@ -146,7 +195,6 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
 
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent opacity-85 group-hover:opacity-65 transition-opacity" />
 
-                    {/* Thumbnail Switcher if Card Has Multiple Images */}
                     {gallery.length > 1 && product.id !== 'stok-kiloluk-havlular' && (
                       <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-zinc-950/80 backdrop-blur-sm p-1 rounded-lg border border-white/15">
                         {gallery.map((thumb, tIdx) => (
@@ -171,8 +219,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
 
                     <div className="pointer-events-none absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="text-xs font-bold tracking-widest uppercase text-[#E5C99B]">
-                        {product.num} •{' '}
-                        {lang === 'tr' ? product.categoryName : product.categoryNameEn}
+                        {product.num} • {product.categoryName[lang]}
                       </span>
                       <button
                         type="button"
@@ -180,15 +227,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                         className="pointer-events-auto inline-flex items-center gap-1 text-[11px] font-medium bg-zinc-950/80 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15 hover:border-[#D4AF7A]"
                       >
                         <ZoomIn className="w-3.5 h-3.5 text-[#D4AF7A]" />
-                        <span>
-                          {gallery.length > 1
-                            ? lang === 'tr'
-                              ? `3 Görseli İncele`
-                              : `View 3 Photos`
-                            : lang === 'tr'
-                              ? 'Büyüt'
-                              : 'Zoom'}
-                        </span>
+                        <span>{gallery.length > 1 ? ZOOM_MULTI[lang] : ZOOM_SINGLE[lang]}</span>
                       </button>
                     </div>
                   </div>
@@ -196,32 +235,28 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                   <div className="p-6 pb-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[11px] font-bold uppercase tracking-widest text-[#9A743E]">
-                        {lang === 'tr'
-                          ? 'DENİZLİ ÜRETİM & 81 İLDE TESLİMAT'
-                          : 'DENIZLI PRODUCTION & 81-PROVINCE DELIVERY'}
+                        {CARD_BADGE[lang]}
                       </span>
                     </div>
 
                     <h3 className="font-luxury text-xl font-bold text-zinc-900 mb-2.5 leading-snug">
-                      {lang === 'tr' ? product.title : product.titleEn}
+                      {product.title[lang]}
                     </h3>
                     <p className="text-zinc-600 text-sm leading-relaxed mb-5">
-                      {lang === 'tr' ? product.desc : product.descEn}
+                      {product.desc[lang]}
                     </p>
 
                     {/* Vertically Stacked (Alt Alta) Sub-Groups & Dimensions List */}
                     <div>
                       <span className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-2">
-                        {lang === 'tr'
-                          ? 'ÜRÜN SEÇENEKLERİ & EBAT / BEDEN LİSTESİ:'
-                          : 'PRODUCT OPTIONS & DIMENSIONS / SIZES:'}
+                        {OPTIONS_HEADER[lang]}
                       </span>
                       <div className="flex flex-col gap-2">
                         {product.subItems.map((sub, idx) => {
                           const isSelected = currentIdx === idx;
                           return (
                             <button
-                              key={sub.label}
+                              key={sub.label.tr}
                               type="button"
                               onClick={() =>
                                 setSelectedSubIdx((prev) => ({
@@ -242,7 +277,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                                   }`}
                                 />
                                 <span className="text-xs sm:text-[13px] font-semibold leading-snug">
-                                  {lang === 'tr' ? sub.label : sub.labelEn}
+                                  {sub.label[lang]}
                                 </span>
                               </div>
                               <span
@@ -250,7 +285,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                                   isSelected ? 'text-[#E5C99B]' : 'text-zinc-500'
                                 }`}
                               >
-                                {lang === 'tr' ? sub.spec : sub.specEn}
+                                {sub.spec[lang]}
                               </span>
                             </button>
                           );
@@ -268,11 +303,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                     className="luxury-shimmer w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-lg bg-gold-metallic text-zinc-950 text-xs sm:text-sm font-bold transition-all shadow-[0_8px_20px_rgba(212,175,122,0.25)] hover:scale-[1.01]"
                   >
                     <MessageSquare className="w-4 h-4 shrink-0" />
-                    <span>
-                      {lang === 'tr'
-                        ? 'Bize Ulaşın & Bu Ürünü İsteyin'
-                        : 'Contact Us & Request This Product'}
-                    </span>
+                    <span>{CARD_CTA[lang]}</span>
                     <ArrowRight className="w-4 h-4 shrink-0" />
                   </button>
                 </div>
@@ -282,7 +313,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
         </div>
       </div>
 
-      {/* Product Lightbox Modal with Multi-Photo Navigation */}
+      {/* Product Lightbox Modal */}
       {previewProduct && (
         <div
           onClick={() => setPreviewProduct(null)}
@@ -304,7 +335,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                   <div className="relative aspect-[16/10] w-full bg-zinc-900 flex items-center justify-center">
                     <img
                       src={activeModalSrc}
-                      alt={lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
+                      alt={previewProduct.title[lang]}
                       className="max-h-full max-w-full object-contain"
                     />
                     {modalImages.length > 1 && (
@@ -317,7 +348,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                             )
                           }
                           className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
-                          aria-label="Önceki Görsel"
+                          aria-label="Previous"
                         >
                           <ChevronLeft className="w-5 h-5" />
                         </button>
@@ -327,7 +358,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                             setPreviewImgIdx((prev) => (prev + 1) % modalImages.length)
                           }
                           className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
-                          aria-label="Sonraki Görsel"
+                          aria-label="Next"
                         >
                           <ChevronRight className="w-5 h-5" />
                         </button>
@@ -337,7 +368,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                       type="button"
                       onClick={() => setPreviewProduct(null)}
                       className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
-                      aria-label="Kapat"
+                      aria-label="Close"
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -368,15 +399,12 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
             <div className="p-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
               <div>
                 <span className="text-xs font-bold text-[#D4AF7A] uppercase tracking-wider">
-                  {previewProduct.num} •{' '}
-                  {lang === 'tr' ? previewProduct.categoryName : previewProduct.categoryNameEn}
+                  {previewProduct.num} • {previewProduct.categoryName[lang]}
                 </span>
                 <h4 className="font-luxury text-2xl font-bold mt-1">
-                  {lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
+                  {previewProduct.title[lang]}
                 </h4>
-                <p className="text-xs text-zinc-300 mt-1">
-                  {lang === 'tr' ? previewProduct.desc : previewProduct.descEn}
-                </p>
+                <p className="text-xs text-zinc-300 mt-1">{previewProduct.desc[lang]}</p>
               </div>
               <button
                 type="button"
@@ -387,7 +415,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                 }}
                 className="px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-xs whitespace-nowrap shrink-0"
               >
-                {lang === 'tr' ? 'Bize Ulaşın & Fiyat Alın' : 'Contact Us & Get Quote'}
+                {MODAL_CTA[lang]}
               </button>
             </div>
           </div>

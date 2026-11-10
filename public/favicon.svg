@@ -1,11 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="10" fill="#141413"/>
-  <rect x="4" y="4" width="56" height="56" rx="7" stroke="#C5A47E" stroke-width="1.2" stroke-opacity="0.45"/>
-  <!-- Woven Loom Grid Lines -->
-  <path d="M16 14V50M48 14V50" stroke="#C5A47E" stroke-width="1" stroke-opacity="0.28"/>
-  <path d="M14 20H50M14 44H50" stroke="#C5A47E" stroke-width="1" stroke-opacity="0.28"/>
-  <!-- Architectural A Monogram with Weft Thread Bar -->
-  <path d="M32 14L17 50H23.5L27 41H37L40.5 50H47L32 14ZM29.2 35.5L32 28L34.8 35.5H29.2Z" fill="#FAF9F6"/>
-  <path d="M21 35.5H43" stroke="#C5A47E" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="32" cy="21" r="1.8" fill="#C5A47E"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="atGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E6C8" />
+      <stop offset="45%" stop-color="#D4AF7A" />
+      <stop offset="75%" stop-color="#FFF5E1" />
+      <stop offset="100%" stop-color="#9A743E" />
+    </linearGradient>
+    <linearGradient id="atIvoryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E9E2D4" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="76" height="76" rx="14" fill="#0F0F0E" />
+  <rect x="3.5" y="3.5" width="73" height="73" rx="12.5" stroke="url(#atGoldGrad)" stroke-width="1.6" />
+  <rect x="7.5" y="7.5" width="65" height="65" rx="9" stroke="url(#atGoldGrad)" stroke-width="0.75" stroke-opacity="0.45" />
+  <path d="M40 5.2L41.8 7L40 8.8L38.2 7Z" fill="url(#atGoldGrad)" />
+  <path d="M40 71.2L41.8 73L40 74.8L38.2 73Z" fill="url(#atGoldGrad)" />
+  <path d="M5.2 40L7 38.2L8.8 40L7 41.8Z" fill="url(#atGoldGrad)" />
+  <path d="M71.2 40L73 38.2L74.8 40L73 41.8Z" fill="url(#atGoldGrad)" />
+  <path d="M17 17H63L61.2 24.5H59C58.2 21.6 56.5 20.6 52.5 20.6H43V57.5C43 60.2 44.2 61 47.2 61V63H32.8V61C35.8 61 37 60.2 37 57.5V20.6H27.5C23.5 20.6 21.8 21.6 21 24.5H18.8L17 17Z" fill="url(#atGoldGrad)" />
+  <path d="M40 21.5L21.5 60.5H18.5V63H29.5V60.5H26.4L30.4 51.5H49.6L53.6 60.5H50.5V63H61.5V60.5H58.5L40 21.5ZM32.2 47.2L40 29.8L47.8 47.2H32.2Z" fill="url(#atIvoryGrad)" />
+  <path d="M27.5 47.2H52.5" stroke="url(#atGoldGrad)" stroke-width="2.4" stroke-linecap="round" />
+  <path d="M40 44.2L42.8 47.2L40 50.2L37.2 47.2Z" fill="url(#atGoldGrad)" />
 </svg>
