@@ -1,6 +1,10 @@
+export type Language = 'tr' | 'en';
+
 export interface ProductSubItem {
   label: string;
+  labelEn: string;
   spec: string;
+  specEn: string;
 }
 
 export interface ProductGroupItem {
@@ -8,18 +12,21 @@ export interface ProductGroupItem {
   id: string;
   categoryKey: 'otel' | 'ev' | 'bornoz' | 'stok';
   categoryName: string;
+  categoryNameEn: string;
   title: string;
+  titleEn: string;
   desc: string;
+  descEn: string;
   image: string;
   subItems: ProductSubItem[];
 }
 
 export const CATEGORY_TABS = [
-  { key: 'all', label: 'Tüm Gruplar (06)' },
-  { key: 'otel', label: 'Otel Ürünleri' },
-  { key: 'ev', label: 'Ev Tekstili' },
-  { key: 'bornoz', label: 'Bornoz Grubu' },
-  { key: 'stok', label: 'Stok (Kiloluk) Ürünler' },
+  { key: 'all', label: 'Tüm Gruplar (06)', labelEn: 'All Groups (06)' },
+  { key: 'otel', label: 'Otel Ürünleri', labelEn: 'Hotel Textiles' },
+  { key: 'ev', label: 'Ev Tekstili', labelEn: 'Home Textiles' },
+  { key: 'bornoz', label: 'Bornoz Grubu', labelEn: 'Bathrobe Group' },
+  { key: 'stok', label: 'Stok (Kiloluk) Ürünler', labelEn: 'Stock (Per Kg) Towels' },
 ] as const;
 
 export const productGroups: ProductGroupItem[] = [
@@ -28,14 +35,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'otel-havlusu-grubu',
     categoryKey: 'otel',
     categoryName: 'Otel Ürünleri',
+    categoryNameEn: 'Hotel Textiles',
     title: 'Otel Havlusu Grubu',
+    titleEn: 'Hotel Towel Collection',
     desc: 'Denizli dokuması %100 pamuk ipliğinden üretilen, endüstriyel yıkamaya dayanıklı çift dikişli kar beyazı otel, pansiyon, yurt ve spa havluları.',
+    descEn: 'Woven in Denizli from 100% pure cotton yarn; double-stitched snow-white hotel, resort, dormitory, and spa towels built for industrial laundering.',
     image: '/images/otel-havlu.jpg',
     subItems: [
-      { label: '50x90 cm Otel El & Yüz Havlusu', spec: '%100 Pamuk • Çift Dikişli' },
-      { label: '70x140 cm Otel Banyo Havlusu', spec: '%100 Pamuk • Yüksek Emici' },
-      { label: '90x150 cm Otel Spa & Havuz Havlusu', spec: 'Battal Boy • Ağır Gramaj' },
-      { label: '30x50 cm Otel Baş & Misafir Havlusu', spec: '%100 Pamuk • Otel Serisi' },
+      {
+        label: '50x90 cm Otel El & Yüz Havlusu',
+        labelEn: '50x90 cm Hotel Hand & Face Towel',
+        spec: '%100 Pamuk • Çift Dikişli',
+        specEn: '100% Cotton • Double Stitched',
+      },
+      {
+        label: '70x140 cm Otel Banyo Havlusu',
+        labelEn: '70x140 cm Hotel Bath Towel',
+        spec: '%100 Pamuk • Yüksek Emici',
+        specEn: '100% Cotton • High Absorbency',
+      },
+      {
+        label: '90x150 cm Otel Spa & Havuz Havlusu',
+        labelEn: '90x150 cm Hotel Spa & Pool Towel',
+        spec: 'Battal Boy • Ağır Gramaj',
+        specEn: 'Jumbo Size • Heavyweight',
+      },
+      {
+        label: '30x50 cm Otel Baş & Misafir Havlusu',
+        labelEn: '30x50 cm Hotel Guest Towel',
+        spec: '%100 Pamuk • Otel Serisi',
+        specEn: '100% Cotton • Hotel Series',
+      },
     ],
   },
   {
@@ -43,14 +73,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'otel-nevresim-takimlari',
     categoryKey: 'otel',
     categoryName: 'Otel Ürünleri',
+    categoryNameEn: 'Hotel Textiles',
     title: 'Otel Nevresim Takımları & Çarşaf Grubu',
+    titleEn: 'Hotel Duvet Cover Sets & Bed Sheets',
     desc: 'Oteller, butik konaklama tesisleri ve öğrenci yurtları için 83 tel ve 120 tel çizgili saten (yollu) ile düz pamuk ranforce nevresim takımları, çarşaf ve yastık kılıfları.',
+    descEn: 'Striped sateen and plain cotton ranforce duvet cover sets, fitted/flat bed sheets, and pillowcases designed for hotels, boutique resorts, and dormitories.',
     image: '/images/otel-nevresim.jpg',
     subItems: [
-      { label: 'Tek Kişilik Çizgili Saten Otel Nevresim Takımı', spec: '83 / 120 Tel Yollu Saten' },
-      { label: 'Çift Kişilik Çizgili Saten Otel Nevresim Takımı', spec: '83 / 120 Tel Yollu Saten' },
-      { label: 'Düz Beyaz Pamuk Ranforce Otel Nevresim Seti', spec: '%100 Pamuk Dokuma' },
-      { label: 'Otel Tipi Düz / Lastikli Çarşaf & Yastık Kılıfı', spec: 'Tüm Yatak Ölçüleri' },
+      {
+        label: 'Tek Kişilik Çizgili Saten Otel Nevresim Takımı',
+        labelEn: 'Single Size Striped Sateen Hotel Bedding Set',
+        spec: '83 / 120 Tel Yollu Saten',
+        specEn: 'Striped Hotel Sateen',
+      },
+      {
+        label: 'Çift Kişilik Çizgili Saten Otel Nevresim Takımı',
+        labelEn: 'Double Size Striped Sateen Hotel Bedding Set',
+        spec: '83 / 120 Tel Yollu Saten',
+        specEn: 'Striped Hotel Sateen',
+      },
+      {
+        label: 'Düz Beyaz Pamuk Ranforce Otel Nevresim Seti',
+        labelEn: 'Plain White Cotton Ranforce Hotel Duvet Set',
+        spec: '%100 Pamuk Dokuma',
+        specEn: '100% Woven Cotton',
+      },
+      {
+        label: 'Otel Tipi Düz / Lastikli Çarşaf & Yastık Kılıfı',
+        labelEn: 'Hotel Flat / Fitted Sheets & Pillowcases',
+        spec: 'Tüm Yatak Ölçüleri',
+        specEn: 'All Mattress Sizes',
+      },
     ],
   },
   {
@@ -58,14 +111,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'otel-paspas-ve-alez',
     categoryKey: 'otel',
     categoryName: 'Otel Ürünleri',
+    categoryNameEn: 'Hotel Textiles',
     title: 'Otel Banyo Paspası & Sıvı Geçirmez Alez',
+    titleEn: 'Hotel Bath Mats & Waterproof Mattress Protectors',
     desc: 'Yüksek gramajlı ayak izi desenli Yunan bordürlü otel banyo paspasları ve yatak ömrünü koruyan nefes alabilen membran kaplamalı sıvı geçirmez yatak koruyucu alezler.',
+    descEn: 'Heavyweight Greek-border footprint hotel bath mats and breathable membrane-coated waterproof mattress protectors that extend mattress life.',
     image: '/images/otel-paspas.jpg',
     subItems: [
-      { label: '50x70 cm Ayak İzli Otel Banyo Paspası', spec: 'Yunan Bordürlü • Ağır Gramaj' },
-      { label: 'Tek Kişilik Sıvı Geçirmez Yatak Alezi (90x200)', spec: 'Membranlı • Lastikli' },
-      { label: 'Çift Kişilik Sıvı Geçirmez Yatak Alezi (160x200)', spec: 'Membranlı • Lastikli' },
-      { label: 'Battal Boy Sıvı Geçirmez Yatak Alezi (180x200)', spec: 'Havlu / Mikrofiber Yüzey' },
+      {
+        label: '50x70 cm Ayak İzli Otel Banyo Paspası',
+        labelEn: '50x70 cm Footprint Hotel Bath Mat',
+        spec: 'Yunan Bordürlü • Ağır Gramaj',
+        specEn: 'Greek Border • Heavyweight',
+      },
+      {
+        label: 'Tek Kişilik Sıvı Geçirmez Yatak Alezi (90x200)',
+        labelEn: 'Single Waterproof Mattress Protector (90x200)',
+        spec: 'Membranlı • Lastikli',
+        specEn: 'Membrane • Fitted',
+      },
+      {
+        label: 'Çift Kişilik Sıvı Geçirmez Yatak Alezi (160x200)',
+        labelEn: 'Double Waterproof Mattress Protector (160x200)',
+        spec: 'Membranlı • Lastikli',
+        specEn: 'Membrane • Fitted',
+      },
+      {
+        label: 'Battal Boy Sıvı Geçirmez Yatak Alezi (180x200)',
+        labelEn: 'King Waterproof Mattress Protector (180x200)',
+        spec: 'Havlu / Mikrofiber Yüzey',
+        specEn: 'Terry / Microfiber Top',
+      },
     ],
   },
   {
@@ -73,14 +149,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'ev-tekstili-grubu',
     categoryKey: 'ev',
     categoryName: 'Ev Tekstili',
+    categoryNameEn: 'Home Textiles',
     title: 'Ev Tekstili Grubu',
+    titleEn: 'Home Textile Collection',
     desc: 'Mağazalar, çeyiz grupları ve bireysel ev kullanımı için %100 pamuk nevresim takımları, her ölçüye uygun lastikli/düz çarşaflar, yatak alezleri ve şık masa örtüleri.',
+    descEn: '100% cotton duvet cover sets, fitted and flat sheets in all dimensions, mattress protectors, and woven tablecloths for retail stores and home use.',
     image: '/images/ev-tekstili.jpg',
     subItems: [
-      { label: 'Ev Tipi Pamuk Nevresim Takımı', spec: 'Tek & Çift Kişilik' },
-      { label: 'Penye & Pamuk Lastikli Çarşaf Takımı', spec: 'Her Ölçü ve Renk' },
-      { label: 'Ev Tipi Kapitoneli & Sıvı Geçirmez Yatak Alezi', spec: 'Yatak Koruyucu' },
-      { label: 'Dokuma Leke Tutmaz Masa Örtüsü Grubu', spec: 'Farklı Ebat Seçenekleri' },
+      {
+        label: 'Ev Tipi Pamuk Nevresim Takımı',
+        labelEn: 'Home Cotton Duvet Cover Set',
+        spec: 'Tek & Çift Kişilik',
+        specEn: 'Single & Double Sizes',
+      },
+      {
+        label: 'Penye & Pamuk Lastikli Çarşaf Takımı',
+        labelEn: 'Combed Cotton Fitted Bed Sheet Set',
+        spec: 'Her Ölçü ve Renk',
+        specEn: 'All Sizes & Colors',
+      },
+      {
+        label: 'Ev Tipi Kapitoneli & Sıvı Geçirmez Yatak Alezi',
+        labelEn: 'Quilted & Waterproof Home Mattress Protector',
+        spec: 'Yatak Koruyucu',
+        specEn: 'Mattress Guard',
+      },
+      {
+        label: 'Dokuma Leke Tutmaz Masa Örtüsü Grubu',
+        labelEn: 'Stain-Resistant Woven Tablecloth Group',
+        spec: 'Farklı Ebat Seçenekleri',
+        specEn: 'Multiple Dimensions',
+      },
     ],
   },
   {
@@ -88,14 +187,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'bornoz-grubu',
     categoryKey: 'bornoz',
     categoryName: 'Bornoz Grubu',
+    categoryNameEn: 'Bathrobe Group',
     title: 'Bornoz Grubu (Büyük & Çocuk Bornozu)',
+    titleEn: 'Bathrobe Group (Adult & Kids Bathrobes)',
     desc: 'Yumuşak dokulu %100 Denizli pamuğundan üretilen her bedenden yetişkin büyük bornozlar ve tüm yaş aralıklarına uygun çocuk bornozları.',
+    descEn: 'Soft-touch 100% Denizli cotton bathrobes in all adult sizes (S to XXL) and hooded/belted children’s bathrobes across all age groups.',
     image: '/images/bornoz-grubu.jpg',
     subItems: [
-      { label: 'Yetişkin Büyük Bornoz — S / M Beden', spec: '%100 Denizli Pamuğu' },
-      { label: 'Yetişkin Büyük Bornoz — L / XL Beden', spec: '%100 Denizli Pamuğu' },
-      { label: 'Yetişkin Büyük Bornoz — XXL Battal Beden', spec: 'Şal Yaka / Kimono' },
-      { label: 'Çocuk Bornozu — Tüm Yaş Grupları (2-12 Yaş)', spec: 'Kapüşonlu & Kemerli' },
+      {
+        label: 'Yetişkin Büyük Bornoz — S / M Beden',
+        labelEn: 'Adult Bathrobe — S / M Sizes',
+        spec: '%100 Denizli Pamuğu',
+        specEn: '100% Denizli Cotton',
+      },
+      {
+        label: 'Yetişkin Büyük Bornoz — L / XL Beden',
+        labelEn: 'Adult Bathrobe — L / XL Sizes',
+        spec: '%100 Denizli Pamuğu',
+        specEn: '100% Denizli Cotton',
+      },
+      {
+        label: 'Yetişkin Büyük Bornoz — XXL Battal Beden',
+        labelEn: 'Adult Bathrobe — XXL Plus Size',
+        spec: 'Şal Yaka / Kimono',
+        specEn: 'Shawl Collar / Kimono',
+      },
+      {
+        label: 'Çocuk Bornozu — Tüm Yaş Grupları (2-12 Yaş)',
+        labelEn: 'Kids Bathrobe — All Age Groups (Ages 2-12)',
+        spec: 'Kapüşonlu & Kemerli',
+        specEn: 'Hooded & Belted',
+      },
     ],
   },
   {
@@ -103,14 +225,37 @@ export const productGroups: ProductGroupItem[] = [
     id: 'stok-kiloluk-havlular',
     categoryKey: 'stok',
     categoryName: 'Stok Ürünleri (Kiloluk)',
+    categoryNameEn: 'Stock Towels (Per Kg)',
     title: 'Stok Ürünler: İhracat Fazlası Kiloluk Havlular',
+    titleEn: 'Stock Products: Export-Surplus Towels Sold by Weight (Kg)',
     desc: 'Denizli ihracat üretimlerinden ayrılan her boyuttan tartı / kilo bazlı yüksek fiyat avantajlı toptan ve perakende stok havlu grupları.',
+    descEn: 'High-value wholesale and retail export-surplus cotton towels in all dimensions sold by weight (per kg) directly from Denizli.',
     image: '/images/kiloluk-stok-havlu.jpg',
     subItems: [
-      { label: '50x90 cm İhracat Fazlası Kiloluk El & Yüz Havlusu', spec: 'Tartı / Kilo Bazlı' },
-      { label: '70x140 cm İhracat Fazlası Kiloluk Banyo Havlusu', spec: 'Tartı / Kilo Bazlı' },
-      { label: '90x150 cm İhracat Fazlası Kiloluk Battal Havlu', spec: 'Tartı / Kilo Bazlı' },
-      { label: 'Karışık Boy İhracat Fazlası Kiloluk Stok Havlu', spec: 'Çuval & Koli Toptan' },
+      {
+        label: '50x90 cm İhracat Fazlası Kiloluk El & Yüz Havlusu',
+        labelEn: '50x90 cm Export-Surplus Hand Towels (Per Kg)',
+        spec: 'Tartı / Kilo Bazlı',
+        specEn: 'Sold by Weight (Kg)',
+      },
+      {
+        label: '70x140 cm İhracat Fazlası Kiloluk Banyo Havlusu',
+        labelEn: '70x140 cm Export-Surplus Bath Towels (Per Kg)',
+        spec: 'Tartı / Kilo Bazlı',
+        specEn: 'Sold by Weight (Kg)',
+      },
+      {
+        label: '90x150 cm İhracat Fazlası Kiloluk Battal Havlu',
+        labelEn: '90x150 cm Export-Surplus Jumbo Towels (Per Kg)',
+        spec: 'Tartı / Kilo Bazlı',
+        specEn: 'Sold by Weight (Kg)',
+      },
+      {
+        label: 'Karışık Boy İhracat Fazlası Kiloluk Stok Havlu',
+        labelEn: 'Mixed-Size Export-Surplus Stock Towels (Per Kg)',
+        spec: 'Çuval & Koli Toptan',
+        specEn: 'Bale & Box Wholesale',
+      },
     ],
   },
 ];

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Send, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { Language } from '../data/productsData';
 
 interface ContactSectionProps {
+  lang: Language;
   selectedProduct?: string;
 }
 
-const QUICK_PRODUCTS = [
+const QUICK_PRODUCTS_TR = [
   'Otel Havlusu Grubu (50x90 / 70x140 / 90x150)',
   'Otel Nevresim Takımları & Çarşaf',
   'Otel Paspası & Sıvı Geçirmez Alez',
@@ -14,12 +16,23 @@ const QUICK_PRODUCTS = [
   'Stok Ürünler (İhracat Fazlası Kiloluk Havlu)',
 ];
 
-const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
+const QUICK_PRODUCTS_EN = [
+  'Hotel Towels (50x90 / 70x140 / 90x150)',
+  'Hotel Duvet Cover Sets & Sheets',
+  'Hotel Bath Mats & Waterproof Protectors',
+  'Home Textiles (Bedding, Sheets, Tablecloths)',
+  'Bathrobes (Adult S-XXL & Kids Bathrobes)',
+  'Stock Towels (Export-Surplus Per Kg)',
+];
+
+const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }) => {
   const [fullName, setFullName] = useState('');
   const [userPhone, setUserPhone] = useState('');
   const [userCity, setUserCity] = useState('');
   const [requestedProduct, setRequestedProduct] = useState('');
   const [sentNotice, setSentNotice] = useState(false);
+
+  const quickProducts = lang === 'tr' ? QUICK_PRODUCTS_TR : QUICK_PRODUCTS_EN;
 
   useEffect(() => {
     if (selectedProduct) {
@@ -57,7 +70,6 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
     }
     const message = buildDirectMessage();
     setSentNotice(true);
-    // Open direct message to 0535 037 90 74 so the phone immediately receives all 4 details
     window.open(
       `https://wa.me/905350379074?text=${encodeURIComponent(message)}`,
       '_blank',
@@ -72,16 +84,30 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-[1.5px] bg-[#9A743E]" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
-              BİZE ULAŞIN • DOĞRUDAN SİPARİŞ & FİYAT TALEBİ
+              {lang === 'tr'
+                ? 'BİZE ULAŞIN • DOĞRUDAN SİPARİŞ & FİYAT TALEBİ'
+                : 'CONTACT US • DIRECT ORDER & QUOTE REQUEST'}
             </p>
           </div>
           <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight">
-            Bize Ulaşın — İstediğiniz Ürünü Doğrudan İletin
+            {lang === 'tr'
+              ? 'Bize Ulaşın — İstediğiniz Ürünü Doğrudan İletin'
+              : 'Contact Us — Send Your Product Request Directly'}
           </h2>
           <p className="text-zinc-600 text-base mt-3">
-            İsim soyisminizi, telefon numaranızı, bulunduğunuz şehri ve istediğiniz ürünü yazıp
-            gönderdiğinizde talebiniz doğrudan{' '}
-            <strong className="text-zinc-900">0535 037 90 74</strong> numaralı hattımıza düşer.
+            {lang === 'tr' ? (
+              <>
+                İsim soyisminizi, telefon numaranızı, bulunduğunuz şehri ve istediğiniz ürünü yazıp
+                gönderdiğinizde talebiniz doğrudan{' '}
+                <strong className="text-zinc-900">0535 037 90 74</strong> numaralı hattımıza düşer.
+              </>
+            ) : (
+              <>
+                Enter your full name, phone number, city, and requested product; your inquiry is
+                delivered directly to our{' '}
+                <strong className="text-zinc-900">0535 037 90 74</strong> line.
+              </>
+            )}
           </p>
         </div>
 
@@ -91,7 +117,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
             <div className="divide-y divide-zinc-200">
               <div className="pb-5">
                 <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
-                  DOĞRUDAN SİPARİŞ & WHATSAPP HATTI
+                  {lang === 'tr' ? 'DOĞRUDAN SİPARİŞ & WHATSAPP HATTI' : 'DIRECT ORDER & WHATSAPP LINE'}
                 </span>
                 <p className="text-sm font-bold text-[#9A743E] mt-1">
                   Aslancan Tekstil — Yusuf Aslancan
@@ -107,7 +133,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
 
               <div className="py-5">
                 <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
-                  E-POSTA & SEVKİYAT MERKEZİ
+                  {lang === 'tr' ? 'E-POSTA & SEVKİYAT MERKEZİ' : 'EMAIL & SHIPPING CENTER'}
                 </span>
                 <a
                   href="mailto:yaslancan027@gmail.com"
@@ -118,20 +144,27 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 </a>
                 <span className="text-xs text-zinc-600 mt-2 flex items-center gap-1.5">
                   <MapPin className="w-4 h-4 text-[#9A743E] shrink-0" />
-                  <span>Merkez: Denizli • Türkiye Geneli 81 İlde Teslimat & Ambar Gönderimi</span>
+                  <span>
+                    {lang === 'tr'
+                      ? 'Merkez: Denizli • Türkiye Geneli 81 İlde Teslimat & Ambar Gönderimi'
+                      : 'Headquarters: Denizli • Delivery Across All 81 Provinces'}
+                  </span>
                 </span>
               </div>
 
               <div className="pt-5">
                 <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
-                  ÇALIŞMA SAATLERİ & SATIŞ MODELİ
+                  {lang === 'tr' ? 'ÇALIŞMA SAATLERİ & SATIŞ MODELİ' : 'WORKING HOURS & SALES MODEL'}
                 </span>
                 <p className="text-base font-bold text-zinc-900 mt-1">
-                  Pazartesi – Cumartesi: 08:30 – 18:00
+                  {lang === 'tr'
+                    ? 'Pazartesi – Cumartesi: 08:30 – 18:00'
+                    : 'Monday – Saturday: 08:30 – 18:00'}
                 </p>
                 <span className="text-sm text-zinc-600 block mt-1 leading-relaxed">
-                  Toptan satış ağırlıklı olup sipariş adedine göre perakende alımlarda da doğrudan
-                  yardımcı olunmaktadır.
+                  {lang === 'tr'
+                    ? 'Toptan satış ağırlıklı olup sipariş adedine göre perakende alımlarda da doğrudan yardımcı olunmaktadır.'
+                    : 'Primarily wholesale with direct support for quantity-based retail orders.'}
                 </span>
               </div>
             </div>
@@ -142,7 +175,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-zinc-950 hover:bg-zinc-800 text-white text-sm font-semibold transition-colors whitespace-nowrap"
               >
                 <Phone className="w-4 h-4 text-[#D4AF7A]" />
-                <span>0535 037 90 74 Ara</span>
+                <span>{lang === 'tr' ? '0535 037 90 74 Ara' : 'Call 0535 037 90 74'}</span>
               </a>
               <a
                 href="https://wa.me/905350379074?text=Merhaba%20Aslancan%20Tekstil,%20ürünleriniz%20ve%20fiyatlarınız%20hakkında%20bilgi%20almak%20istiyorum."
@@ -151,7 +184,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 className="luxury-shimmer flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all whitespace-nowrap"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Hattı</span>
+                <span>{lang === 'tr' ? 'WhatsApp Hattı' : 'WhatsApp Line'}</span>
               </a>
             </div>
           </div>
@@ -161,11 +194,22 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 mb-6 border-b border-zinc-200">
               <div>
                 <h3 className="font-luxury text-2xl font-bold text-zinc-900">
-                  Bize Ulaşın & Ürün Talep Formu
+                  {lang === 'tr'
+                    ? 'Bize Ulaşın & Ürün Talep Formu'
+                    : 'Contact Us & Product Request Form'}
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 mt-0.5">
-                  Bilgilerinizi doldurduğunuzda talebiniz doğrudan{' '}
-                  <strong className="text-zinc-900">0535 037 90 74</strong> numarasına iletilir.
+                  {lang === 'tr' ? (
+                    <>
+                      Bilgilerinizi doldurduğunuzda talebiniz doğrudan{' '}
+                      <strong className="text-zinc-900">0535 037 90 74</strong> numarasına iletilir.
+                    </>
+                  ) : (
+                    <>
+                      When submitted, your request is sent directly to{' '}
+                      <strong className="text-zinc-900">0535 037 90 74</strong>.
+                    </>
+                  )}
                 </p>
               </div>
               <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-zinc-950 text-[#E5C99B] px-3.5 py-2 rounded-lg border border-[#C5A47E]/30 whitespace-nowrap self-start sm:self-auto">
@@ -179,14 +223,20 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 {/* 1. Kullanıcının İsim Soyismi */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                    1. İsim Soyisim / Firma Adı *
+                    {lang === 'tr'
+                      ? '1. İsim Soyisim / Firma Adı *'
+                      : '1. Full Name / Company Name *'}
                   </label>
                   <input
                     type="text"
                     required
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Örn: Ahmet Yılmaz / Grand Otel"
+                    placeholder={
+                      lang === 'tr'
+                        ? 'Örn: Ahmet Yılmaz / Grand Otel'
+                        : 'e.g., Ahmet Yilmaz / Grand Hotel'
+                    }
                     className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
                   />
                 </div>
@@ -194,14 +244,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 {/* 2. Kullanıcının Telefon Numarası */}
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                    2. Telefon Numaranız *
+                    {lang === 'tr' ? '2. Telefon Numaranız *' : '2. Your Phone Number *'}
                   </label>
                   <input
                     type="tel"
                     required
                     value={userPhone}
                     onChange={(e) => setUserPhone(e.target.value)}
-                    placeholder="Örn: 05XX XXX XX XX"
+                    placeholder={lang === 'tr' ? 'Örn: 05XX XXX XX XX' : 'e.g., +90 5XX XXX XX XX'}
                     className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
                   />
                 </div>
@@ -210,14 +260,20 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
               {/* 3. Hangi Şehirde Olduğu */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                  3. Bulunduğunuz Şehir (İl / İlçe) *
+                  {lang === 'tr'
+                    ? '3. Bulunduğunuz Şehir (İl / İlçe) *'
+                    : '3. Your City / Province *'}
                 </label>
                 <input
                   type="text"
                   required
                   value={userCity}
                   onChange={(e) => setUserCity(e.target.value)}
-                  placeholder="Örn: İstanbul, Antalya, Ankara, İzmir, Denizli..."
+                  placeholder={
+                    lang === 'tr'
+                      ? 'Örn: İstanbul, Antalya, Ankara, İzmir, Denizli...'
+                      : 'e.g., Istanbul, Antalya, Ankara, Izmir, Denizli...'
+                  }
                   className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
                 />
               </div>
@@ -225,12 +281,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
               {/* 4. Hangi Ürünü / Ne İstediği */}
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
-                  4. Hangi Ürünü İstiyorsunuz? (Ürün, Ebat ve Miktar) *
+                  {lang === 'tr'
+                    ? '4. Hangi Ürünü İstiyorsunuz? (Ürün, Ebat ve Miktar) *'
+                    : '4. Which Product Would You Like? (Product, Size & Quantity) *'}
                 </label>
 
                 {/* Quick Product Group Selector Chips */}
                 <div className="flex flex-wrap gap-1.5 mb-2.5">
-                  {QUICK_PRODUCTS.map((item) => {
+                  {quickProducts.map((item) => {
                     const isSelected = requestedProduct.includes(item);
                     return (
                       <button
@@ -238,7 +296,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                         type="button"
                         onClick={() =>
                           setRequestedProduct((prev) =>
-                            prev ? `${item} — ${prev}` : `${item} (Miktar/Detay: )`
+                            prev ? `${item} — ${prev}` : `${item} `
                           )
                         }
                         className={`text-[11px] font-semibold px-2.5 py-1 rounded border transition-colors ${
@@ -258,7 +316,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                   required
                   value={requestedProduct}
                   onChange={(e) => setRequestedProduct(e.target.value)}
-                  placeholder="Örn: 50x90 ve 70x140 otel havlusu 100'er adet, 20 adet L beden bornoz ve 50 kg ihracat fazlası kiloluk havlu fiyatı istiyorum..."
+                  placeholder={
+                    lang === 'tr'
+                      ? "Örn: 50x90 ve 70x140 otel havlusu 100'er adet, 20 adet L beden bornoz ve 50 kg ihracat fazlası kiloluk havlu fiyatı istiyorum..."
+                      : 'e.g., 100 pcs of 50x90 and 70x140 hotel towels, 20 pcs size L bathrobes, and 50 kg export-surplus towels...'
+                  }
                   className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
                 />
               </div>
@@ -267,8 +329,17 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                 <div className="p-3.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                   <span>
-                    Talebiniz (İsim Soyisim, Telefon, Şehir ve İstediğiniz Ürün){' '}
-                    <strong>0535 037 90 74</strong> numarasına iletilmek üzere hazırlandı.
+                    {lang === 'tr' ? (
+                      <>
+                        Talebiniz (İsim Soyisim, Telefon, Şehir ve İstediğiniz Ürün){' '}
+                        <strong>0535 037 90 74</strong> numarasına iletilmek üzere hazırlandı.
+                      </>
+                    ) : (
+                      <>
+                        Your request (Name, Phone, City, and Requested Product) has been prepared
+                        for <strong>0535 037 90 74</strong>.
+                      </>
+                    )}
                   </span>
                 </div>
               )}
@@ -279,7 +350,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                   className="luxury-shimmer w-full py-4 px-5 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-sm transition-all shadow-md inline-flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4 shrink-0" />
-                  <span>0535 037 90 74 Numarasına Gönder</span>
+                  <span>
+                    {lang === 'tr'
+                      ? '0535 037 90 74 Numarasına Gönder'
+                      : 'Send to 0535 037 90 74'}
+                  </span>
                 </button>
 
                 <button
@@ -288,7 +363,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ selectedProduct }) => {
                   className="w-full py-4 px-5 rounded-lg bg-zinc-950 hover:bg-zinc-800 text-white font-semibold text-sm transition-colors inline-flex items-center justify-center gap-2"
                 >
                   <Mail className="w-4 h-4 text-[#D4AF7A] shrink-0" />
-                  <span>Mesaj / Mail Talebi Olarak İlet</span>
+                  <span>
+                    {lang === 'tr'
+                      ? 'Mesaj / Mail Talebi Olarak İlet'
+                      : 'Send as Message / Mail Inquiry'}
+                  </span>
                 </button>
               </div>
             </form>

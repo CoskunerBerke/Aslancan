@@ -8,8 +8,10 @@ import WorkshopGallery from './components/WorkshopGallery';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import MobileQuickBar from './components/MobileQuickBar';
+import { Language } from './data/productsData';
 
 const App: React.FC = () => {
+  const [lang, setLang] = useState<Language>('tr');
   const [selectedProduct, setSelectedProduct] = useState<string>('');
 
   const scrollToContact = () => {
@@ -26,17 +28,17 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 overflow-x-hidden">
-      <Navbar onGoToContact={scrollToContact} />
+      <Navbar lang={lang} onToggleLang={setLang} onGoToContact={scrollToContact} />
       <main>
-        <Hero onGoToContact={scrollToContact} />
-        <AboutWorkshop />
-        <Services onSelectProductForContact={handleSelectProductForContact} />
-        <ReviewRiver />
-        <WorkshopGallery />
-        <ContactSection selectedProduct={selectedProduct} />
+        <Hero lang={lang} onGoToContact={scrollToContact} />
+        <AboutWorkshop lang={lang} />
+        <Services lang={lang} onSelectProductForContact={handleSelectProductForContact} />
+        <ReviewRiver lang={lang} />
+        <WorkshopGallery lang={lang} />
+        <ContactSection lang={lang} selectedProduct={selectedProduct} />
       </main>
-      <Footer />
-      <MobileQuickBar onGoToContact={scrollToContact} />
+      <Footer lang={lang} />
+      <MobileQuickBar lang={lang} onGoToContact={scrollToContact} />
     </div>
   );
 };

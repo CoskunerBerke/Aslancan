@@ -1,8 +1,13 @@
 import React from 'react';
 import { Star, MessageCircle } from 'lucide-react';
 import { reviewsList } from '../data/reviewsData';
+import { Language } from '../data/productsData';
 
-const ReviewRiver: React.FC = () => {
+interface ReviewRiverProps {
+  lang: Language;
+}
+
+const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {
   const repeatedReviews = [...reviewsList, ...reviewsList];
 
   return (
@@ -16,11 +21,13 @@ const ReviewRiver: React.FC = () => {
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-[1.5px] bg-[#D4AF7A]" />
               <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-metallic">
-                MÜŞTERİ & İŞLETME REFERANSLARI
+                {lang === 'tr' ? 'MÜŞTERİ & İŞLETME YORUMLARI' : 'CLIENT & PARTNER REVIEWS'}
               </p>
             </div>
             <h2 className="font-luxury text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              Türkiye Genelinden Otel, Yurt ve Mağaza Yorumları
+              {lang === 'tr'
+                ? 'Türkiye Genelinden Otel, Yurt ve Mağaza Yorumları'
+                : 'Reviews from Hotels, Dormitories, and Stores Nationwide'}
             </h2>
           </div>
           <a
@@ -28,7 +35,9 @@ const ReviewRiver: React.FC = () => {
             className="luxury-shimmer inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all self-start sm:self-auto whitespace-nowrap"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Bize Ulaşın • 0535 037 90 74</span>
+            <span>
+              {lang === 'tr' ? 'Bize Ulaşın • 0535 037 90 74' : 'Contact Us • 0535 037 90 74'}
+            </span>
           </a>
         </div>
       </div>
@@ -47,16 +56,20 @@ const ReviewRiver: React.FC = () => {
                       <Star key={i} className="w-4 h-4 fill-[#D4AF7A]" />
                     ))}
                   </div>
-                  <span className="text-xs text-zinc-400">{review.role}</span>
+                  <span className="text-xs text-zinc-400">
+                    {lang === 'tr' ? review.role : review.roleEn}
+                  </span>
                 </div>
                 <p className="text-zinc-100 text-sm leading-relaxed mb-6 italic">
-                  "{review.content}"
+                  "{lang === 'tr' ? review.content : review.contentEn}"
                 </p>
               </div>
 
               <div className="flex items-center justify-between pt-4 border-t border-white/10">
                 <span className="font-bold text-sm text-white">{review.author}</span>
-                <span className="text-xs text-[#E5C99B] font-medium">{review.productGroup}</span>
+                <span className="text-xs text-[#E5C99B] font-medium">
+                  {lang === 'tr' ? review.productGroup : review.productGroupEn}
+                </span>
               </div>
             </div>
           ))}

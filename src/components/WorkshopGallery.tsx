@@ -1,28 +1,57 @@
 import React from 'react';
+import { Language } from '../data/productsData';
 
-const WorkshopGallery: React.FC = () => {
-  const photos = [
-    {
-      src: '/images/otel-havlu.jpg',
-      title: 'Otel Havlusu Grubu (50x90 • 70x140 • 90x150)',
-      subtitle: 'Yüksek su emici %100 Denizli pamuğu çift dikişli kar beyazı otel ve spa havluları',
-    },
-    {
-      src: '/images/otel-nevresim.jpg',
-      title: 'Çizgili Saten Otel Nevresim & Çarşaf Takımları',
-      subtitle: 'Otel, pansiyon ve yurtlara özel yollu saten ve pamuk ranforce yatak tekstili',
-    },
-    {
-      src: '/images/otel-paspas.jpg',
-      title: 'Ayak İzli Otel Paspası & Sıvı Geçirmez Alez',
-      subtitle: 'Ağır gramajlı Yunan bordürlü banyo paspasları ve membranlı yatak koruyucular',
-    },
-    {
-      src: '/images/bornoz-grubu.jpg',
-      title: 'Yetişkin & Çocuk Bornozu + Kiloluk Stok Havlular',
-      subtitle: 'Her bedenden büyük/çocuk bornozlar ve ihracat fazlası kiloluk havlularda 81 ile ambar sevkiyatı',
-    },
-  ];
+interface WorkshopGalleryProps {
+  lang: Language;
+}
+
+const WorkshopGallery: React.FC<WorkshopGalleryProps> = ({ lang }) => {
+  const photos =
+    lang === 'tr'
+      ? [
+          {
+            src: '/images/otel-havlu.jpg',
+            title: 'Otel Havlusu Grubu (50x90 • 70x140 • 90x150)',
+            subtitle: 'Yüksek su emici %100 Denizli pamuğu çift dikişli kar beyazı otel ve spa havluları',
+          },
+          {
+            src: '/images/otel-nevresim.jpg',
+            title: 'Çizgili Saten Otel Nevresim & Çarşaf Takımları',
+            subtitle: 'Otel, pansiyon ve yurtlara özel yollu saten ve pamuk ranforce yatak tekstili',
+          },
+          {
+            src: '/images/otel-paspas.jpg',
+            title: 'Ayak İzli Otel Paspası & Sıvı Geçirmez Alez',
+            subtitle: 'Ağır gramajlı Yunan bordürlü banyo paspasları ve membranlı yatak koruyucular',
+          },
+          {
+            src: '/images/bornoz-grubu.jpg',
+            title: 'Yetişkin & Çocuk Bornozu + Kiloluk Stok Havlular',
+            subtitle: 'Her bedenden büyük/çocuk bornozlar ve ihracat fazlası kiloluk havlularda 81 ilde teslimat',
+          },
+        ]
+      : [
+          {
+            src: '/images/otel-havlu.jpg',
+            title: 'Hotel Towel Collection (50x90 • 70x140 • 90x150)',
+            subtitle: 'High-absorbency 100% Denizli cotton double-stitched snow-white hotel and spa towels',
+          },
+          {
+            src: '/images/otel-nevresim.jpg',
+            title: 'Striped Sateen Hotel Duvet & Bed Sheet Sets',
+            subtitle: 'Striped sateen and cotton ranforce bedding tailored for hotels, resorts, and dormitories',
+          },
+          {
+            src: '/images/otel-paspas.jpg',
+            title: 'Footprint Hotel Bath Mats & Waterproof Protectors',
+            subtitle: 'Heavyweight Greek-border bath mats and breathable membrane mattress protectors',
+          },
+          {
+            src: '/images/bornoz-grubu.jpg',
+            title: 'Adult & Kids Bathrobes + Export-Surplus Per-Kg Towels',
+            subtitle: 'All adult/kids bathrobe sizes and export-surplus per-kilo towels shipped across 81 provinces',
+          },
+        ];
 
   return (
     <section id="galeri" className="py-24 bg-white">
@@ -31,11 +60,13 @@ const WorkshopGallery: React.FC = () => {
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-[1.5px] bg-[#9A743E]" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
-              SHOWROOM & KOLEKSİYON GALERİSİ
+              {lang === 'tr' ? 'ÜRÜN & DOKUMA GALERİSİ' : 'PRODUCT & WEAVING GALLERY'}
             </p>
           </div>
           <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight">
-            Otel, Ev Tekstili ve Bornoz Koleksiyonumuz
+            {lang === 'tr'
+              ? 'Otel, Ev Tekstili ve Bornoz Koleksiyonumuz'
+              : 'Our Hotel, Home Textile, and Bathrobe Collection'}
           </h2>
         </div>
 

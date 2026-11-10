@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2, ZoomIn, X, MessageSquare } from 'lucide-react';
-import { CATEGORY_TABS, productGroups, ProductGroupItem } from '../data/productsData';
+import { CATEGORY_TABS, productGroups, ProductGroupItem, Language } from '../data/productsData';
 
 interface ServicesProps {
+  lang: Language;
   onSelectProductForContact: (productSummary: string) => void;
 }
 
-const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
+const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedSubIdx, setSelectedSubIdx] = useState<Record<string, number>>({});
   const [previewProduct, setPreviewProduct] = useState<ProductGroupItem | null>(null);
@@ -19,7 +20,10 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
   const handleRequestProduct = (product: ProductGroupItem, subIndex?: number) => {
     const idx = subIndex ?? selectedSubIdx[product.id] ?? 0;
     const chosenSub = product.subItems[idx] || product.subItems[0];
-    const summary = `${product.title} — ${chosenSub.label}`;
+    const summary =
+      lang === 'tr'
+        ? `${product.title} — ${chosenSub.label}`
+        : `${product.titleEn} — ${chosenSub.labelEn}`;
     onSelectProductForContact(summary);
   };
 
@@ -31,13 +35,17 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-[1.5px] bg-[#9A743E]" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
-              KOLEKSİYON & ÜRÜN GRUPLARI KATALOĞU
+              {lang === 'tr'
+                ? 'ÜRÜN GRUPLARI & TOPTAN / PERAKENDE KATALOĞU'
+                : 'PRODUCT GROUPS & WHOLESALE / RETAIL CATALOG'}
             </p>
           </div>
 
           <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
             <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
-              Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular
+              {lang === 'tr'
+                ? 'Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular'
+                : 'Hotel Textiles, Home Textiles, Bathrobes & Per-Kilo Stock Towels'}
             </h2>
 
             {/* All 5 Category Filter Buttons Strictly Side-by-Side (Yan Yana) on a Single Line */}
@@ -55,7 +63,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                         : 'bg-white text-zinc-700 border-zinc-300 hover:border-[#C5A47E] hover:text-zinc-950'
                     }`}
                   >
-                    {tab.label}
+                    {lang === 'tr' ? tab.label : tab.labelEn}
                   </button>
                 );
               })}
@@ -63,7 +71,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
           </div>
         </div>
 
-        {/* 01 - 06 3-Column Luxury Product Grid */}
+        {/* 01 - 06 3-Column Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredGroups.map((product) => {
             const currentIdx = selectedSubIdx[product.id] ?? 0;
@@ -74,24 +82,24 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                 className="group bg-white rounded-xl border border-zinc-200/90 hover:border-[#C5A47E] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_65px_-15px_rgba(154,116,62,0.24)]"
               >
                 <div>
-                  {/* Real Product Photo (16:10) with Luxury Zoom Trigger */}
+                  {/* Real Product Photo (16:10) with Zoom Trigger */}
                   <div
                     onClick={() => setPreviewProduct(product)}
                     className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border-b border-zinc-200 cursor-pointer"
                   >
                     <img
                       src={product.image}
-                      alt={product.title}
+                      alt={lang === 'tr' ? product.title : product.titleEn}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/65 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="text-xs font-bold tracking-widest uppercase text-[#E5C99B]">
-                        {product.num} • {product.categoryName}
+                        {product.num} • {lang === 'tr' ? product.categoryName : product.categoryNameEn}
                       </span>
                       <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-zinc-950/75 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15">
                         <ZoomIn className="w-3.5 h-3.5 text-[#D4AF7A]" />
-                        <span>Büyüt</span>
+                        <span>{lang === 'tr' ? 'Büyüt' : 'Zoom'}</span>
                       </span>
                     </div>
                   </div>
@@ -99,21 +107,25 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                   <div className="p-6 pb-4">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-[11px] font-bold uppercase tracking-widest text-[#9A743E]">
-                        DENİZLİ ÜRETİM & 81 İLDE TESLİMAT
+                        {lang === 'tr'
+                          ? 'DENİZLİ ÜRETİM & 81 İLDE TESLİMAT'
+                          : 'DENIZLI PRODUCTION & 81-PROVINCE DELIVERY'}
                       </span>
                     </div>
 
                     <h3 className="font-luxury text-xl font-bold text-zinc-900 mb-2.5 leading-snug">
-                      {product.title}
+                      {lang === 'tr' ? product.title : product.titleEn}
                     </h3>
                     <p className="text-zinc-600 text-sm leading-relaxed mb-5">
-                      {product.desc}
+                      {lang === 'tr' ? product.desc : product.descEn}
                     </p>
 
                     {/* Vertically Stacked (Alt Alta) Sub-Groups & Dimensions List */}
                     <div>
                       <span className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500 mb-2">
-                        ALT ÜRÜN GRUPLARI & EBAT / BEDEN SEÇENEKLERİ (ALT ALTA):
+                        {lang === 'tr'
+                          ? 'ÜRÜN SEÇENEKLERİ & EBAT / BEDEN LİSTESİ:'
+                          : 'PRODUCT OPTIONS & DIMENSIONS / SIZES:'}
                       </span>
                       <div className="flex flex-col gap-2">
                         {product.subItems.map((sub, idx) => {
@@ -141,7 +153,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                                   }`}
                                 />
                                 <span className="text-xs sm:text-[13px] font-semibold leading-snug">
-                                  {sub.label}
+                                  {lang === 'tr' ? sub.label : sub.labelEn}
                                 </span>
                               </div>
                               <span
@@ -149,7 +161,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                                   isSelected ? 'text-[#E5C99B]' : 'text-zinc-500'
                                 }`}
                               >
-                                {sub.spec}
+                                {lang === 'tr' ? sub.spec : sub.specEn}
                               </span>
                             </button>
                           );
@@ -167,7 +179,11 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                     className="luxury-shimmer w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-lg bg-gold-metallic text-zinc-950 text-xs sm:text-sm font-bold transition-all shadow-[0_8px_20px_rgba(212,175,122,0.25)] hover:scale-[1.01]"
                   >
                     <MessageSquare className="w-4 h-4 shrink-0" />
-                    <span>Bize Ulaşın & Bu Ürünü İsteyin</span>
+                    <span>
+                      {lang === 'tr'
+                        ? 'Bize Ulaşın & Bu Ürünü İsteyin'
+                        : 'Contact Us & Request This Product'}
+                    </span>
                     <ArrowRight className="w-4 h-4 shrink-0" />
                   </button>
                 </div>
@@ -190,7 +206,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
             <div className="relative aspect-[16/10] w-full bg-black">
               <img
                 src={previewProduct.image}
-                alt={previewProduct.title}
+                alt={lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
                 className="w-full h-full object-cover"
               />
               <button
@@ -205,10 +221,15 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
             <div className="p-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs font-bold text-[#D4AF7A] uppercase tracking-wider">
-                  {previewProduct.num} • {previewProduct.categoryName}
+                  {previewProduct.num} •{' '}
+                  {lang === 'tr' ? previewProduct.categoryName : previewProduct.categoryNameEn}
                 </span>
-                <h4 className="font-luxury text-2xl font-bold mt-1">{previewProduct.title}</h4>
-                <p className="text-xs text-zinc-300 mt-1">{previewProduct.desc}</p>
+                <h4 className="font-luxury text-2xl font-bold mt-1">
+                  {lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
+                </h4>
+                <p className="text-xs text-zinc-300 mt-1">
+                  {lang === 'tr' ? previewProduct.desc : previewProduct.descEn}
+                </p>
               </div>
               <button
                 type="button"
@@ -219,7 +240,7 @@ const Services: React.FC<ServicesProps> = ({ onSelectProductForContact }) => {
                 }}
                 className="px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-xs whitespace-nowrap shrink-0"
               >
-                Bize Ulaşın & Fiyat Alın
+                {lang === 'tr' ? 'Bize Ulaşın & Fiyat Alın' : 'Contact Us & Get Quote'}
               </button>
             </div>
           </div>
