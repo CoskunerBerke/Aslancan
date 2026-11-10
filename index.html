@@ -49,44 +49,114 @@
       rel="stylesheet"
     />
 
-    <!-- Structured Data (Schema.org WholesaleStore & LocalBusiness) -->
+    <!-- Structured Data (Schema.org WholesaleStore, OfferCatalog & SiteNavigationElement) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WholesaleStore",
-        "name": "Aslancan Tekstil Denizli",
-        "founder": {
-          "@type": "Person",
-          "name": "Yusuf Aslancan"
-        },
-        "description": "Denizli merkezli otel tekstili, ev tekstili, yetişkin ve çocuk bornoz grubu ile ihracat fazlası kiloluk stok havlu toptan ve perakende satış merkezi. Türkiye geneli 81 ilde teslimat ve ambar sevkiyatı.",
-        "telephone": "+90-535-037-90-74",
-        "email": "yaslancan027@gmail.com",
-        "url": "https://aslancan.vercel.app/",
-        "image": "https://aslancan.vercel.app/images/otel-havlu.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Merkezefendi",
-          "addressRegion": "Denizli",
-          "addressCountry": "TR"
-        },
-        "openingHoursSpecification": [
+        "@graph": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday",
-              "Saturday"
+            "@type": "WholesaleStore",
+            "@id": "https://aslancan.vercel.app/#organization",
+            "name": "Aslancan Tekstil Denizli",
+            "founder": {
+              "@type": "Person",
+              "name": "Yusuf Aslancan"
+            },
+            "description": "Denizli merkezli otel tekstili, ev tekstili, yetişkin ve çocuk bornoz grubu ile ihracat fazlası kiloluk stok havlu toptan ve perakende satış merkezi. Türkiye geneli 81 ilde teslimat ve ambar sevkiyatı.",
+            "telephone": "+90-535-037-90-74",
+            "email": "yaslancan027@gmail.com",
+            "url": "https://aslancan.vercel.app/",
+            "image": "https://aslancan.vercel.app/images/otel-havlu.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Merkezefendi",
+              "addressRegion": "Denizli",
+              "addressCountry": "TR"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday"
+                ],
+                "opens": "08:30",
+                "closes": "18:00"
+              }
             ],
-            "opens": "08:30",
-            "closes": "18:00"
+            "areaServed": "TR",
+            "priceRange": "₺₺",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Aslancan Tekstil Ürün Kataloğu",
+              "itemListElement": [
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Otel Havlusu Grubu (50x90, 70x140, 90x150, 30x50)"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Otel Nevresim Takımları & Çarşaf Grubu"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Otel Banyo Paspası & Sıvı Geçirmez Yatak Alezi"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Ev Tekstili Grubu (Nevresim, Çarşaf, Alez, Masa Örtüsü)"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Bornoz Grubu (Yetişkin Büyük Bornoz S-XXL & Çocuk Bornozu)"
+                },
+                {
+                  "@type": "OfferCatalog",
+                  "name": "Stok Ürünler (İhracat Fazlası Kiloluk Havlular)"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "SiteNavigationElement",
+                "position": 1,
+                "name": "Hakkımızda",
+                "url": "https://aslancan.vercel.app/#kurumsal"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 2,
+                "name": "Ürünler",
+                "url": "https://aslancan.vercel.app/#urunler"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 3,
+                "name": "Yorumlar",
+                "url": "https://aslancan.vercel.app/#yorumlar"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 4,
+                "name": "Galeri",
+                "url": "https://aslancan.vercel.app/#galeri"
+              },
+              {
+                "@type": "SiteNavigationElement",
+                "position": 5,
+                "name": "İletişim",
+                "url": "https://aslancan.vercel.app/#iletisim"
+              }
+            ]
           }
-        ],
-        "areaServed": "TR",
-        "priceRange": "₺₺"
+        ]
       }
     </script>
   </head>
