@@ -24,13 +24,11 @@ const ReviewRiver: React.FC = () => {
             </h2>
           </div>
           <a
-            href="https://wa.me/905358235885?text=Merhaba%20Aslancan%20Tekstil,%20toptan%20ve%20perakende%20ürünleriniz%20hakkında%20bilgi%20almak%20istiyorum."
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#iletisim"
             className="luxury-shimmer inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all self-start sm:self-auto whitespace-nowrap"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>WhatsApp Sipariş Hattı</span>
+            <span>Bize Ulaşın • 0535 037 90 74</span>
           </a>
         </div>
       </div>

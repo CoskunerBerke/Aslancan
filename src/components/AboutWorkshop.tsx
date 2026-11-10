@@ -14,7 +14,7 @@ const AboutWorkshop: React.FC = () => {
     },
     {
       num: '03',
-      title: '81 İle Ambar & Kargo Sevkiyatı',
+      title: '81 İlde Teslimat & Ambar Sevkiyatı',
       desc: 'Denizli merkez depomuzdan Türkiye’nin tüm illerindeki otel, yurt, spa, mağaza ve işletmelere anlaşmalı ambarlarla hızlı gönderim sağlıyoruz.',
     },
     {
@@ -49,8 +49,8 @@ const AboutWorkshop: React.FC = () => {
             </p>
             <p className="text-zinc-600 text-base leading-relaxed mb-8">
               Oteller, butik konaklama tesisleri, öğrenci yurtları, spa merkezleri ve çeyiz/ev tekstili
-              müşterileri için aracı komisyonu olmadan doğrudan Denizli fiyatları sunuyor; tüm illere
-              anlaşmalı ambarlarla sevkiyat yapıyoruz.
+              müşterileri için aracı komisyonu olmadan doğrudan Denizli fiyatları sunuyor; 81 ilde
+              teslimat ve anlaşmalı ambarlarla sevkiyat yapıyoruz.
             </p>
 
             <div className="border-t border-zinc-200 pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
@@ -92,7 +92,7 @@ const AboutWorkshop: React.FC = () => {
                     Otel & Ev Tekstili Toptan ve Perakende Satış Merkezi
                   </span>
                 </div>
-                <span className="font-mono text-xs text-[#D4AF7A] font-semibold">
+                <span className="text-xs text-[#D4AF7A] font-bold">
                   08:30 – 18:00
                 </span>
               </div>
@@ -107,7 +107,7 @@ const AboutWorkshop: React.FC = () => {
               key={item.num}
               className="group p-6 rounded-xl bg-[#FAF8F5] border border-zinc-200/80 hover:border-[#C5A47E] hover:bg-white hover:shadow-[0_18px_40px_-15px_rgba(197,164,126,0.22)] transition-all duration-300"
             >
-              <span className="block text-sm font-mono font-bold text-[#9A743E] mb-2.5">
+              <span className="block text-sm font-bold text-[#9A743E] mb-2.5">
                 {item.num}
               </span>
               <h3 className="text-base font-bold text-zinc-900 mb-2">{item.title}</h3>

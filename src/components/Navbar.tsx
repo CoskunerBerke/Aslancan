@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, ShoppingBag, Menu, X } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X } from 'lucide-react';
 import AslancanLogo from './AslancanLogo';
 
 interface NavbarProps {
-  cartCount: number;
-  onOpenCheckout: () => void;
+  onGoToContact: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
+const Navbar: React.FC<NavbarProps> = ({ onGoToContact }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -22,7 +21,6 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
   const navLinks = [
     { name: 'Hakkımızda', href: '#kurumsal' },
     { name: 'Ürünler', href: '#urunler' },
-    { name: 'Sipariş', href: '#siparis' },
     { name: 'Yorumlar', href: '#yorumlar' },
     { name: 'Galeri', href: '#galeri' },
     { name: 'İletişim', href: '#iletisim' },
@@ -64,35 +62,35 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
             ))}
           </nav>
 
-          {/* Right: Phone + Cart/Order CTA (shrink-0 & whitespace-nowrap) */}
+          {/* Right: Phone + Bize Ulaşın CTA (shrink-0 & whitespace-nowrap) */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <a
-              href="tel:+905358235885"
+              href="tel:+905350379074"
               className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-white hover:bg-white/10 text-sm font-semibold transition-colors whitespace-nowrap shrink-0 border border-white/10"
             >
               <Phone className="w-4 h-4 text-[#D4AF7A] shrink-0" />
-              <span>0535 823 58 85</span>
+              <span>0535 037 90 74</span>
             </a>
 
             <button
               type="button"
-              onClick={onOpenCheckout}
+              onClick={onGoToContact}
               className="luxury-shimmer inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all whitespace-nowrap shrink-0 shadow-[0_8px_24px_rgba(212,175,122,0.28)]"
             >
-              <ShoppingBag className="w-4 h-4 shrink-0" />
-              <span>{cartCount > 0 ? `Sepet (${cartCount})` : 'Teklif Al'}</span>
+              <MessageSquare className="w-4 h-4 shrink-0" />
+              <span>Bize Ulaşın</span>
             </button>
           </div>
 
-          {/* Mobile Hamburger & Cart Trigger */}
+          {/* Mobile Hamburger & Contact Trigger */}
           <div className="flex items-center gap-2 lg:hidden shrink-0">
             <button
               type="button"
-              onClick={onOpenCheckout}
+              onClick={onGoToContact}
               className="luxury-shimmer inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gold-metallic text-zinc-950 text-xs font-bold whitespace-nowrap shrink-0"
             >
-              <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
-              <span>{cartCount > 0 ? `Sepet (${cartCount})` : 'Sipariş'}</span>
+              <MessageSquare className="w-3.5 h-3.5 shrink-0" />
+              <span>Bize Ulaşın</span>
             </button>
             <button
               type="button"
@@ -120,22 +118,22 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCheckout }) => {
             ))}
             <div className="pt-3 flex flex-col sm:flex-row gap-2.5">
               <a
-                href="tel:+905358235885"
+                href="tel:+905350379074"
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold"
               >
                 <Phone className="w-4 h-4 text-[#D4AF7A]" />
-                <span>0535 823 58 85</span>
+                <span>0535 037 90 74</span>
               </a>
               <button
                 type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenCheckout();
+                  onGoToContact();
                 }}
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold"
               >
-                <ShoppingBag className="w-4 h-4" />
-                <span>Online Sipariş & Teklif Sepeti ({cartCount})</span>
+                <MessageSquare className="w-4 h-4" />
+                <span>Bize Ulaşın & Fiyat Alın</span>
               </button>
             </div>
           </div>

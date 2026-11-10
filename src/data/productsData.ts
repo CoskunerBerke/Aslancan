@@ -1,8 +1,6 @@
-export interface ProductVariant {
+export interface ProductSubItem {
   label: string;
-  unitLabel: string;
-  wholesaleMin: number;
-  samplePrice: number;
+  spec: string;
 }
 
 export interface ProductGroupItem {
@@ -12,9 +10,8 @@ export interface ProductGroupItem {
   categoryName: string;
   title: string;
   desc: string;
-  detail: string;
   image: string;
-  variants: ProductVariant[];
+  subItems: ProductSubItem[];
 }
 
 export const CATEGORY_TABS = [
@@ -31,14 +28,14 @@ export const productGroups: ProductGroupItem[] = [
     id: 'otel-havlusu-grubu',
     categoryKey: 'otel',
     categoryName: 'Otel Ürünleri',
-    title: 'Otel Havlusu Grubu (50x90 • 70x140 • 90x150)',
-    desc: 'Denizli dokuması %100 pamuk ipliğinden üretilen, endüstriyel yıkamaya ve yüksek sıcaklığa dayanıklı çift dikişli beyaz otel, pansiyon, yurt ve spa havluları.',
-    detail: '50x90 cm El/Yüz • 70x140 cm Banyo • 90x150 cm Battal/Spa',
+    title: 'Otel Havlusu Grubu',
+    desc: 'Denizli dokuması %100 pamuk ipliğinden üretilen, endüstriyel yıkamaya dayanıklı çift dikişli kar beyazı otel, pansiyon, yurt ve spa havluları.',
     image: '/images/otel-havlu.jpg',
-    variants: [
-      { label: '50x90 cm Otel El & Yüz Havlusu', unitLabel: 'Adet', wholesaleMin: 20, samplePrice: 95 },
-      { label: '70x140 cm Otel Banyo Havlusu', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 215 },
-      { label: '90x150 cm Otel Spa & Havuz Havlusu', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 285 },
+    subItems: [
+      { label: '50x90 cm Otel El & Yüz Havlusu', spec: '%100 Pamuk • Çift Dikişli' },
+      { label: '70x140 cm Otel Banyo Havlusu', spec: '%100 Pamuk • Yüksek Emici' },
+      { label: '90x150 cm Otel Spa & Havuz Havlusu', spec: 'Battal Boy • Ağır Gramaj' },
+      { label: '30x50 cm Otel Baş & Misafir Havlusu', spec: '%100 Pamuk • Otel Serisi' },
     ],
   },
   {
@@ -48,12 +45,12 @@ export const productGroups: ProductGroupItem[] = [
     categoryName: 'Otel Ürünleri',
     title: 'Otel Nevresim Takımları & Çarşaf Grubu',
     desc: 'Oteller, butik konaklama tesisleri ve öğrenci yurtları için 83 tel ve 120 tel çizgili saten (yollu) ile düz pamuk ranforce nevresim takımları, çarşaf ve yastık kılıfları.',
-    detail: 'Çizgili Saten • Pamuk Ranforce • Tek & Çift Kişilik',
     image: '/images/otel-nevresim.jpg',
-    variants: [
-      { label: 'Tek Kişilik Çizgili Saten Otel Seti', unitLabel: 'Takım', wholesaleMin: 5, samplePrice: 640 },
-      { label: 'Çift Kişilik Çizgili Saten Otel Seti', unitLabel: 'Takım', wholesaleMin: 5, samplePrice: 820 },
-      { label: 'Otel Tipi Düz/Lastikli Çarşaf & Kılıf', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 260 },
+    subItems: [
+      { label: 'Tek Kişilik Çizgili Saten Otel Nevresim Takımı', spec: '83 / 120 Tel Yollu Saten' },
+      { label: 'Çift Kişilik Çizgili Saten Otel Nevresim Takımı', spec: '83 / 120 Tel Yollu Saten' },
+      { label: 'Düz Beyaz Pamuk Ranforce Otel Nevresim Seti', spec: '%100 Pamuk Dokuma' },
+      { label: 'Otel Tipi Düz / Lastikli Çarşaf & Yastık Kılıfı', spec: 'Tüm Yatak Ölçüleri' },
     ],
   },
   {
@@ -63,12 +60,12 @@ export const productGroups: ProductGroupItem[] = [
     categoryName: 'Otel Ürünleri',
     title: 'Otel Banyo Paspası & Sıvı Geçirmez Alez',
     desc: 'Yüksek gramajlı ayak izi desenli Yunan bordürlü otel banyo paspasları ve yatak ömrünü koruyan nefes alabilen membran kaplamalı sıvı geçirmez yatak koruyucu alezler.',
-    detail: '50x70 Ayak İzli Paspas • Sıvı Geçirmez Mikrofiber/Havlu Alez',
     image: '/images/otel-paspas.jpg',
-    variants: [
-      { label: '50x70 cm Ayak İzli Otel Banyo Paspası', unitLabel: 'Adet', wholesaleMin: 20, samplePrice: 110 },
-      { label: 'Tek Kişilik Sıvı Geçirmez Yatak Alezi (90x200)', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 195 },
-      { label: 'Çift Kişilik Sıvı Geçirmez Yatak Alezi (160x200)', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 255 },
+    subItems: [
+      { label: '50x70 cm Ayak İzli Otel Banyo Paspası', spec: 'Yunan Bordürlü • Ağır Gramaj' },
+      { label: 'Tek Kişilik Sıvı Geçirmez Yatak Alezi (90x200)', spec: 'Membranlı • Lastikli' },
+      { label: 'Çift Kişilik Sıvı Geçirmez Yatak Alezi (160x200)', spec: 'Membranlı • Lastikli' },
+      { label: 'Battal Boy Sıvı Geçirmez Yatak Alezi (180x200)', spec: 'Havlu / Mikrofiber Yüzey' },
     ],
   },
   {
@@ -76,14 +73,14 @@ export const productGroups: ProductGroupItem[] = [
     id: 'ev-tekstili-grubu',
     categoryKey: 'ev',
     categoryName: 'Ev Tekstili',
-    title: 'Ev Tekstili: Nevresim Takımı, Çarşaf, Alez & Masa Örtüsü',
+    title: 'Ev Tekstili Grubu',
     desc: 'Mağazalar, çeyiz grupları ve bireysel ev kullanımı için %100 pamuk nevresim takımları, her ölçüye uygun lastikli/düz çarşaflar, yatak alezleri ve şık masa örtüleri.',
-    detail: 'Nevresim Takımı • Lastikli Çarşaf • Yatak Alezi • Masa Örtüsü',
     image: '/images/ev-tekstili.jpg',
-    variants: [
-      { label: 'Çift Kişilik Ev Tipi Pamuk Nevresim Takımı', unitLabel: 'Takım', wholesaleMin: 3, samplePrice: 790 },
-      { label: 'Penye / Pamuk Lastikli Çarşaf Takımı', unitLabel: 'Adet', wholesaleMin: 5, samplePrice: 230 },
-      { label: 'Leke Tutmaz Dokuma Masa Örtüsü', unitLabel: 'Adet', wholesaleMin: 5, samplePrice: 290 },
+    subItems: [
+      { label: 'Ev Tipi Pamuk Nevresim Takımı', spec: 'Tek & Çift Kişilik' },
+      { label: 'Penye & Pamuk Lastikli Çarşaf Takımı', spec: 'Her Ölçü ve Renk' },
+      { label: 'Ev Tipi Kapitoneli & Sıvı Geçirmez Yatak Alezi', spec: 'Yatak Koruyucu' },
+      { label: 'Dokuma Leke Tutmaz Masa Örtüsü Grubu', spec: 'Farklı Ebat Seçenekleri' },
     ],
   },
   {
@@ -91,14 +88,14 @@ export const productGroups: ProductGroupItem[] = [
     id: 'bornoz-grubu',
     categoryKey: 'bornoz',
     categoryName: 'Bornoz Grubu',
-    title: 'Bornoz Grubu: Büyük Bornoz & Çocuk Bornozu (Tüm Bedenler)',
-    desc: 'Yumuşak dokulu %100 Denizli pamuğundan üretilen her bedenden yetişkin büyük bornozlar (S, M, L, XL, XXL) ve tüm yaş aralıklarına uygun çocuk bornozları.',
-    detail: 'Yetişkin S - XXL Her Beden • Çocuk Bornozu Yaş Grupları',
+    title: 'Bornoz Grubu (Büyük & Çocuk Bornozu)',
+    desc: 'Yumuşak dokulu %100 Denizli pamuğundan üretilen her bedenden yetişkin büyük bornozlar ve tüm yaş aralıklarına uygun çocuk bornozları.',
     image: '/images/bornoz-grubu.jpg',
-    variants: [
-      { label: 'Yetişkin Büyük Bornoz (S / M / L / XL / XXL)', unitLabel: 'Adet', wholesaleMin: 5, samplePrice: 540 },
-      { label: 'Çocuk Bornozu (2-4 / 5-6 / 7-8 / 9-10 / 11-12 Yaş)', unitLabel: 'Adet', wholesaleMin: 5, samplePrice: 360 },
-      { label: 'Otel Tipi Şal Yaka Beyaz Bukle Bornoz', unitLabel: 'Adet', wholesaleMin: 10, samplePrice: 490 },
+    subItems: [
+      { label: 'Yetişkin Büyük Bornoz — S / M Beden', spec: '%100 Denizli Pamuğu' },
+      { label: 'Yetişkin Büyük Bornoz — L / XL Beden', spec: '%100 Denizli Pamuğu' },
+      { label: 'Yetişkin Büyük Bornoz — XXL Battal Beden', spec: 'Şal Yaka / Kimono' },
+      { label: 'Çocuk Bornozu — Tüm Yaş Grupları (2-12 Yaş)', spec: 'Kapüşonlu & Kemerli' },
     ],
   },
   {
@@ -106,14 +103,14 @@ export const productGroups: ProductGroupItem[] = [
     id: 'stok-kiloluk-havlular',
     categoryKey: 'stok',
     categoryName: 'Stok Ürünleri (Kiloluk)',
-    title: 'Stok Ürünler: İhracat Fazlası Her Boyuttan Kiloluk Havlular',
-    desc: 'Denizli ihracat üretimlerinden ayrılan 1. ve 2. kalite her boyuttan (30x50, 50x90, 70x140, 90x150) tartı / kilo bazlı yüksek avantajlı toptan ve perakende stok havlular.',
-    detail: 'İhracat Fazlası • Her Boyut Havlu • Kiloluk Tartı Satışı',
+    title: 'Stok Ürünler: İhracat Fazlası Kiloluk Havlular',
+    desc: 'Denizli ihracat üretimlerinden ayrılan her boyuttan tartı / kilo bazlı yüksek fiyat avantajlı toptan ve perakende stok havlu grupları.',
     image: '/images/kiloluk-stok-havlu.jpg',
-    variants: [
-      { label: 'İhracat Fazlası Karışık Boy Kiloluk Havlu', unitLabel: 'Kg', wholesaleMin: 10, samplePrice: 245 },
-      { label: 'İhracat Fazlası 50x90 & 70x140 Kiloluk Beyaz Havlu', unitLabel: 'Kg', wholesaleMin: 10, samplePrice: 265 },
-      { label: 'İhracat Fazlası 90x150 Büyük Boy Kiloluk Havlu', unitLabel: 'Kg', wholesaleMin: 10, samplePrice: 275 },
+    subItems: [
+      { label: '50x90 cm İhracat Fazlası Kiloluk El & Yüz Havlusu', spec: 'Tartı / Kilo Bazlı' },
+      { label: '70x140 cm İhracat Fazlası Kiloluk Banyo Havlusu', spec: 'Tartı / Kilo Bazlı' },
+      { label: '90x150 cm İhracat Fazlası Kiloluk Battal Havlu', spec: 'Tartı / Kilo Bazlı' },
+      { label: 'Karışık Boy İhracat Fazlası Kiloluk Stok Havlu', spec: 'Çuval & Koli Toptan' },
     ],
   },
 ];

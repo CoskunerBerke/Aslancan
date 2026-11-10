@@ -19,23 +19,21 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="text-xs sm:text-sm text-zinc-300 space-y-1 md:text-right">
-            <p>Yetkili: Yusuf Aslancan • Tel: 0535 823 58 85 • yaslancan027@gmail.com</p>
+            <p>Yetkili: Yusuf Aslancan • Tel: 0535 037 90 74 • yaslancan027@gmail.com</p>
             <p className="text-zinc-400">
-              Çalışma Saatleri: 08:30 – 18:00 • 81 İle Anlaşmalı Ambar ile Gönderim
+              Çalışma Saatleri: 08:30 – 18:00 • Türkiye Geneli 81 İlde Teslimat & Ambar Gönderimi
             </p>
           </div>
         </div>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
           <p>© {new Date().getFullYear()} Aslancan Tekstil Denizli. Tüm hakları saklıdır.</p>
-          <div className="flex items-center gap-3 font-mono text-[11px] text-zinc-400">
-            <span>VISA</span>
+          <div className="flex items-center gap-3 text-[11px] font-semibold text-zinc-400">
+            <span>DENİZLİ ÜRETİM</span>
             <span>•</span>
-            <span>MASTERCARD</span>
+            <span>TOPTAN & PERAKENDE</span>
             <span>•</span>
-            <span>TROY</span>
-            <span>•</span>
-            <span>HAVALE / EFT</span>
+            <span>81 İLDE TESLİMAT</span>
           </div>
         </div>
       </div>
