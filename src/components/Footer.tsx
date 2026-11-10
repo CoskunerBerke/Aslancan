@@ -19,8 +19,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               </span>
               <span className="block text-xs text-zinc-400">
                 {lang === 'tr'
-                  ? 'Otel Ürünleri • Ev Tekstili • Bornoz Grubu • İhracat Fazlası Kiloluk Havlular'
-                  : 'Hotel Textiles • Home Textiles • Bathrobes • Export-Surplus Per-Kg Towels'}
+                  ? 'Merkezefendi / Akçeşme 2612 Sokak No: 28/2 Aslancan Tekstil • Denizli'
+                  : 'Merkezefendi / Akcesme 2612 St. No: 28/2 Aslancan Textile • Denizli'}
               </span>
             </div>
           </div>

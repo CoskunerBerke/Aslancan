@@ -18,6 +18,7 @@ export interface ProductGroupItem {
   desc: string;
   descEn: string;
   image: string;
+  images?: string[];
   subItems: ProductSubItem[];
 }
 
@@ -228,9 +229,14 @@ export const productGroups: ProductGroupItem[] = [
     categoryNameEn: 'Stock Towels (Per Kg)',
     title: 'Stok Ürünler: İhracat Fazlası Kiloluk Havlular',
     titleEn: 'Stock Products: Export-Surplus Towels Sold by Weight (Kg)',
-    desc: 'Denizli ihracat üretimlerinden ayrılan her boyuttan tartı / kilo bazlı yüksek fiyat avantajlı toptan ve perakende stok havlu grupları.',
-    descEn: 'High-value wholesale and retail export-surplus cotton towels in all dimensions sold by weight (per kg) directly from Denizli.',
-    image: '/images/kiloluk-stok-havlu.jpg',
+    desc: 'Denizli ihracat üretimlerinden ayrılan her boyuttan tartı / kilo bazlı yüksek fiyat avantajlı toptan ve perakende paketli stok havlu grupları.',
+    descEn: 'High-value wholesale and retail export-surplus packaged cotton towels in all dimensions sold by weight (per kg) directly from Denizli.',
+    image: '/images/stok-havlu-1.jpg',
+    images: [
+      '/images/stok-havlu-1.jpg',
+      '/images/stok-havlu-2.jpg',
+      '/images/stok-havlu-3.jpg',
+    ],
     subItems: [
       {
         label: '50x90 cm İhracat Fazlası Kiloluk El & Yüz Havlusu',
@@ -251,10 +257,112 @@ export const productGroups: ProductGroupItem[] = [
         specEn: 'Sold by Weight (Kg)',
       },
       {
-        label: 'Karışık Boy İhracat Fazlası Kiloluk Stok Havlu',
-        labelEn: 'Mixed-Size Export-Surplus Stock Towels (Per Kg)',
+        label: 'Karışık Renk & Bordürlü İhracat Fazlası Stok Havlu',
+        labelEn: 'Assorted Color & Bordered Export-Surplus Stock Towels',
         spec: 'Çuval & Koli Toptan',
         specEn: 'Bale & Box Wholesale',
+      },
+    ],
+  },
+];
+
+export const stokExpandedCards: ProductGroupItem[] = [
+  {
+    num: '06-A',
+    id: 'stok-kiloluk-havlu-paketli',
+    categoryKey: 'stok',
+    categoryName: 'Stok Ürünleri (Kiloluk)',
+    categoryNameEn: 'Stock Towels (Per Kg)',
+    title: 'İhracat Fazlası Karışık Renk Paketli Stok Havlular',
+    titleEn: 'Export-Surplus Assorted Color Packaged Stock Towels',
+    desc: 'Denizli ihracat üretimlerinden ayrılan, şeffaf ambalajlı, yüksek su emici gri, antrasit, turkuaz, krem ve mercan tonlarında kiloluk stok havlular.',
+    descEn: 'Packaged export-surplus cotton towels in grey, anthracite, turquoise, cream, and coral tones sold by weight (per kg).',
+    image: '/images/stok-havlu-1.jpg',
+    images: ['/images/stok-havlu-1.jpg', '/images/stok-havlu-2.jpg', '/images/stok-havlu-3.jpg'],
+    subItems: [
+      {
+        label: '50x90 cm Karışık Renk Paketli Stok Havlu',
+        labelEn: '50x90 cm Assorted Color Packaged Stock Towel',
+        spec: 'Kiloluk / Adetli',
+        specEn: 'Per Kg / Piece',
+      },
+      {
+        label: '70x140 cm Karışık Renk Banyo Boy Stok Havlu',
+        labelEn: '70x140 cm Assorted Color Bath Stock Towel',
+        spec: 'Kiloluk / Adetli',
+        specEn: 'Per Kg / Piece',
+      },
+      {
+        label: '90x150 cm Battal Boy Renkli Stok Havlu',
+        labelEn: '90x150 cm Jumbo Colored Stock Towel',
+        spec: 'Tartı Bazlı Toptan',
+        specEn: 'Wholesale by Weight',
+      },
+    ],
+  },
+  {
+    num: '06-B',
+    id: 'stok-kiloluk-havlu-kabartmali',
+    categoryKey: 'stok',
+    categoryName: 'Stok Ürünleri (Kiloluk)',
+    categoryNameEn: 'Stock Towels (Per Kg)',
+    title: 'İhracat Fazlası Kabartma & Nakışlı Lüks Stok Havlular',
+    titleEn: 'Export-Surplus Embossed & Embroidered Stock Towels',
+    desc: 'Avrupa ihracat serisi etiketli ve ambalajlı, yüksek gramajlı kadife/bukle dokulu kabartma desenli birinci sınıf kiloluk stok havlular.',
+    descEn: 'European export-series tagged and packaged heavyweight embossed terry cotton stock towels sold by weight.',
+    image: '/images/stok-havlu-2.jpg',
+    images: ['/images/stok-havlu-2.jpg', '/images/stok-havlu-1.jpg', '/images/stok-havlu-3.jpg'],
+    subItems: [
+      {
+        label: '70x140 cm İhracat Serisi Kabartma Desenli Banyo Havlusu',
+        labelEn: '70x140 cm Export-Series Embossed Bath Towel',
+        spec: 'Ağır Gramaj • Paketli',
+        specEn: 'Heavyweight • Packaged',
+      },
+      {
+        label: '50x90 cm İhracat Serisi Kabartma El & Yüz Havlusu',
+        labelEn: '50x90 cm Export-Series Embossed Hand Towel',
+        spec: '%100 Pamuk • Paketli',
+        specEn: '100% Cotton • Packaged',
+      },
+      {
+        label: 'Karışık Renk & Ebat İhracat Fazlası Koli/Çuval',
+        labelEn: 'Mixed Color & Size Export-Surplus Bale/Box',
+        spec: 'Kiloluk Toptan Satış',
+        specEn: 'Per-Kg Wholesale',
+      },
+    ],
+  },
+  {
+    num: '06-C',
+    id: 'stok-kiloluk-havlu-bordurlu',
+    categoryKey: 'stok',
+    categoryName: 'Stok Ürünleri (Kiloluk)',
+    categoryNameEn: 'Stock Towels (Per Kg)',
+    title: 'İhracat Fazlası Jakar Bordürlü & Çizgili Stok Havlular',
+    titleEn: 'Export-Surplus Jacquard Bordered & Striped Stock Towels',
+    desc: 'Özel dokuma jakar bordürlü krem, yeşil, petrol mavisi ve füme renk seçenekleriyle mağaza ve toptan satışa hazır paketli kiloluk havlular.',
+    descEn: 'Custom jacquard-bordered cream, green, teal, and charcoal packaged stock towels ready for retail stores and wholesale.',
+    image: '/images/stok-havlu-3.jpg',
+    images: ['/images/stok-havlu-3.jpg', '/images/stok-havlu-1.jpg', '/images/stok-havlu-2.jpg'],
+    subItems: [
+      {
+        label: '50x90 & 70x140 cm Jakar Bordürlü İhracat Fazlası Havlu',
+        labelEn: '50x90 & 70x140 cm Jacquard Bordered Export Towel',
+        spec: 'Paketli • Kiloluk',
+        specEn: 'Packaged • Per Kg',
+      },
+      {
+        label: 'Beyaz & Krem Otel/Ev Tipi İhracat Fazlası Stok Havlu',
+        labelEn: 'White & Cream Hotel/Home Export Stock Towel',
+        spec: 'Yüksek Emici Pamuk',
+        specEn: 'High-Absorbency Cotton',
+      },
+      {
+        label: 'Tüm Boyutlar Karışık Toptan Kiloluk Havlu Grubu',
+        labelEn: 'All Sizes Mixed Wholesale Per-Kg Towel Group',
+        spec: '81 İlde Ambar Teslim',
+        specEn: '81-Province Freight',
       },
     ],
   },

@@ -133,23 +133,21 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
 
               <div className="py-5">
                 <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
-                  {lang === 'tr' ? 'E-POSTA & SEVKİYAT MERKEZİ' : 'EMAIL & SHIPPING CENTER'}
+                  {lang === 'tr' ? 'ADRES & MERKEZ DEPO' : 'ADDRESS & HEADQUARTERS'}
                 </span>
+                <p className="text-sm sm:text-base font-bold text-zinc-900 mt-1.5 flex items-start gap-2">
+                  <MapPin className="w-5 h-5 text-[#9A743E] shrink-0 mt-0.5" />
+                  <span>
+                    Merkezefendi / Akçeşme Mah. 2612 Sokak No: 28/2 — Aslancan Tekstil, Denizli
+                  </span>
+                </p>
                 <a
                   href="mailto:yaslancan027@gmail.com"
-                  className="text-base font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1 inline-flex items-center gap-2"
+                  className="text-sm font-bold text-zinc-700 hover:text-[#9A743E] transition-colors mt-2.5 inline-flex items-center gap-2"
                 >
                   <Mail className="w-4 h-4 text-[#9A743E] shrink-0" />
                   <span>yaslancan027@gmail.com</span>
                 </a>
-                <span className="text-xs text-zinc-600 mt-2 flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-[#9A743E] shrink-0" />
-                  <span>
-                    {lang === 'tr'
-                      ? 'Merkez: Denizli • Türkiye Geneli 81 İlde Teslimat & Ambar Gönderimi'
-                      : 'Headquarters: Denizli • Delivery Across All 81 Provinces'}
-                  </span>
-                </span>
               </div>
 
               <div className="pt-5">
@@ -163,8 +161,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                 </p>
                 <span className="text-sm text-zinc-600 block mt-1 leading-relaxed">
                   {lang === 'tr'
-                    ? 'Toptan satış ağırlıklı olup sipariş adedine göre perakende alımlarda da doğrudan yardımcı olunmaktadır.'
-                    : 'Primarily wholesale with direct support for quantity-based retail orders.'}
+                    ? 'Toptan satış ağırlıklı olup sipariş adedine göre perakende alımlarda da doğrudan yardımcı olunmaktadır. Türkiye geneli 81 ilde teslimat ve ambar gönderimi sağlanır.'
+                    : 'Primarily wholesale with direct support for quantity-based retail orders and freight shipping across all 81 provinces.'}
                 </span>
               </div>
             </div>
@@ -374,11 +372,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
           </div>
         </div>
 
-        {/* Embedded Google Map (Denizli) */}
+        {/* Embedded Google Map (Merkezefendi / Akçeşme 2612 Sokak 28/2 Denizli) */}
         <div className="rounded-xl overflow-hidden border border-[#C5A47E]/35 bg-white h-[360px] shadow-sm">
           <iframe
-            title="Aslancan Tekstil Denizli Konumu"
-            src="https://maps.google.com/maps?q=Denizli+Merkezefendi&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            title="Aslancan Tekstil — Merkezefendi Akçeşme 2612 Sokak 28/2 Denizli"
+            src="https://maps.google.com/maps?q=Ak%C3%A7e%C5%9Fme+Mahallesi+2612+Sokak+No+28+Merkezefendi+Denizli&t=&z=16&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

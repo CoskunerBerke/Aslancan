@@ -131,14 +131,14 @@
   }
 }
 
-.animate-river-continuous {
-  -webkit-animation: riverFlow 46s linear infinite;
-  animation: riverFlow 46s linear infinite;
-  will-change: transform;
-}
-
+/* Continuous non-stop review flow — never pauses on cursor hover */
+.animate-river-continuous,
 .animate-river-continuous:hover {
-  animation-play-state: paused;
+  -webkit-animation: riverFlow 42s linear infinite;
+  animation: riverFlow 42s linear infinite;
+  -webkit-animation-play-state: running !important;
+  animation-play-state: running !important;
+  will-change: transform;
 }
 
 .animate-marquee-fast {

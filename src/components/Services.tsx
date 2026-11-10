@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, ZoomIn, X, MessageSquare } from 'lucide-react';
-import { CATEGORY_TABS, productGroups, ProductGroupItem, Language } from '../data/productsData';
+import {
+  ArrowRight,
+  CheckCircle2,
+  ZoomIn,
+  X,
+  MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
+import {
+  CATEGORY_TABS,
+  productGroups,
+  stokExpandedCards,
+  ProductGroupItem,
+  Language,
+} from '../data/productsData';
 
 interface ServicesProps {
   lang: Language;
@@ -10,12 +24,16 @@ interface ServicesProps {
 const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [selectedSubIdx, setSelectedSubIdx] = useState<Record<string, number>>({});
+  const [cardImageIdx, setCardImageIdx] = useState<Record<string, number>>({});
   const [previewProduct, setPreviewProduct] = useState<ProductGroupItem | null>(null);
+  const [previewImgIdx, setPreviewImgIdx] = useState<number>(0);
 
   const filteredGroups =
     activeCategory === 'all'
       ? productGroups
-      : productGroups.filter((item) => item.categoryKey === activeCategory);
+      : activeCategory === 'stok'
+        ? stokExpandedCards
+        : productGroups.filter((item) => item.categoryKey === activeCategory);
 
   const handleRequestProduct = (product: ProductGroupItem, subIndex?: number) => {
     const idx = subIndex ?? selectedSubIdx[product.id] ?? 0;
@@ -25,6 +43,11 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
         ? `${product.title} — ${chosenSub.label}`
         : `${product.titleEn} — ${chosenSub.labelEn}`;
     onSelectProductForContact(summary);
+  };
+
+  const openLightbox = (product: ProductGroupItem, initialImgIdx = 0) => {
+    setPreviewProduct(product);
+    setPreviewImgIdx(initialImgIdx);
   };
 
   return (
@@ -71,36 +94,102 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
           </div>
         </div>
 
-        {/* 01 - 06 3-Column Product Grid */}
+        {/* 3-Column Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredGroups.map((product) => {
             const currentIdx = selectedSubIdx[product.id] ?? 0;
+            const gallery =
+              product.images && product.images.length > 0 ? product.images : [product.image];
+            const activeImgIdx = cardImageIdx[product.id] ?? 0;
+            const currentImgSrc = gallery[activeImgIdx] || product.image;
 
             return (
               <div
-                key={product.num}
+                key={product.id}
                 className="group bg-white rounded-xl border border-zinc-200/90 hover:border-[#C5A47E] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_65px_-15px_rgba(154,116,62,0.24)]"
               >
                 <div>
-                  {/* Real Product Photo (16:10) with Zoom Trigger */}
-                  <div
-                    onClick={() => setPreviewProduct(product)}
-                    className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border-b border-zinc-200 cursor-pointer"
-                  >
-                    <img
-                      src={product.image}
-                      alt={lang === 'tr' ? product.title : product.titleEn}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/65 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                  {/* Real Product Photo (16:10) with Multi-Image Support for Stock Towels */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950 border-b border-zinc-200">
+                    {product.id === 'stok-kiloluk-havlular' && gallery.length === 3 ? (
+                      /* 3-Photo Side-by-Side Collage for Main Stock Towels Card */
+                      <div className="w-full h-full grid grid-cols-3 gap-1 bg-zinc-950">
+                        {gallery.map((imgUrl, gIdx) => (
+                          <div
+                            key={imgUrl}
+                            onClick={() => openLightbox(product, gIdx)}
+                            className="relative w-full h-full overflow-hidden cursor-pointer group/tile"
+                          >
+                            <img
+                              src={imgUrl}
+                              alt={`${product.title} - ${gIdx + 1}`}
+                              className="w-full h-full object-cover object-center group-hover/tile:scale-110 transition-transform duration-700"
+                            />
+                            <div className="absolute top-2 left-2 bg-zinc-950/80 text-[#E5C99B] text-[10px] font-bold px-1.5 py-0.5 rounded border border-white/15">
+                              {gIdx + 1}/3
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div
+                        onClick={() => openLightbox(product, activeImgIdx)}
+                        className="w-full h-full cursor-pointer"
+                      >
+                        <img
+                          src={currentImgSrc}
+                          alt={lang === 'tr' ? product.title : product.titleEn}
+                          className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    )}
+
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent opacity-85 group-hover:opacity-65 transition-opacity" />
+
+                    {/* Thumbnail Switcher if Card Has Multiple Images */}
+                    {gallery.length > 1 && product.id !== 'stok-kiloluk-havlular' && (
+                      <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-zinc-950/80 backdrop-blur-sm p-1 rounded-lg border border-white/15">
+                        {gallery.map((thumb, tIdx) => (
+                          <button
+                            key={thumb}
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCardImageIdx((prev) => ({ ...prev, [product.id]: tIdx }));
+                            }}
+                            className={`w-7 h-7 rounded overflow-hidden border transition-all ${
+                              activeImgIdx === tIdx
+                                ? 'border-[#D4AF7A] scale-105'
+                                : 'border-white/20 opacity-65 hover:opacity-100'
+                            }`}
+                          >
+                            <img src={thumb} alt="" className="w-full h-full object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="pointer-events-none absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="text-xs font-bold tracking-widest uppercase text-[#E5C99B]">
-                        {product.num} • {lang === 'tr' ? product.categoryName : product.categoryNameEn}
+                        {product.num} •{' '}
+                        {lang === 'tr' ? product.categoryName : product.categoryNameEn}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-[11px] font-medium bg-zinc-950/75 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15">
+                      <button
+                        type="button"
+                        onClick={() => openLightbox(product, activeImgIdx)}
+                        className="pointer-events-auto inline-flex items-center gap-1 text-[11px] font-medium bg-zinc-950/80 backdrop-blur-sm px-2.5 py-1 rounded border border-white/15 hover:border-[#D4AF7A]"
+                      >
                         <ZoomIn className="w-3.5 h-3.5 text-[#D4AF7A]" />
-                        <span>{lang === 'tr' ? 'Büyüt' : 'Zoom'}</span>
-                      </span>
+                        <span>
+                          {gallery.length > 1
+                            ? lang === 'tr'
+                              ? `3 Görseli İncele`
+                              : `View 3 Photos`
+                            : lang === 'tr'
+                              ? 'Büyüt'
+                              : 'Zoom'}
+                        </span>
+                      </button>
                     </div>
                   </div>
 
@@ -193,7 +282,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
         </div>
       </div>
 
-      {/* Product Lightbox Modal */}
+      {/* Product Lightbox Modal with Multi-Photo Navigation */}
       {previewProduct && (
         <div
           onClick={() => setPreviewProduct(null)}
@@ -203,22 +292,80 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
             onClick={(e) => e.stopPropagation()}
             className="bg-zinc-950 border border-[#C5A47E]/40 rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl"
           >
-            <div className="relative aspect-[16/10] w-full bg-black">
-              <img
-                src={previewProduct.image}
-                alt={lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
-                className="w-full h-full object-cover"
-              />
-              <button
-                type="button"
-                onClick={() => setPreviewProduct(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
-                aria-label="Kapat"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="p-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {(() => {
+              const modalImages =
+                previewProduct.images && previewProduct.images.length > 0
+                  ? previewProduct.images
+                  : [previewProduct.image];
+              const activeModalSrc = modalImages[previewImgIdx] || previewProduct.image;
+
+              return (
+                <>
+                  <div className="relative aspect-[16/10] w-full bg-zinc-900 flex items-center justify-center">
+                    <img
+                      src={activeModalSrc}
+                      alt={lang === 'tr' ? previewProduct.title : previewProduct.titleEn}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                    {modalImages.length > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPreviewImgIdx(
+                              (prev) => (prev - 1 + modalImages.length) % modalImages.length
+                            )
+                          }
+                          className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
+                          aria-label="Önceki Görsel"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setPreviewImgIdx((prev) => (prev + 1) % modalImages.length)
+                          }
+                          className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
+                          aria-label="Sonraki Görsel"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                      </>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setPreviewProduct(null)}
+                      className="absolute top-4 right-4 p-2 rounded-full bg-zinc-950/80 text-white hover:text-[#D4AF7A] border border-white/20"
+                      aria-label="Kapat"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  {modalImages.length > 1 && (
+                    <div className="bg-zinc-900 px-6 py-3 flex items-center justify-center gap-3 border-t border-white/10">
+                      {modalImages.map((mSrc, mIdx) => (
+                        <button
+                          key={mSrc}
+                          type="button"
+                          onClick={() => setPreviewImgIdx(mIdx)}
+                          className={`w-16 h-12 rounded-lg overflow-hidden border-2 transition-all ${
+                            previewImgIdx === mIdx
+                              ? 'border-[#D4AF7A] scale-105'
+                              : 'border-white/20 opacity-60 hover:opacity-100'
+                          }`}
+                        >
+                          <img src={mSrc} alt="" className="w-full h-full object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </>
+              );
+            })()}
+
+            <div className="p-6 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
               <div>
                 <span className="text-xs font-bold text-[#D4AF7A] uppercase tracking-wider">
                   {previewProduct.num} •{' '}
