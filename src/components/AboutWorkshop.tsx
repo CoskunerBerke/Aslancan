@@ -92,6 +92,45 @@ const MINI_GROUPS: { title: LocalizedText; sub: LocalizedText }[] = [
   },
 ];
 
+const STATS_RIBBON: { value: LocalizedText; label: LocalizedText }[] = [
+  {
+    value: { tr: '81 İl', en: '81 Provinces', de: '81 Provinzen', bg: '81 Области' },
+    label: {
+      tr: 'Türkiye Geneli Ambar & Kargo Teslimat',
+      en: 'Nationwide Freight & Cargo Delivery',
+      de: 'Landesweiter Speditions- & Paketversand',
+      bg: 'Спедиция и карго доставка в цялата страна',
+    },
+  },
+  {
+    value: { tr: '%100', en: '100%', de: '100 %', bg: '100%' },
+    label: {
+      tr: 'Yüksek Emici Saf Denizli Pamuk Dokuması',
+      en: 'High-Absorbency Pure Denizli Cotton',
+      de: 'Saugstarke Reine Denizli-Baumwolle',
+      bg: 'Високопопиващ чист памук от Денизли',
+    },
+  },
+  {
+    value: { tr: '06 Grup', en: '06 Groups', de: '06 Gruppen', bg: '06 Групи' },
+    label: {
+      tr: 'Otel, Ev, Bornoz & İhracat Fazlası Kiloluk Stok',
+      en: 'Hotel, Home, Bathrobe & Per-Kg Stock Lines',
+      de: 'Hotel-, Heim-, Bademantel- & Kg-Lagerware',
+      bg: 'Хотелски, домашен текстил, халати и стока на кг',
+    },
+  },
+  {
+    value: { tr: '08:30–18:00', en: '08:30–18:00', de: '08:30–18:00', bg: '08:30–18:00' },
+    label: {
+      tr: 'Hızlı Teklif & Aynı Gün Ambar Sevkiyat Hazırlığı',
+      en: 'Fast Quotes & Same-Day Freight Dispatch',
+      de: 'Schnelles Angebot & Tägliche Verladung',
+      bg: 'Бърза оферта и експедиция в същия ден',
+    },
+  },
+];
+
 const PILLARS: { num: string; title: LocalizedText; desc: LocalizedText }[] = [
   {
     num: '01',
@@ -252,6 +291,8 @@ const AboutWorkshop: React.FC<AboutWorkshopProps> = ({ lang }) => {
                 <img
                   src="/images/textile-poster.jpg"
                   alt={IMAGE_BADGE_TITLE[lang]}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -268,8 +309,25 @@ const AboutWorkshop: React.FC<AboutWorkshopProps> = ({ lang }) => {
           </div>
         </div>
 
+        {/* High-Contrast Luxury Editorial Metrics Ribbon */}
+        <div className="mt-16 rounded-xl bg-zinc-950 border border-[#C5A47E]/35 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)]">
+          {STATS_RIBBON.map((stat, idx) => (
+            <div
+              key={idx}
+              className="border-l-2 border-[#D4AF7A] pl-4 flex flex-col justify-center"
+            >
+              <span className="font-luxury text-2xl sm:text-3xl font-bold text-gold-metallic leading-tight">
+                {stat.value[lang]}
+              </span>
+              <span className="text-xs sm:text-sm text-zinc-300 mt-1 leading-snug">
+                {stat.label[lang]}
+              </span>
+            </div>
+          ))}
+        </div>
+
         {/* 01 - 04 Architectural Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-20 pt-12 border-t border-zinc-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 pt-12 border-t border-zinc-200">
           {PILLARS.map((item) => (
             <div
               key={item.num}

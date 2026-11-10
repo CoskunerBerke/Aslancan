@@ -152,6 +152,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
               product.images && product.images.length > 0 ? product.images : [product.image];
             const activeImgIdx = cardImageIdx[product.id] ?? 0;
             const currentImgSrc = gallery[activeImgIdx] || product.image;
+            const isExpandedStockCard = product.categoryKey === 'stok' && product.id !== 'stok-kiloluk-havlular';
 
             return (
               <div
@@ -172,6 +173,8 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                             <img
                               src={imgUrl}
                               alt={`${product.title[lang]} - ${gIdx + 1}`}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover object-center group-hover/tile:scale-110 transition-transform duration-700"
                             />
                             <div className="absolute top-2 left-2 bg-zinc-950/80 text-[#E5C99B] text-[10px] font-bold px-1.5 py-0.5 rounded border border-white/15">
@@ -179,6 +182,26 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                             </div>
                           </div>
                         ))}
+                      </div>
+                    ) : isExpandedStockCard ? (
+                      <div
+                        onClick={() => openLightbox(product, activeImgIdx)}
+                        className="relative w-full h-full cursor-pointer flex items-center justify-center overflow-hidden"
+                      >
+                        {/* Ambient Blurred Backdrop + Uncropped Full Package Foreground */}
+                        <img
+                          src={currentImgSrc}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 w-full h-full object-cover scale-125 blur-md opacity-45"
+                        />
+                        <img
+                          src={currentImgSrc}
+                          alt={product.title[lang]}
+                          loading="lazy"
+                          decoding="async"
+                          className="relative z-10 h-full w-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                        />
                       </div>
                     ) : (
                       <div
@@ -188,6 +211,8 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                         <img
                           src={currentImgSrc}
                           alt={product.title[lang]}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                         />
                       </div>
@@ -196,7 +221,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent opacity-85 group-hover:opacity-65 transition-opacity" />
 
                     {gallery.length > 1 && product.id !== 'stok-kiloluk-havlular' && (
-                      <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-zinc-950/80 backdrop-blur-sm p-1 rounded-lg border border-white/15">
+                      <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-zinc-950/80 backdrop-blur-sm p-1 rounded-lg border border-white/15">
                         {gallery.map((thumb, tIdx) => (
                           <button
                             key={thumb}
@@ -217,7 +242,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                       </div>
                     )}
 
-                    <div className="pointer-events-none absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                    <div className="pointer-events-none absolute bottom-3 left-4 right-4 z-20 flex items-center justify-between text-white">
                       <span className="text-xs font-bold tracking-widest uppercase text-[#E5C99B]">
                         {product.num} • {product.categoryName[lang]}
                       </span>

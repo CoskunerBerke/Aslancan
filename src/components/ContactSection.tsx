@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, Send, MessageCircle, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, MessageCircle, CheckCircle2, ChevronDown } from 'lucide-react';
 import { Language, LocalizedText } from '../data/productsData';
 
 interface ContactSectionProps {
@@ -41,6 +41,54 @@ const QUICK_PRODUCTS_BY_LANG: Record<Language, string[]> = {
     'Стокови кърпи на килограм (Износен резерв)',
   ],
 };
+
+const FAQ_ITEMS: { num: string; q: LocalizedText; a: LocalizedText }[] = [
+  {
+    num: '01',
+    q: {
+      tr: 'Türkiye’nin 81 iline ve yurt dışına sevkiyat yapıyor musunuz?',
+      en: 'Do you ship across all 81 provinces of Turkey and internationally?',
+      de: 'Liefern Sie in alle 81 Provinzen der Türkei sowie international?',
+      bg: 'Извършвате ли доставки до всички 81 области в Турция и за чужбина?',
+    },
+    a: {
+      tr: 'Evet. Denizli Merkezefendi Akçeşme 2612 Sokak No: 28/2 merkez depomuzdan Türkiye’nin 81 iline anlaşmalı ambar ve kargo firmalarıyla hızlı gönderim sağlıyoruz.',
+      en: 'Yes. From our central warehouse in Denizli (Merkezefendi / Akcesme 2612 St. No: 28/2), we ship rapidly to all 81 provinces via partnered freight and cargo lines.',
+      de: 'Ja. Von unserem Zentrallager in Denizli (Merkezefendi / Akcesme 2612 Str. Nr. 28/2) aus versenden wir schnell per Spedition und Fracht.',
+      bg: 'Да. От централния ни склад в Денизли (Меркезефенди / кв. Акчешме, ул. 2612 № 28/2) изпращаме бързо чрез спедиторски и карго фирми.',
+    },
+  },
+  {
+    num: '02',
+    q: {
+      tr: 'Sadece toptan mı satış yapıyorsunuz, perakende alım mümkün mü?',
+      en: 'Do you sell only wholesale, or are retail orders also possible?',
+      de: 'Verkaufen Sie nur im Großhandel oder ist auch Einzelhandel möglich?',
+      bg: 'Само на едро ли продавате или е възможна и покупка на дребно?',
+    },
+    a: {
+      tr: 'Ana faaliyetimiz toptan satış olmakla birlikte, sipariş adedine ve ürün grubuna göre perakende alımlarda da müşterilerimize doğrudan yardımcı olmaktayız.',
+      en: 'While our primary focus is wholesale, we also directly assist customers with quantity-based retail orders across our product groups.',
+      de: 'Unser Schwerpunkt liegt im Großhandel, wir unterstützen unsere Kunden jedoch je nach Menge auch direkt bei Einzelhandelsbestellungen.',
+      bg: 'Основната ни дейност е търговията на едро, но съдействаме директно и при поръчки на дребно според количеството.',
+    },
+  },
+  {
+    num: '03',
+    q: {
+      tr: 'İhracat fazlası kiloluk stok havlularda hangi ebatlar ve renkler mevcut?',
+      en: 'Which sizes and colors are available in export-surplus per-kilo stock towels?',
+      de: 'Welche Größen und Farben gibt es bei den Exportüberschuss-Handtüchern pro Kg?',
+      bg: 'Какви размери и цветове има при стоковите кърпи на килограм?',
+    },
+    a: {
+      tr: 'Stok havlu grubumuzda 50x90 cm el/yüz, 70x140 cm banyo ve 90x150 cm battal boylarda; beyaz, krem, gri, antrasit, turkuaz ve mercan tonlarında paketli ürünler tartı (kg) bazlı sunulmaktadır.',
+      en: 'Our stock towel line includes 50x90 cm hand, 70x140 cm bath, and 90x150 cm jumbo towels in white, cream, grey, anthracite, turquoise, and coral—packaged and sold by weight (kg).',
+      de: 'Unsere Lagerhandtücher umfassen 50x90 cm, 70x140 cm und 90x150 cm in Weiß, Creme, Grau, Anthrazit, Türkis und Koralle — verpackt und nach Gewicht (Kg) verkauft.',
+      bg: 'Нашите стокови кърпи включват размери 50x90 см, 70x140 см и 90x150 см в бяло, кремаво, сиво, антрацит, тюркоаз и коралово — пакетирани и продавани на килограм.',
+    },
+  },
+];
 
 const TEXTS: Record<string, LocalizedText> = {
   badge: {
@@ -187,6 +235,12 @@ const TEXTS: Record<string, LocalizedText> = {
     de: 'Als Nachricht / E-Mail-Anfrage senden',
     bg: 'Изпрати като съобщение / имейл заявка',
   },
+  faqHeading: {
+    tr: 'Sıkça Sorulan Sorular (Toptan, Perakende & Sevkiyat)',
+    en: 'Frequently Asked Questions (Wholesale, Retail & Shipping)',
+    de: 'Häufig gestellte Fragen (Großhandel, Einzelhandel & Versand)',
+    bg: 'Често задавани въпроси (На едро, на дребно и доставка)',
+  },
 };
 
 function sanitizeInput(val: string): string {
@@ -199,6 +253,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
   const [userCity, setUserCity] = useState('');
   const [requestedProduct, setRequestedProduct] = useState('');
   const [sentNotice, setSentNotice] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number>(0);
 
   const quickProducts = QUICK_PRODUCTS_BY_LANG[lang];
 
@@ -266,7 +321,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
           <p className="text-zinc-600 text-base mt-3">{TEXTS.subtitle[lang]}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
           {/* Left: Clean Architectural Contact Details (5 cols) */}
           <div className="lg:col-span-5 bg-white rounded-xl p-7 sm:p-9 border border-[#C5A47E]/35 shadow-sm flex flex-col justify-between">
             <div className="divide-y divide-zinc-200">
@@ -489,6 +544,44 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+
+        {/* SEO-Rich Architectural FAQ Accordion (01 - 03) */}
+        <div className="mb-12 bg-white rounded-xl border border-[#C5A47E]/35 p-6 sm:p-8 shadow-sm">
+          <h3 className="font-luxury text-xl sm:text-2xl font-bold text-zinc-900 mb-5">
+            {TEXTS.faqHeading[lang]}
+          </h3>
+          <div className="divide-y divide-zinc-200">
+            {FAQ_ITEMS.map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={item.num} className="py-3.5 first:pt-0 last:pb-0">
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? -1 : idx)}
+                    className="w-full flex items-center justify-between gap-4 text-left"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-bold text-[#9A743E]">{item.num}</span>
+                      <span className="text-sm sm:text-base font-bold text-zinc-900">
+                        {item.q[lang]}
+                      </span>
+                    </div>
+                    <ChevronDown
+                      className={`w-4 h-4 text-[#9A743E] shrink-0 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed mt-2.5 pl-7">
+                      {item.a[lang]}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 

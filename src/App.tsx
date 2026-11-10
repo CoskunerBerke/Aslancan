@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MessageCircle } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutWorkshop from './components/AboutWorkshop';
@@ -15,6 +16,13 @@ const PAGE_TITLES: LocalizedText = {
   en: 'Aslancan Textile Denizli | Hotel Textiles, Home Textiles, Bathrobes & Per-Kg Stock Towels',
   de: 'Aslancan Textil Denizli | Hoteltextilien, Heimtextilien, Bademäntel & Lagerhandtücher pro Kg',
   bg: 'Асланджан Текстил Денизли | Хотелски текстил, домашен текстил, халати и стокови кърпи на кг',
+};
+
+const FLOATING_CTA: LocalizedText = {
+  tr: 'Hızlı Sipariş • 0535 037 90 74',
+  en: 'Quick Order • 0535 037 90 74',
+  de: 'Schnellkontakt • 0535 037 90 74',
+  bg: 'Бърза поръчка • 0535 037 90 74',
 };
 
 const App: React.FC = () => {
@@ -50,6 +58,17 @@ const App: React.FC = () => {
         <ContactSection lang={lang} selectedProduct={selectedProduct} />
       </main>
       <Footer lang={lang} />
+
+      {/* Desktop Floating Quick Order Pill (Bottom Right) */}
+      <button
+        type="button"
+        onClick={scrollToContact}
+        className="hidden sm:inline-flex fixed bottom-6 right-6 z-40 items-center gap-2.5 px-5 py-3.5 rounded-full bg-zinc-950 text-[#E5C99B] border border-[#C5A47E]/60 shadow-[0_18px_45px_rgba(0,0,0,0.45)] hover:scale-105 transition-all text-xs font-bold tracking-wide"
+      >
+        <MessageCircle className="w-4 h-4 text-[#D4AF7A] shrink-0" />
+        <span>{FLOATING_CTA[lang]}</span>
+      </button>
+
       <MobileQuickBar lang={lang} onGoToContact={scrollToContact} />
     </div>
   );
