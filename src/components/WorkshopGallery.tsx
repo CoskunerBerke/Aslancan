@@ -88,21 +88,21 @@ const GALLERY_PHOTOS: {
 
 const WorkshopGallery: React.FC<WorkshopGalleryProps> = ({ lang }) => {
   return (
-    <section id="galeri" className="py-24 bg-white">
+    <section id="galeri" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-10 sm:mb-14">
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-[1.5px] bg-[#9A743E]" />
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+            <span className="w-8 h-[1.5px] bg-[#9A743E] shrink-0" />
+            <p className="text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9A743E]">
               {GALLERY_BADGE[lang]}
             </p>
           </div>
-          <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight">
+          <h2 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight">
             {GALLERY_TITLE[lang]}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {GALLERY_PHOTOS.map((photo) => (
             <div
               key={photo.src}

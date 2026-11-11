@@ -110,22 +110,22 @@ const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, onGoToContact }) =>
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Left: Real AT Monogram Logo & Brand Name (shrink-0 & whitespace-nowrap) */}
-          <a href="#" className="flex items-center gap-3.5 shrink-0 group">
-            <AslancanLogo className="w-11 h-11 shrink-0 transition-transform duration-300 group-hover:scale-105" />
+          <a href="#" className="flex items-center gap-2.5 sm:gap-3.5 shrink-0 group">
+            <AslancanLogo className="w-9 h-9 sm:w-11 sm:h-11 shrink-0 transition-transform duration-300 group-hover:scale-105" />
             <div className="whitespace-nowrap">
-              <span className="block font-brand text-white font-bold text-lg tracking-[0.14em] leading-none">
+              <span className="block font-brand text-white font-bold text-base sm:text-lg tracking-[0.12em] sm:tracking-[0.14em] leading-none">
                 ASLANCAN
               </span>
-              <span className="block text-gold-metallic text-[10px] font-semibold tracking-[0.26em] uppercase mt-1">
+              <span className="block text-gold-metallic text-[9px] sm:text-[10px] font-semibold tracking-[0.18em] sm:tracking-[0.26em] uppercase mt-1">
                 {BRAND_SUBTITLE[lang]}
               </span>
             </div>
           </a>
 
           {/* Center: Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -138,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, onGoToContact }) =>
           </nav>
 
           {/* Right: Language Dropdown Card + Phone + Contact CTA */}
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
             {/* Downward Language Dropdown Card Container */}
             <div ref={dropdownRef} className="relative shrink-0">
               <button
@@ -146,11 +146,11 @@ const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, onGoToContact }) =>
                 onClick={() => setLangDropdownOpen((prev) => !prev)}
                 aria-expanded={langDropdownOpen}
                 aria-haspopup="listbox"
-                className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-[#C5A47E]/40 bg-zinc-900/90 hover:bg-zinc-800 text-white text-xs sm:text-sm font-semibold transition-all whitespace-nowrap shrink-0"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2 rounded-lg border border-[#C5A47E]/40 bg-zinc-900/90 hover:bg-zinc-800 text-white text-xs sm:text-sm font-semibold transition-all whitespace-nowrap shrink-0"
               >
                 <Globe className="w-4 h-4 text-[#D4AF7A] shrink-0" />
                 <span className="font-bold text-[#E5C99B]">{currentLangObj.shortLabel}</span>
-                <span className="hidden sm:inline text-zinc-200">{currentLangObj.nativeName}</span>
+                <span className="hidden xl:inline text-zinc-200">{currentLangObj.nativeName}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 text-[#D4AF7A] transition-transform duration-200 shrink-0 ${
                     langDropdownOpen ? 'rotate-180' : ''

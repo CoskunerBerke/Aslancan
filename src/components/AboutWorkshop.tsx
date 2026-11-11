@@ -196,19 +196,19 @@ const PILLARS: { num: string; title: LocalizedText; desc: LocalizedText }[] = [
 
 const AboutWorkshop: React.FC<AboutWorkshopProps> = ({ lang }) => {
   return (
-    <section id="kurumsal" className="py-24 bg-white">
+    <section id="kurumsal" className="py-16 sm:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column */}
           <div className="lg:col-span-6">
             <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-[1.5px] bg-[#9A743E]" />
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+              <span className="w-8 h-[1.5px] bg-[#9A743E] shrink-0" />
+              <p className="text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9A743E]">
                 {SECTION_BADGE[lang]}
               </p>
             </div>
 
-            <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight leading-[1.15] mb-6">
+            <h2 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight leading-[1.16] mb-5 sm:mb-6">
               {SECTION_HEADING[lang]}
             </h2>
 
@@ -296,27 +296,31 @@ const AboutWorkshop: React.FC<AboutWorkshopProps> = ({ lang }) => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="bg-zinc-950 text-white px-6 py-4 flex items-center justify-between border-t border-[#C5A47E]/25">
-                <div>
-                  <span className="block font-brand text-xs tracking-[0.2em] text-gold-metallic uppercase">
+              <div className="bg-zinc-950 text-white px-4 sm:px-6 py-4 flex items-center justify-between gap-3 border-t border-[#C5A47E]/25">
+                <div className="min-w-0">
+                  <span className="block font-brand text-[11px] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-gold-metallic uppercase">
                     {IMAGE_BADGE_TITLE[lang]}
                   </span>
-                  <span className="text-xs text-zinc-300">{IMAGE_BADGE_SUB[lang]}</span>
+                  <span className="text-[11px] sm:text-xs text-zinc-300 block mt-0.5">
+                    {IMAGE_BADGE_SUB[lang]}
+                  </span>
                 </div>
-                <span className="text-xs text-[#D4AF7A] font-bold">08:30 – 18:00</span>
+                <span className="text-xs text-[#D4AF7A] font-bold whitespace-nowrap shrink-0">
+                  08:30 – 18:00
+                </span>
               </div>
             </div>
           </div>
         </div>
 
         {/* High-Contrast Luxury Editorial Metrics Ribbon */}
-        <div className="mt-16 rounded-xl bg-zinc-950 border border-[#C5A47E]/35 p-6 sm:p-8 grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)]">
+        <div className="mt-12 sm:mt-16 rounded-xl bg-zinc-950 border border-[#C5A47E]/35 p-5 sm:p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.25)]">
           {STATS_RIBBON.map((stat, idx) => (
             <div
               key={idx}
               className="border-l-2 border-[#D4AF7A] pl-4 flex flex-col justify-center"
             >
-              <span className="font-luxury text-2xl sm:text-3xl font-bold text-gold-metallic leading-tight">
+              <span className="font-luxury text-2xl xl:text-3xl font-bold text-gold-metallic leading-tight">
                 {stat.value[lang]}
               </span>
               <span className="text-xs sm:text-sm text-zinc-300 mt-1 leading-snug">

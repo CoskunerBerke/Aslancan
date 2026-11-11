@@ -306,24 +306,24 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
   };
 
   return (
-    <section id="iletisim" className="py-24 bg-[#F6F3EC] border-t border-zinc-200">
+    <section id="iletisim" className="py-16 sm:py-24 bg-[#F6F3EC] border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mb-14">
+        <div className="max-w-3xl mb-10 sm:mb-14">
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-[1.5px] bg-[#9A743E]" />
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+            <span className="w-8 h-[1.5px] bg-[#9A743E] shrink-0" />
+            <p className="text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9A743E]">
               {TEXTS.badge[lang]}
             </p>
           </div>
-          <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight">
+          <h2 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight">
             {TEXTS.title[lang]}
           </h2>
-          <p className="text-zinc-600 text-base mt-3">{TEXTS.subtitle[lang]}</p>
+          <p className="text-zinc-600 text-sm sm:text-base mt-3">{TEXTS.subtitle[lang]}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-10 sm:mb-12">
           {/* Left: Clean Architectural Contact Details (5 cols) */}
-          <div className="lg:col-span-5 bg-white rounded-xl p-7 sm:p-9 border border-[#C5A47E]/35 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-white rounded-xl p-5 sm:p-9 border border-[#C5A47E]/35 shadow-sm flex flex-col justify-between">
             <div className="divide-y divide-zinc-200">
               <div className="pb-5">
                 <span className="block text-xs font-bold uppercase tracking-wider text-zinc-400">
@@ -334,9 +334,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                 </p>
                 <a
                   href="tel:+905358235885"
-                  className="font-luxury text-3xl font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1.5 inline-flex items-center gap-2.5"
+                  className="font-luxury text-2xl sm:text-3xl font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1.5 inline-flex items-center gap-2.5 whitespace-nowrap"
                 >
-                  <Phone className="w-6 h-6 text-[#9A743E] shrink-0" />
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#9A743E] shrink-0" />
                   <span>0535 823 58 85</span>
                 </a>
               </div>
@@ -390,15 +390,15 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
           </div>
 
           {/* Right: 4-Field Direct Order & Inquiry Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-xl p-7 sm:p-9 border border-[#C5A47E]/35 shadow-sm">
+          <div className="lg:col-span-7 bg-white rounded-xl p-5 sm:p-9 border border-[#C5A47E]/35 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 mb-6 border-b border-zinc-200">
               <div>
-                <h3 className="font-luxury text-2xl font-bold text-zinc-900">
+                <h3 className="font-luxury text-xl sm:text-2xl font-bold text-zinc-900">
                   {TEXTS.formTitle[lang]}
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 mt-0.5">{TEXTS.formSub[lang]}</p>
               </div>
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-zinc-950 text-[#E5C99B] px-3.5 py-2 rounded-lg border border-[#C5A47E]/30 whitespace-nowrap self-start sm:self-auto">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-zinc-950 text-[#E5C99B] px-3.5 py-2 rounded-lg border border-[#C5A47E]/30 whitespace-nowrap self-start sm:self-auto shrink-0">
                 <Phone className="w-3.5 h-3.5 text-[#D4AF7A]" />
                 <span>0535 823 58 85</span>
               </span>
@@ -424,7 +424,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder={TEXTS.field1Placeholder[lang]}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-base sm:text-sm focus:outline-none focus:border-zinc-950"
                   />
                 </div>
 
@@ -446,7 +446,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                     value={userPhone}
                     onChange={(e) => setUserPhone(e.target.value)}
                     placeholder={TEXTS.field2Placeholder[lang]}
-                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-base sm:text-sm focus:outline-none focus:border-zinc-950"
                   />
                 </div>
               </div>
@@ -469,7 +469,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                   value={userCity}
                   onChange={(e) => setUserCity(e.target.value)}
                   placeholder={TEXTS.field3Placeholder[lang]}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-base sm:text-sm focus:outline-none focus:border-zinc-950"
                 />
               </div>
 
@@ -514,7 +514,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                   value={requestedProduct}
                   onChange={(e) => setRequestedProduct(e.target.value)}
                   placeholder={TEXTS.field4Placeholder[lang]}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-sm focus:outline-none focus:border-zinc-950"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-zinc-300 text-zinc-900 text-base sm:text-sm focus:outline-none focus:border-zinc-950"
                 />
               </div>
 
@@ -586,7 +586,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
         </div>
 
         {/* Embedded Google Map (Merkezefendi / Akçeşme 2612 Sokak 28/2 Denizli) */}
-        <div className="rounded-xl overflow-hidden border border-[#C5A47E]/35 bg-white h-[360px] shadow-sm">
+        <div className="rounded-xl overflow-hidden border border-[#C5A47E]/35 bg-white h-[280px] sm:h-[360px] shadow-sm">
           <iframe
             title="Aslancan Tekstil — Merkezefendi Akçeşme 2612 Sokak 28/2 Denizli"
             src="https://maps.google.com/maps?q=Ak%C3%A7e%C5%9Fme+Mahallesi+2612+Sokak+No+28+Merkezefendi+Denizli&t=&z=16&ie=UTF8&iwloc=&output=embed"

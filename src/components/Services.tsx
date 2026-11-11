@@ -126,24 +126,24 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
   }, [previewProduct]);
 
   return (
-    <section id="urunler" className="py-24 bg-[#F6F3EC] border-t border-zinc-200">
+    <section id="urunler" className="py-16 sm:py-24 bg-[#F6F3EC] border-t border-zinc-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header & Single-Row Side-by-Side Category Filter */}
-        <div className="mb-14">
+        <div className="mb-10 sm:mb-14">
           <div className="flex items-center gap-3 mb-3">
-            <span className="w-8 h-[1.5px] bg-[#9A743E]" />
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9A743E]">
+            <span className="w-8 h-[1.5px] bg-[#9A743E] shrink-0" />
+            <p className="text-xs font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#9A743E]">
               {CATALOG_TAG[lang]}
             </p>
           </div>
 
-          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6">
-            <h2 className="font-luxury text-3xl sm:text-5xl font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
+          <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-5 sm:gap-6">
+            <h2 className="font-luxury text-2xl sm:text-4xl lg:text-5xl font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
               {CATALOG_TITLE[lang]}
             </h2>
 
             {/* All 5 Category Filter Buttons Strictly Side-by-Side (Yan Yana) on a Single Line */}
-            <div className="flex items-center gap-2.5 overflow-x-auto pb-1 no-scrollbar flex-nowrap shrink-0">
+            <div className="flex items-center gap-2 sm:gap-2.5 overflow-x-auto pb-1.5 no-scrollbar flex-nowrap shrink-0 -mx-4 px-4 sm:mx-0 sm:px-0">
               {CATEGORY_TABS.map((tab) => {
                 const isActive = activeCategory === tab.key;
                 return (
@@ -310,15 +310,15 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                                   [product.id]: idx,
                                 }))
                               }
-                              className={`w-full px-3.5 py-2.5 rounded-lg border text-left transition-all flex items-center justify-between gap-2 ${
+                              className={`w-full px-3.5 py-2.5 rounded-lg border text-left transition-all flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 ${
                                 isSelected
                                   ? 'bg-zinc-950 text-white border-zinc-950 shadow-sm'
                                   : 'bg-[#FAF8F5] text-zinc-800 border-zinc-200 hover:border-[#C5A47E]'
                               }`}
                             >
-                              <div className="flex items-center gap-2.5 min-w-0">
+                              <div className="flex items-start sm:items-center gap-2.5 min-w-0">
                                 <CheckCircle2
-                                  className={`w-4 h-4 shrink-0 ${
+                                  className={`w-4 h-4 shrink-0 mt-0.5 sm:mt-0 ${
                                     isSelected ? 'text-[#D4AF7A]' : 'text-zinc-400'
                                   }`}
                                 />
@@ -327,7 +327,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
                                 </span>
                               </div>
                               <span
-                                className={`text-[11px] shrink-0 font-medium ${
+                                className={`text-[11px] shrink-0 font-medium pl-6 sm:pl-0 ${
                                   isSelected ? 'text-[#E5C99B]' : 'text-zinc-500'
                                 }`}
                               >
@@ -367,7 +367,7 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-zinc-950 border border-[#C5A47E]/40 rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl"
+            className="bg-zinc-950 border border-[#C5A47E]/40 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
           >
             {(() => {
               const modalImages =

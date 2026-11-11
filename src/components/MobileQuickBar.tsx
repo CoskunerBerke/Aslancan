@@ -23,7 +23,7 @@ const CONTACT_TEXT: LocalizedText = {
 
 const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ lang, onGoToContact }) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-zinc-950 border-t border-white/15 px-3 py-2.5">
+    <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-zinc-950/95 backdrop-blur-md border-t border-white/15 px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]">
       <div className="grid grid-cols-3 gap-2">
         <a
           href="tel:+905358235885"

@@ -122,38 +122,38 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-8 sm:py-12">
         <div className="max-w-4xl">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-10 h-[2px] bg-gradient-to-r from-[#D4AF7A] to-[#FFF6E5]" />
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.26em] text-gold-metallic">
+          <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
+            <span className="w-7 sm:w-10 h-[2px] bg-gradient-to-r from-[#D4AF7A] to-[#FFF6E5] shrink-0" />
+            <span className="text-[11px] sm:text-sm font-semibold uppercase tracking-[0.18em] sm:tracking-[0.26em] text-gold-metallic">
               {HERO_BADGE[lang]}
             </span>
           </div>
 
           {lang === 'tr' && (
-            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[66px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
               Saf Denizli Pamuğundan{' '}
               <span className="italic font-normal text-gold-metallic">Otel & Ev Tekstili</span>{' '}
               Zarafeti.
             </h1>
           )}
           {lang === 'en' && (
-            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[66px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
               Pure Denizli Cotton{' '}
               <span className="italic font-normal text-gold-metallic">Hotel & Home Textile</span>{' '}
               Excellence.
             </h1>
           )}
           {lang === 'de' && (
-            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.08] mb-6 drop-shadow-sm">
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
               Edle{' '}
               <span className="italic font-normal text-gold-metallic">Hotel- & Heimtextilien</span>{' '}
               aus Reiner Denizli-Baumwolle.
             </h1>
           )}
           {lang === 'bg' && (
-            <h1 className="font-luxury text-4xl sm:text-6xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.1] mb-6 drop-shadow-sm">
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.14] sm:leading-[1.1] mb-5 sm:mb-6 drop-shadow-sm">
               Изящен{' '}
               <span className="italic font-normal text-gold-metallic">
                 хотелски и домашен текстил
@@ -163,7 +163,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
           )}
 
           {lang === 'tr' && (
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
               Denizli merkezli <strong className="text-white font-semibold">Aslancan Tekstil</strong> olarak;
               50x90, 70x140 ve 90x150 otel havluları, çizgili saten nevresim takımları, banyo paspası,
               sıvı geçirmez alez, yetişkin ve çocuk bornozları ile ihracat fazlası kiloluk havlularda
@@ -171,7 +171,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             </p>
           )}
           {lang === 'en' && (
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
               Based in Denizli, <strong className="text-white font-semibold">Aslancan Textile</strong> supplies
               50x90, 70x140, and 90x150 hotel towels, striped sateen duvet cover sets, bath mats,
               waterproof mattress protectors, adult & kids bathrobes, and export-surplus per-kilo towels
@@ -179,7 +179,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             </p>
           )}
           {lang === 'de' && (
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
               Mit Sitz in Denizli liefert <strong className="text-white font-semibold">Aslancan Textil</strong>{' '}
               50x90, 70x140 und 90x150 Hotelhandtücher, Streifensatin-Bettwäsche, Badematten,
               wasserdichte Matratzenschoner, Erwachsenen- und Kinderbademäntel sowie
@@ -187,7 +187,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             </p>
           )}
           {lang === 'bg' && (
-            <p className="text-base sm:text-lg text-zinc-200 leading-relaxed mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
               Базирана в Денизли, <strong className="text-white font-semibold">Асланджан Текстил</strong>{' '}
               доставя хотелски кърпи (50x90, 70x140, 90x150), раирани сатенени спални комплекти,
               постелки за баня, непромокаеми протектори, халати за възрастни и деца и стокови кърпи
@@ -195,11 +195,11 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             </p>
           )}
 
-          {/* 3 Action Buttons Strictly Side-by-Side on Desktop */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3.5 mb-12">
+          {/* 3 Action Buttons: Full-Width Touch-Friendly on Mobile, Side-by-Side on Tablet/Desktop */}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-stretch sm:items-center gap-3 sm:gap-3.5 mb-10 sm:mb-12">
             <a
               href="#urunler"
-              className="luxury-shimmer inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-[0_14px_35px_rgba(212,175,122,0.32)] hover:scale-[1.02] whitespace-nowrap shrink-0"
+              className="luxury-shimmer inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg bg-gold-metallic text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-[0_14px_35px_rgba(212,175,122,0.32)] hover:scale-[1.02] whitespace-nowrap shrink-0"
             >
               <Sparkles className="w-4 h-4 shrink-0" />
               <span>{HERO_EXPLORE_BTN[lang]}</span>
@@ -208,7 +208,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             <button
               type="button"
               onClick={onGoToContact}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-white hover:bg-zinc-100 text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-lg hover:scale-[1.02] whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg bg-white hover:bg-zinc-100 text-zinc-950 font-bold text-sm sm:text-base transition-all shadow-lg hover:scale-[1.02] whitespace-nowrap shrink-0"
             >
               <MessageSquare className="w-4 h-4 text-[#9A743E] shrink-0" />
               <span>{HERO_CONTACT_BTN[lang]}</span>
@@ -216,23 +216,23 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
 
             <a
               href="tel:+905358235885"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-zinc-900/80 hover:bg-zinc-800/90 backdrop-blur-md text-white font-semibold text-sm sm:text-base border border-[#D4AF7A]/35 transition-all whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 sm:py-4 rounded-lg bg-zinc-900/80 hover:bg-zinc-800/90 backdrop-blur-md text-white font-semibold text-sm sm:text-base border border-[#D4AF7A]/35 transition-all whitespace-nowrap shrink-0"
             >
               <Phone className="w-4 h-4 text-[#D4AF7A] shrink-0" />
               <span>0535 823 58 85</span>
             </a>
           </div>
 
-          {/* 3 Trust Items Strictly Side-by-Side on Desktop */}
-          <div className="border-t border-white/15 pt-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-6 text-xs sm:text-sm text-zinc-200">
-            <span className="inline-flex items-center gap-2 font-semibold text-white whitespace-nowrap shrink-0">
+          {/* 3 Trust Items: Clean Responsive Wrapping on Phones/iPads, Side-by-Side on Desktop */}
+          <div className="border-t border-white/15 pt-5 flex flex-col lg:flex-row lg:flex-wrap xl:flex-nowrap lg:items-center gap-2.5 lg:gap-5 text-xs sm:text-sm text-zinc-200">
+            <span className="inline-flex items-center gap-2 font-semibold text-white">
               <Truck className="w-4 h-4 text-[#D4AF7A] shrink-0" />
               <span>{TRUST_1[lang]}</span>
             </span>
-            <span className="hidden md:inline text-[#D4AF7A] shrink-0">✦</span>
-            <span className="whitespace-nowrap shrink-0">{TRUST_2[lang]}</span>
-            <span className="hidden md:inline text-[#D4AF7A] shrink-0">✦</span>
-            <span className="whitespace-nowrap shrink-0">{TRUST_3[lang]}</span>
+            <span className="hidden lg:inline text-[#D4AF7A] shrink-0">✦</span>
+            <span>{TRUST_2[lang]}</span>
+            <span className="hidden lg:inline text-[#D4AF7A] shrink-0">✦</span>
+            <span>{TRUST_3[lang]}</span>
           </div>
         </div>
       </div>
