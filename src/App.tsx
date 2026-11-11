@@ -19,10 +19,10 @@ const PAGE_TITLES: LocalizedText = {
 };
 
 const FLOATING_CTA: LocalizedText = {
-  tr: 'Hızlı Sipariş • 0535 037 90 74',
-  en: 'Quick Order • 0535 037 90 74',
-  de: 'Schnellkontakt • 0535 037 90 74',
-  bg: 'Бърза поръчка • 0535 037 90 74',
+  tr: 'Hızlı Sipariş • 0535 823 58 85',
+  en: 'Quick Order • 0535 823 58 85',
+  de: 'Schnellkontakt • 0535 823 58 85',
+  bg: 'Бърза поръчка • 0535 823 58 85',
 };
 
 const App: React.FC = () => {

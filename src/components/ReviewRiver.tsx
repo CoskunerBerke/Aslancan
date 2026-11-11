@@ -22,10 +22,10 @@ const REVIEWS_TITLE: LocalizedText = {
 };
 
 const REVIEWS_CTA: LocalizedText = {
-  tr: 'Bize Ulaşın • 0535 037 90 74',
-  en: 'Contact Us • 0535 037 90 74',
-  de: 'Kontakt • 0535 037 90 74',
-  bg: 'Контакти • 0535 037 90 74',
+  tr: 'Bize Ulaşın • 0535 823 58 85',
+  en: 'Contact Us • 0535 823 58 85',
+  de: 'Kontakt • 0535 823 58 85',
+  bg: 'Контакти • 0535 823 58 85',
 };
 
 const ReviewRiver: React.FC<ReviewRiverProps> = ({ lang }) => {

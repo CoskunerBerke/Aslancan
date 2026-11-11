@@ -220,11 +220,11 @@ const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, onGoToContact }) =>
             </div>
 
             <a
-              href="tel:+905350379074"
+              href="tel:+905358235885"
               className="hidden md:inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-white hover:bg-white/10 text-sm font-semibold transition-colors whitespace-nowrap shrink-0 border border-white/10"
             >
               <Phone className="w-4 h-4 text-[#D4AF7A] shrink-0" />
-              <span>0535 037 90 74</span>
+              <span>0535 823 58 85</span>
             </a>
 
             <button
@@ -262,11 +262,11 @@ const Navbar: React.FC<NavbarProps> = ({ lang, onToggleLang, onGoToContact }) =>
             ))}
             <div className="pt-3 flex flex-col sm:flex-row gap-2.5">
               <a
-                href="tel:+905350379074"
+                href="tel:+905358235885"
                 className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-white/10 text-white text-sm font-semibold"
               >
                 <Phone className="w-4 h-4 text-[#D4AF7A]" />
-                <span>0535 037 90 74</span>
+                <span>0535 823 58 85</span>
               </a>
               <button
                 type="button"

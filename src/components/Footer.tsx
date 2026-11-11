@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
 
           <div className="text-xs sm:text-sm text-zinc-300 space-y-1 md:text-right">
             <p>
-              {FOOTER_CONTACT_LABEL[lang]} Yusuf Aslancan • Tel: 0535 037 90 74 •
+              {FOOTER_CONTACT_LABEL[lang]} Yusuf Aslancan • Tel: 0535 823 58 85 •
               yaslancan027@gmail.com
             </p>
             <p className="text-zinc-400">{FOOTER_HOURS[lang]}</p>

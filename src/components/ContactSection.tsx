@@ -104,10 +104,10 @@ const TEXTS: Record<string, LocalizedText> = {
     bg: 'Свържете се с нас — Изпратете директно Вашето запитване',
   },
   subtitle: {
-    tr: 'İsim soyisminizi, telefon numaranızı, bulunduğunuz şehri ve istediğiniz ürünü yazıp gönderdiğinizde talebiniz doğrudan 0535 037 90 74 numaralı hattımıza düşer.',
-    en: 'Enter your full name, phone number, city, and requested product; your inquiry is delivered directly to our 0535 037 90 74 line.',
-    de: 'Geben Sie Ihren Namen, Ihre Telefonnummer, Ihre Stadt und das gewünschte Produkt ein — Ihre Anfrage wird direkt an 0535 037 90 74 gesendet.',
-    bg: 'Въведете Вашите имена, телефон, град и желания продукт — запитването Ви се изпраща директно на номер 0535 037 90 74.',
+    tr: 'İsim soyisminizi, telefon numaranızı, bulunduğunuz şehri ve istediğiniz ürünü yazıp gönderdiğinizde talebiniz doğrudan 0535 823 58 85 numaralı hattımıza düşer.',
+    en: 'Enter your full name, phone number, city, and requested product; your inquiry is delivered directly to our 0535 823 58 85 line.',
+    de: 'Geben Sie Ihren Namen, Ihre Telefonnummer, Ihre Stadt und das gewünschte Produkt ein — Ihre Anfrage wird direkt an 0535 823 58 85 gesendet.',
+    bg: 'Въведете Вашите имена, телефон, град и желания продукт — запитването Ви се изпраща директно на номер 0535 823 58 85.',
   },
   phoneHeader: {
     tr: 'DOĞRUDAN SİPARİŞ & WHATSAPP HATTI',
@@ -146,10 +146,10 @@ const TEXTS: Record<string, LocalizedText> = {
     bg: 'Основно търговия на едро със съдействие и при поръчки на дребно според количеството. Доставка във всички 81 области.',
   },
   callBtn: {
-    tr: '0535 037 90 74 Ara',
-    en: 'Call 0535 037 90 74',
-    de: '0535 037 90 74 Anrufen',
-    bg: 'Обадете се: 0535 037 90 74',
+    tr: '0535 823 58 85 Ara',
+    en: 'Call 0535 823 58 85',
+    de: '0535 823 58 85 Anrufen',
+    bg: 'Обадете се: 0535 823 58 85',
   },
   waBtn: {
     tr: 'WhatsApp Hattı',
@@ -164,10 +164,10 @@ const TEXTS: Record<string, LocalizedText> = {
     bg: 'Форма за контакт и заявка на продукти',
   },
   formSub: {
-    tr: 'Bilgilerinizi doldurduğunuzda talebiniz doğrudan 0535 037 90 74 numarasına iletilir.',
-    en: 'When submitted, your request is sent directly to 0535 037 90 74.',
-    de: 'Nach dem Absenden wird Ihre Anfrage direkt an 0535 037 90 74 übermittelt.',
-    bg: 'След попълване Вашата заявка се изпраща директно на номер 0535 037 90 74.',
+    tr: 'Bilgilerinizi doldurduğunuzda talebiniz doğrudan 0535 823 58 85 numarasına iletilir.',
+    en: 'When submitted, your request is sent directly to 0535 823 58 85.',
+    de: 'Nach dem Absenden wird Ihre Anfrage direkt an 0535 823 58 85 übermittelt.',
+    bg: 'След попълване Вашата заявка се изпраща директно на номер 0535 823 58 85.',
   },
   field1Label: {
     tr: '1. İsim Soyisim / Firma Adı *',
@@ -218,16 +218,16 @@ const TEXTS: Record<string, LocalizedText> = {
     bg: 'напр. по 100 бр. хотелски кърпи 50x90 и 70x140, 20 бр. халати размер L и 50 кг стокови кърпи на килограм...',
   },
   sentNotice: {
-    tr: 'Talebiniz (İsim Soyisim, Telefon, Şehir ve İstediğiniz Ürün) 0535 037 90 74 numarasına iletilmek üzere hazırlandı.',
-    en: 'Your request (Name, Phone, City, and Requested Product) has been prepared for 0535 037 90 74.',
-    de: 'Ihre Anfrage (Name, Telefon, Stadt und gewünschtes Produkt) wurde für 0535 037 90 74 vorbereitet.',
-    bg: 'Вашата заявка (Име, телефон, град и желан продукт) е подготвена за изпращане към 0535 037 90 74.',
+    tr: 'Talebiniz (İsim Soyisim, Telefon, Şehir ve İstediğiniz Ürün) 0535 823 58 85 numarasına iletilmek üzere hazırlandı.',
+    en: 'Your request (Name, Phone, City, and Requested Product) has been prepared for 0535 823 58 85.',
+    de: 'Ihre Anfrage (Name, Telefon, Stadt und gewünschtes Produkt) wurde für 0535 823 58 85 vorbereitet.',
+    bg: 'Вашата заявка (Име, телефон, град и желан продукт) е подготвена за изпращане към 0535 823 58 85.',
   },
   submitPrimary: {
-    tr: '0535 037 90 74 Numarasına Gönder',
-    en: 'Send to 0535 037 90 74',
-    de: 'An 0535 037 90 74 senden',
-    bg: 'Изпрати до 0535 037 90 74',
+    tr: '0535 823 58 85 Numarasına Gönder',
+    en: 'Send to 0535 823 58 85',
+    de: 'An 0535 823 58 85 senden',
+    bg: 'Изпрати до 0535 823 58 85',
   },
   submitSecondary: {
     tr: 'Mesaj / Mail Talebi Olarak İlet',
@@ -244,7 +244,7 @@ const TEXTS: Record<string, LocalizedText> = {
 };
 
 function sanitizeInput(val: string): string {
-  return val.replace(/[<>]/g, '').trim();
+  return val.replace(/[\u0000-\u001F\u007F<>]/g, '').trim();
 }
 
 const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }) => {
@@ -284,7 +284,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
     const message = buildDirectMessage();
     setSentNotice(true);
     window.open(
-      `https://wa.me/905350379074?text=${encodeURIComponent(message)}`,
+      `https://wa.me/905358235885?text=${encodeURIComponent(message)}`,
       '_blank',
       'noopener,noreferrer'
     );
@@ -299,7 +299,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
     const message = buildDirectMessage();
     setSentNotice(true);
     window.open(
-      `https://wa.me/905350379074?text=${encodeURIComponent(message)}`,
+      `https://wa.me/905358235885?text=${encodeURIComponent(message)}`,
       '_blank',
       'noopener,noreferrer'
     );
@@ -333,11 +333,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
                   Aslancan Tekstil — Yusuf Aslancan
                 </p>
                 <a
-                  href="tel:+905350379074"
+                  href="tel:+905358235885"
                   className="font-luxury text-3xl font-bold text-zinc-900 hover:text-[#9A743E] transition-colors mt-1.5 inline-flex items-center gap-2.5"
                 >
                   <Phone className="w-6 h-6 text-[#9A743E] shrink-0" />
-                  <span>0535 037 90 74</span>
+                  <span>0535 823 58 85</span>
                 </a>
               </div>
 
@@ -371,14 +371,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
 
             <div className="pt-6 mt-6 border-t border-zinc-200 flex flex-col sm:flex-row gap-3">
               <a
-                href="tel:+905350379074"
+                href="tel:+905358235885"
                 className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-zinc-950 hover:bg-zinc-800 text-white text-sm font-semibold transition-colors whitespace-nowrap"
               >
                 <Phone className="w-4 h-4 text-[#D4AF7A]" />
                 <span>{TEXTS.callBtn[lang]}</span>
               </a>
               <a
-                href="https://wa.me/905350379074?text=Merhaba%20Aslancan%20Tekstil,%20ürünleriniz%20ve%20fiyatlarınız%20hakkında%20bilgi%20almak%20istiyorum."
+                href="https://wa.me/905358235885?text=Merhaba%20Aslancan%20Tekstil,%20ürünleriniz%20ve%20fiyatlarınız%20hakkında%20bilgi%20almak%20istiyorum."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="luxury-shimmer flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg bg-gold-metallic text-zinc-950 text-sm font-bold transition-all whitespace-nowrap"
@@ -400,7 +400,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ lang, selectedProduct }
               </div>
               <span className="inline-flex items-center gap-1.5 text-xs font-bold bg-zinc-950 text-[#E5C99B] px-3.5 py-2 rounded-lg border border-[#C5A47E]/30 whitespace-nowrap self-start sm:self-auto">
                 <Phone className="w-3.5 h-3.5 text-[#D4AF7A]" />
-                <span>0535 037 90 74</span>
+                <span>0535 823 58 85</span>
               </span>
             </div>
 

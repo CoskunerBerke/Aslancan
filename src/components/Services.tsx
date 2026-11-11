@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   CheckCircle2,
@@ -103,6 +103,27 @@ const Services: React.FC<ServicesProps> = ({ lang, onSelectProductForContact }) 
     setPreviewProduct(product);
     setPreviewImgIdx(initialImgIdx);
   };
+
+  useEffect(() => {
+    if (!previewProduct) return;
+    const modalImages =
+      previewProduct.images && previewProduct.images.length > 0
+        ? previewProduct.images
+        : [previewProduct.image];
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setPreviewProduct(null);
+      } else if (e.key === 'ArrowRight' && modalImages.length > 1) {
+        setPreviewImgIdx((prev) => (prev + 1) % modalImages.length);
+      } else if (e.key === 'ArrowLeft' && modalImages.length > 1) {
+        setPreviewImgIdx((prev) => (prev - 1 + modalImages.length) % modalImages.length);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [previewProduct]);
 
   return (
     <section id="urunler" className="py-24 bg-[#F6F3EC] border-t border-zinc-200">

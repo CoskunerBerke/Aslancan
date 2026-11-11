@@ -215,11 +215,11 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
             </button>
 
             <a
-              href="tel:+905350379074"
+              href="tel:+905358235885"
               className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg bg-zinc-900/80 hover:bg-zinc-800/90 backdrop-blur-md text-white font-semibold text-sm sm:text-base border border-[#D4AF7A]/35 transition-all whitespace-nowrap shrink-0"
             >
               <Phone className="w-4 h-4 text-[#D4AF7A] shrink-0" />
-              <span>0535 037 90 74</span>
+              <span>0535 823 58 85</span>
             </a>
           </div>
 

@@ -1,8 +1,28 @@
+# Disable directory listing
+Options -Indexes
+
+# Protect hidden files (.htaccess, .git, .env)
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Proper MIME types for video and SVG
 <IfModule mod_mime.c>
   AddType video/mp4 .mp4
   AddType image/svg+xml .svg
 </IfModule>
 
+# Security Headers for Linux Apache / LiteSpeed Hosting
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' data: blob:; frame-src https://maps.google.com https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"
+</IfModule>
+
+# SPA Routing
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /

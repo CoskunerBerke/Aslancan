@@ -146,3 +146,12 @@
   animation: riverFlow 34s linear infinite;
   will-change: transform;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
