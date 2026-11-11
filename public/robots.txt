@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aslancan.vercel.app/sitemap.xml
+Sitemap: https://aslancantekstil.com/sitemap.xml
