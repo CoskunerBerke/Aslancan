@@ -23,24 +23,24 @@ interface ServicesProps {
 }
 
 const CATALOG_TAG: LocalizedText = {
-  tr: 'ÜRÜN GRUPLARI & TOPTAN / PERAKENDE KATALOĞU',
-  en: 'PRODUCT GROUPS & WHOLESALE / RETAIL CATALOG',
-  de: 'PRODUKTGRUPPEN & GROSS- / EINZELHANDELSKATALOG',
-  bg: 'ПРОДУКТОВИ ГРУПИ И КАТАЛОГ НА ЕДРО И ДРЕБНО',
+  tr: '1. 2. 3. KALİTE ÜRÜN GRUPLARI • TOPTAN & PERAKENDE KATALOĞU',
+  en: '1ST, 2ND, 3RD QUALITY PRODUCT GROUPS • WHOLESALE & RETAIL CATALOG',
+  de: '1., 2. & 3. QUALITÄT PRODUKTGRUPPEN • GROSS- & EINZELHANDELSKATALOG',
+  bg: 'ПРОДУКТОВИ ГРУПИ 1-ВО, 2-РО И 3-ТО КАЧЕСТВО • НА ЕДРО И ДРЕБНО',
 };
 
 const CATALOG_TITLE: LocalizedText = {
-  tr: 'Otel Ürünleri, Ev Tekstili, Bornoz ve Kiloluk Stok Havlular',
-  en: 'Hotel Textiles, Home Textiles, Bathrobes & Per-Kilo Stock Towels',
-  de: 'Hoteltextilien, Heimtextilien, Bademäntel & Lagerhandtücher pro Kg',
-  bg: 'Хотелски текстил, домашен текстил, халати и стокови кърпи на кг',
+  tr: 'Havlu, Bornoz, Nevresim Takımı, Paspas, Sıvı Geçirmez Alez ve Kiloluk Stok Havlular',
+  en: 'Towels, Bathrobes, Duvet Cover Sets, Bath Mats, Waterproof Protectors & Per-Kg Stock Towels',
+  de: 'Handtücher, Bademäntel, Bettwäsche-Sets, Badematten, Matratzenschoner & Lagerhandtücher pro Kg',
+  bg: 'Кърпи, халати, спални комплекти, постелки за баня, непромокаеми протектори и стокови кърпи на кг',
 };
 
 const CARD_BADGE: LocalizedText = {
-  tr: 'DENİZLİ ÜRETİM & 81 İLDE TESLİMAT',
-  en: 'DENIZLI PRODUCTION & 81-PROVINCE DELIVERY',
-  de: 'HERSTELLUNG IN DENIZLI & LIEFERUNG IN 81 PROVINZEN',
-  bg: 'ПРОИЗВОДСТВО ДЕНИЗЛИ И ДОСТАВКА В 81 ОБЛАСТИ',
+  tr: 'DENİZLİ ÜRETİM • 1. 2. 3. KALİTE • 81 İLDE TESLİMAT',
+  en: 'DENIZLI PRODUCTION • 1ST, 2ND, 3RD GRADE • 81-PROVINCE DELIVERY',
+  de: 'DENIZLI HERSTELLUNG • 1. 2. 3. WAHL • VERSAND IN 81 PROVINZEN',
+  bg: 'ПРОИЗВОДСТВО ДЕНИЗЛИ • 1, 2, 3 КАЧЕСТВО • 81 ОБЛАСТИ',
 };
 
 const OPTIONS_HEADER: LocalizedText = {

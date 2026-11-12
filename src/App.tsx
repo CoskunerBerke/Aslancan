@@ -12,10 +12,10 @@ import MobileQuickBar from './components/MobileQuickBar';
 import { Language, LocalizedText } from './data/productsData';
 
 const PAGE_TITLES: LocalizedText = {
-  tr: 'Aslancan Tekstil Denizli | Otel Tekstili, Ev Tekstili, Bornoz & Kiloluk Stok Havlu',
-  en: 'Aslancan Textile Denizli | Hotel Textiles, Home Textiles, Bathrobes & Per-Kg Stock Towels',
-  de: 'Aslancan Textil Denizli | Hoteltextilien, Heimtextilien, Bademäntel & Lagerhandtücher pro Kg',
-  bg: 'Асланджан Текстил Денизли | Хотелски текстил, домашен текстил, халати и стокови кърпи на кг',
+  tr: 'Aslancan Tekstil Denizli | Toptan & Perakende Havlu, Bornoz, Nevresim Takımı, Paspas, Sıvı Geçirmez Alez (1. 2. 3. Kalite)',
+  en: 'Aslancan Textile Denizli | Wholesale & Retail Towels, Bathrobes, Duvet Sets, Bath Mats & Waterproof Protectors (1st, 2nd, 3rd Quality)',
+  de: 'Aslancan Textil Denizli | Groß- & Einzelhandel Handtücher, Bademäntel, Bettwäsche, Badematten & Matratzenschoner (1., 2. & 3. Qualität)',
+  bg: 'Асланджан Текстил Денизли | Търговия на едро и дребно с кърпи, халати, спално бельо, постелки и протектори (1, 2, 3 качество)',
 };
 
 const FLOATING_CTA: LocalizedText = {

@@ -9,48 +9,44 @@ interface HeroProps {
 
 const MARQUEE_BY_LANG: Record<Language, string[]> = {
   tr: [
-    'TÜRKİYE GENELİ 81 İLDE TESLİMAT & AMBAR GÖNDERİMİ',
-    'OTEL HAVLUSU (50x90 • 70x140 • 90x150)',
-    'ÇİZGİLİ SATEN OTEL NEVRESİM TAKIMLARI',
-    'AYAK İZLİ YUNAN BORDÜRLÜ BANYO PASPASI',
-    'SIVI GEÇİRMEZ YATAK KORUYUCU ALEZ',
-    'HER BEDEN BÜYÜK BORNOZ & ÇOCUK BORNOZU',
-    'İHRACAT FAZLASI KİLOLUK STOK HAVLULAR',
+    '1. KALİTE • 2. KALİTE • 3. KALİTE HAVLU & BORNOZ ÇEŞİTLERİ',
+    'TOPTAN & PERAKENDE HAVLU (50x90 • 70x140 • 90x150) & OTEL HAVLUSU',
+    'YETİŞKİN BÜYÜK BORNOZ (S-XXL) & ÇOCUK BORNOZU',
+    'ÇİZGİLİ SATEN & PAMUK RANFORCE NEVRESİM TAKIMLARI & ÇARŞAF',
+    'AYAK İZLİ BANYO PASPASI & SIVI GEÇİRMEZ YATAK KORUYUCU ALEZ',
+    'İHRACAT FAZLASI KİLOLUK STOK HAVLULAR • 81 İLDE TESLİMAT',
   ],
   en: [
-    'NATIONWIDE DELIVERY TO ALL 81 PROVINCES & EXPORT SHIPPING',
-    'HOTEL TOWELS (50x90 • 70x140 • 90x150)',
-    'STRIPED SATEEN HOTEL BEDDING SETS',
-    'GREEK-BORDER FOOTPRINT HOTEL BATH MATS',
-    'WATERPROOF MATTRESS PROTECTORS',
-    'ADULT (S-XXL) & KIDS BATHROBE COLLECTION',
-    'EXPORT-SURPLUS STOCK TOWELS BY WEIGHT (KG)',
+    '1ST, 2ND & 3RD QUALITY TOWELS & BATHROBES IN STOCK',
+    'WHOLESALE & RETAIL TOWELS (50x90 • 70x140 • 90x150) & HOTEL TOWELS',
+    'ADULT BATHROBES (S-XXL) & KIDS BATHROBE COLLECTION',
+    'STRIPED SATEEN & COTTON RANFORCE DUVET COVER SETS & SHEETS',
+    'FOOTPRINT BATH MATS & WATERPROOF MATTRESS PROTECTORS',
+    'EXPORT-SURPLUS PER-KILO STOCK TOWELS • 81-PROVINCE DELIVERY',
   ],
   de: [
-    'LIEFERUNG IN ALLE 81 PROVINZEN & EXPORTVERSAND',
-    'HOTELHANDTÜCHER (50x90 • 70x140 • 90x150)',
-    'STREIFENSATIN-HOTELBETTWÄSCHE-SETS',
-    'HOTEL-BADEMATTEN MIT MÄANDER-BORDÜRE',
-    'WASSERDICHTE MATRATZENSCHONER',
+    'HANDTÜCHER & BADEMÄNTEL IN 1., 2. & 3. QUALITÄT AB LAGER',
+    'GROSS- & EINZELHANDEL HANDTÜCHER (50x90 • 70x140 • 90x150)',
     'ERWACHSENEN- (S-XXL) & KINDERBADEMÄNTEL',
-    'EXPORTÜBERSCHUSS-LAGERHANDTÜCHER NACH GEWICHT (KG)',
+    'STREIFENSATIN- & BAUMWOLL-RANFORCE-BETTWÄSCHE & BETTLAKEN',
+    'BADEMATTEN MIT FUSSMOTIV & WASSERDICHTE MATRATZENSCHONER',
+    'EXPORTÜBERSCHUSS-LAGERHANDTÜCHER PRO KG • LANDESWEITER VERSAND',
   ],
   bg: [
-    'ДОСТАВКА ДО ВСИЧКИ 81 ОБЛАСТИ И ИЗНОСЕН ТРАНСПОРТ',
-    'ХОТЕЛСКИ КЪРПИ (50x90 • 70x140 • 90x150)',
-    'РАИРАНИ САТЕНЕНИ ХОТЕЛСКИ СПАЛНИ КОМПЛЕКТИ',
-    'ХОТЕЛСКИ ПОСТЕЛКИ ЗА БАНЯ С ГРЪЦКИ БОРДЮР',
-    'НЕПРОМОКАЕМИ ПРОТЕКТОРИ ЗА МАТРАЦИ',
+    'ХАВЛИЕНИ КЪРПИ И ХАЛАТИ В 1-ВО, 2-РО И 3-ТО КАЧЕСТВО',
+    'КЪРПИ НА ЕДРО И ДРЕБНО (50x90 • 70x140 • 90x150) И ХОТЕЛСКИ КЪРПИ',
     'ХАЛАТИ ЗА ВЪЗРАСТНИ (S-XXL) И ДЕТСКИ ХАЛАТИ',
-    'СТОКОВИ КЪРПИ ОТ ИЗНОСЕН РЕЗЕРВ НА КИЛОГРАМ',
+    'РАИРАНИ САТЕНЕНИ И ПАМУЧНИ РАНФОРС СПАЛНИ КОМПЛЕКТИ И ЧАРШАФИ',
+    'ПОСТЕЛКИ ЗА БАНЯ И НЕПРОМОКАЕМИ ПРОТЕКТОРИ ЗА МАТРАЦИ',
+    'СТОКОВИ КЪРПИ НА КИЛОГРАМ • ДОСТАВКА В 81 ОБЛАСТИ',
   ],
 };
 
 const HERO_BADGE: LocalizedText = {
-  tr: 'ASLANCAN TEKSTİL • DENİZLİ OTEL & EV TEKSTİLİ',
-  en: 'ASLANCAN TEXTILE • DENIZLI HOTEL & HOME TEXTILES',
-  de: 'ASLANCAN TEXTIL • DENIZLI HOTEL- & HEIMTEXTILIEN',
-  bg: 'АСЛАНДЖАН ТЕКСТИЛ • ДЕНИЗЛИ ХОТЕЛСКИ И ДОМАШЕН ТЕКСТИЛ',
+  tr: 'ASLANCAN TEKSTİL DENİZLİ • 1. 2. 3. KALİTE TOPTAN & PERAKENDE TEKSTİL',
+  en: 'ASLANCAN TEXTILE DENIZLI • 1ST, 2ND, 3RD QUALITY WHOLESALE & RETAIL',
+  de: 'ASLANCAN TEXTIL DENIZLI • 1., 2. & 3. QUALITÄT GROSS- & EINZELHANDEL',
+  bg: 'АСЛАНДЖАН ТЕКСТИЛ ДЕНИЗЛИ • 1-ВО, 2-РО И 3-ТО КАЧЕСТВО НА ЕДРО И ДРЕБНО',
 };
 
 const HERO_EXPLORE_BTN: LocalizedText = {
@@ -75,10 +71,10 @@ const TRUST_1: LocalizedText = {
 };
 
 const TRUST_2: LocalizedText = {
-  tr: 'Toptan Satış & Sayıya Göre Perakende Desteği',
-  en: 'Wholesale & Quantity-Based Retail Support',
-  de: 'Großhandel & Einzelhandel nach Menge',
-  bg: 'Търговия на едро и дребно според количеството',
+  tr: '1. 2. 3. Kalite Toptan & Perakende Satış',
+  en: '1st, 2nd, 3rd Quality Wholesale & Retail',
+  de: '1., 2. & 3. Qualität Groß- & Einzelhandel',
+  bg: '1-во, 2-ро и 3-то качество на едро и дребно',
 };
 
 const TRUST_3: LocalizedText = {
@@ -115,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
         >
           <source src="/videos/textile-hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/92 via-zinc-950/76 to-zinc-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/92 via-zinc-950/78 to-zinc-950/48" />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/60" />
         <div className="pointer-events-none absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full bg-[#D4AF7A]/15 blur-[130px] animate-luxury-aura" />
         <div className="pointer-events-none absolute bottom-16 right-10 w-[440px] h-[440px] rounded-full bg-[#C5A47E]/15 blur-[120px] animate-luxury-aura" />
@@ -132,66 +128,73 @@ const Hero: React.FC<HeroProps> = ({ lang, onGoToContact }) => {
           </div>
 
           {lang === 'tr' && (
-            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
-              Saf Denizli Pamuğundan{' '}
-              <span className="italic font-normal text-gold-metallic">Otel & Ev Tekstili</span>{' '}
-              Zarafeti.
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
+              Denizli’den Toptan & Perakende{' '}
+              <span className="italic font-normal text-gold-metallic">
+                Havlu, Bornoz, Nevresim, Paspas ve Alez.
+              </span>
             </h1>
           )}
           {lang === 'en' && (
-            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
-              Pure Denizli Cotton{' '}
-              <span className="italic font-normal text-gold-metallic">Hotel & Home Textile</span>{' '}
-              Excellence.
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
+              Wholesale & Retail{' '}
+              <span className="italic font-normal text-gold-metallic">
+                Towels, Bathrobes, Bedding, Bath Mats & Protectors.
+              </span>
             </h1>
           )}
           {lang === 'de' && (
-            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[62px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
-              Edle{' '}
-              <span className="italic font-normal text-gold-metallic">Hotel- & Heimtextilien</span>{' '}
-              aus Reiner Denizli-Baumwolle.
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.12] sm:leading-[1.08] mb-5 sm:mb-6 drop-shadow-sm">
+              Groß- & Einzelhandel für{' '}
+              <span className="italic font-normal text-gold-metallic">
+                Handtücher, Bademäntel, Bettwäsche, Matten & Schoner.
+              </span>
             </h1>
           )}
           {lang === 'bg' && (
-            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.14] sm:leading-[1.1] mb-5 sm:mb-6 drop-shadow-sm">
-              Изящен{' '}
+            <h1 className="font-luxury text-3xl sm:text-5xl lg:text-[58px] font-bold text-white tracking-tight leading-[1.14] sm:leading-[1.1] mb-5 sm:mb-6 drop-shadow-sm">
+              Търговия на едро и дребно с{' '}
               <span className="italic font-normal text-gold-metallic">
-                хотелски и домашен текстил
-              </span>{' '}
-              от чист памук от Денизли.
+                кърпи, халати, спално бельо, постелки и протектори.
+              </span>
             </h1>
           )}
 
           {lang === 'tr' && (
-            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-3xl font-normal">
               Denizli merkezli <strong className="text-white font-semibold">Aslancan Tekstil</strong> olarak;
-              50x90, 70x140 ve 90x150 otel havluları, çizgili saten nevresim takımları, banyo paspası,
-              sıvı geçirmez alez, yetişkin ve çocuk bornozları ile ihracat fazlası kiloluk havlularda
-              81 ilde teslimat ve doğrudan tedarik sağlıyoruz.
+              havlu ve bornoz satan mağazalara, büyük ve küçük tüm işletmelere, yurtlara ve otellere{' '}
+              <strong className="text-[#E5C99B] font-semibold">1. kalite, 2. kalite ve 3. kalite</strong>{' '}
+              seçenekleriyle el/yüz ve banyo havlusu (50x90, 70x140, 90x150), otel havlusu, yetişkin ve
+              çocuk bornozu, nevresim takımları, ayak izli banyo paspası, sıvı geçirmez yatak alezi ve
+              ihracat fazlası kiloluk stok havlu tedariği sağlıyoruz.
             </p>
           )}
           {lang === 'en' && (
-            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-3xl font-normal">
               Based in Denizli, <strong className="text-white font-semibold">Aslancan Textile</strong> supplies
-              50x90, 70x140, and 90x150 hotel towels, striped sateen duvet cover sets, bath mats,
-              waterproof mattress protectors, adult & kids bathrobes, and export-surplus per-kilo towels
-              with delivery across all 81 provinces.
+              towel & bathrobe retailers, large and small businesses, dormitories, and hotels with{' '}
+              <strong className="text-[#E5C99B] font-semibold">1st, 2nd, and 3rd quality</strong> hand and
+              bath towels (50x90, 70x140, 90x150), hotel towels, adult & kids bathrobes, duvet cover sets,
+              bath mats, waterproof mattress protectors, and per-kilo stock towels across all 81 provinces.
             </p>
           )}
           {lang === 'de' && (
-            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
-              Mit Sitz in Denizli liefert <strong className="text-white font-semibold">Aslancan Textil</strong>{' '}
-              50x90, 70x140 und 90x150 Hotelhandtücher, Streifensatin-Bettwäsche, Badematten,
-              wasserdichte Matratzenschoner, Erwachsenen- und Kinderbademäntel sowie
-              Exportüberschuss-Handtücher pro Kilogramm direkt ab Werk.
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-3xl font-normal">
+              Mit Sitz in Denizli beliefert <strong className="text-white font-semibold">Aslancan Textil</strong>{' '}
+              Handtuch- und Bademantelhändler, große und kleine Betriebe, Wohnheime und Hotels mit{' '}
+              <strong className="text-[#E5C99B] font-semibold">1., 2. und 3. Qualität</strong> Handtüchern
+              (50x90, 70x140, 90x150), Hotelhandtüchern, Bademänteln, Bettwäsche-Sets, Badematten,
+              wasserdichten Matratzenschonern und Kiloware direkt ab Lager.
             </p>
           )}
           {lang === 'bg' && (
-            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-2xl font-normal">
+            <p className="text-sm sm:text-lg text-zinc-200 leading-relaxed mb-8 sm:mb-10 max-w-3xl font-normal">
               Базирана в Денизли, <strong className="text-white font-semibold">Асланджан Текстил</strong>{' '}
-              доставя хотелски кърпи (50x90, 70x140, 90x150), раирани сатенени спални комплекти,
-              постелки за баня, непромокаеми протектори, халати за възрастни и деца и стокови кърпи
-              на килограм на едро и дребно.
+              снабдява магазини за кърпи и халати, големи и малки предприятия, общежития и хотели с{' '}
+              <strong className="text-[#E5C99B] font-semibold">1-во, 2-ро и 3-то качество</strong> хавлиени
+              кърпи (50x90, 70x140, 90x150), хотелски кърпи, халати за възрастни и деца, спални комплекти,
+              постелки за баня, непромокаеми протектори и стокови кърпи на килограм.
             </p>
           )}
 
